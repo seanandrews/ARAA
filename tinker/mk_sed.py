@@ -53,6 +53,15 @@ for j in range(nw):
 # calculate the spectrum
 fnu = 1e23 * 2. * np.pi * np.cos(np.radians(incl)) * raw_sed / (140.*pc)**2
 
+# calculate the spectral index between 1 and 3 mm
+f_b6 = (fnu[wl <= 1300.])[-1]
+wl_b6 = (wl[wl <= 1300.])[-1]
+f_b3 = (fnu[wl <= 2900.])[-1]
+wl_b3 = (wl[wl <= 2900.])[-1]
+alp = np.log(f_b6/f_b3)/np.log(wl_b3/wl_b6)
+print(alp)
+
+
 # convert to an SED
 sed = 4.*np.pi*(140.*pc)**2 * nu * (1e-23*fnu) / Lsun
 
