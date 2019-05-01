@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 hh, cc, kk = 6.6269655e-27, 2.99792458e10, 1.380658e-16
 
 # rough frequencies
-nu0 = cc / 0.1
-nu1 = cc / 0.3
+nu0 = cc / 0.13
+nu1 = cc / 0.9
 
 # temperatures
 T = np.linspace(15., 60., 100)
