@@ -36,7 +36,7 @@ for i in range(len(db)):
     d[i], ed_hi[i], ed_lo[i] = pk_dist, CI_dist[0]-pk_dist, pk_dist-CI_dist[1]
 
 # add these as columns to the database
-db['DPC'] = d
+db['DPC2'] = d
 #db['EDPC_HI'] = ed_hi
 #db['EDPC_LO'] = ed_lo
 

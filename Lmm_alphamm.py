@@ -26,7 +26,9 @@ L_B6 = F_B6 * (dpc/d0)**2
 plt.semilogx(L_B6, alp, 'ok')
 plt.axis([0.2, 5000, 0., 7.])
 plt.show()
+plt.clf()
 
+sys.exit()
 
 # check indices against one another
 ok = ((db['FL_A67'] == 0) & (db['FL_A36'] == 0))
