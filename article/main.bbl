@@ -1,0 +1,487 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\href{#1}{#1}}
+\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
+\providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
+\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
+
+\bibitem[{{Aikawa} {et~al.}(1997){Aikawa}, {Umebayashi}, {Nakano}, \&
+  {Miyama}}]{aikawa97}
+{Aikawa}, Y., {Umebayashi}, T., {Nakano}, T., \& {Miyama}, S.~M. 1997, \apjl,
+  486, L51, \dodoi{10.1086/310837}
+
+\bibitem[{{Aikawa} {et~al.}(2002){Aikawa}, {van Zadelhoff}, {van Dishoeck}, \&
+  {Herbst}}]{aikawa02}
+{Aikawa}, Y., {van Zadelhoff}, G.~J., {van Dishoeck}, E.~F., \& {Herbst}, E.
+  2002, \aap, 386, 622, \dodoi{10.1051/0004-6361:20020037}
+
+\bibitem[{{Alibert} {et~al.}(2005){Alibert}, {Mordasini}, {Benz}, \&
+  {Winisdoerffer}}]{alibert05}
+{Alibert}, Y., {Mordasini}, C., {Benz}, W., \& {Winisdoerffer}, C. 2005, \aap,
+  434, 343, \dodoi{10.1051/0004-6361:20042032}
+
+\bibitem[{{Andre} \& {Montmerle}(1994)}]{andre94}
+{Andre}, P., \& {Montmerle}, T. 1994, \apj, 420, 837, \dodoi{10.1086/173608}
+
+\bibitem[{{Andrews}(2015)}]{andrews15}
+{Andrews}, S.~M. 2015, \pasp, 127, 961, \dodoi{10.1086/683178}
+
+\bibitem[{{Andrews} {et~al.}(2010){Andrews}, {Czekala}, {Wilner}, {Espaillat},
+  {Dullemond}, \& {Hughes}}]{andrews10}
+{Andrews}, S.~M., {Czekala}, I., {Wilner}, D.~J., {et~al.} 2010, \apj, 710,
+  462, \dodoi{10.1088/0004-637X/710/1/462}
+
+\bibitem[{{Andrews} {et~al.}(2013){Andrews}, {Rosenfeld}, {Kraus}, \&
+  {Wilner}}]{andrews13}
+{Andrews}, S.~M., {Rosenfeld}, K.~A., {Kraus}, A.~L., \& {Wilner}, D.~J. 2013,
+  \apj, 771, 129, \dodoi{10.1088/0004-637X/771/2/129}
+
+\bibitem[{{Andrews} \& {Williams}(2005)}]{aw05}
+{Andrews}, S.~M., \& {Williams}, J.~P. 2005, \apj, 631, 1134,
+  \dodoi{10.1086/432712}
+
+\bibitem[{{Andrews} \& {Williams}(2007{\natexlab{a}})}]{aw07b}
+---. 2007{\natexlab{a}}, \apj, 671, 1800, \dodoi{10.1086/522885}
+
+\bibitem[{{Andrews} \& {Williams}(2007{\natexlab{b}})}]{aw07a}
+---. 2007{\natexlab{b}}, \apj, 659, 705, \dodoi{10.1086/511741}
+
+\bibitem[{{Andrews} {et~al.}(2009){Andrews}, {Wilner}, {Hughes}, {Qi}, \&
+  {Dullemond}}]{andrews09}
+{Andrews}, S.~M., {Wilner}, D.~J., {Hughes}, A.~M., {Qi}, C., \& {Dullemond},
+  C.~P. 2009, \apj, 700, 1502, \dodoi{10.1088/0004-637X/700/2/1502}
+
+\bibitem[{{Andrews} {et~al.}(2012){Andrews}, {Wilner}, {Hughes}, {Qi},
+  {Rosenfeld}, {{\"O}berg}, {Birnstiel}, {Espaillat}, {Cieza}, {Williams},
+  {Lin}, \& {Ho}}]{andrews12}
+{Andrews}, S.~M., {Wilner}, D.~J., {Hughes}, A.~M., {et~al.} 2012, \apj, 744,
+  162, \dodoi{10.1088/0004-637X/744/2/162}
+
+\bibitem[{{Andrews} {et~al.}(2018){Andrews}, {Wilner}, {Zhu}, {Birnstiel},
+  {Carpenter}, {P{\'e}rez}, {Bai}, {{\"O}berg}, {Hughes}, {Isella}, \&
+  {Ricci}}]{andrews18}
+{Andrews}, S.~M., {Wilner}, D.~J., {Zhu}, Z., {et~al.} 2018, \apjl, 820, L40,
+  \dodoi{10.3847/2041-8205/820/2/L40}
+
+\bibitem[{{Ansdell} {et~al.}(2016){Ansdell}, {Williams}, {van der Marel},
+  {Carpenter}, {Guidi}, {Hogerheijde}, {Mathews}, {Manara}, {Miotello},
+  {Natta}, {Oliveira}, {Tazzari}, {Testi}, {van Dishoeck}, \& {van
+  Terwisga}}]{ansdell16}
+{Ansdell}, M., {Williams}, J.~P., {van der Marel}, N., {et~al.} 2016, \apj,
+  828, 46, \dodoi{10.3847/0004-637X/828/1/46}
+
+\bibitem[{{Ansdell} {et~al.}(2018){Ansdell}, {Williams}, {Trapman}, {van
+  Terwisga}, {Facchini}, {Manara}, {van der Marel}, {Miotello}, {Tazzari},
+  {Hogerheijde}, {Guidi}, {Testi}, \& {van Dishoeck}}]{ansdell18}
+{Ansdell}, M., {Williams}, J.~P., {Trapman}, L., {et~al.} 2018, \apj, 859, 21,
+  \dodoi{10.3847/1538-4357/aab890}
+
+\bibitem[{{Barenfeld} {et~al.}(2017){Barenfeld}, {Carpenter}, {Sargent},
+  {Isella}, \& {Ricci}}]{barenfeld17_sizes}
+{Barenfeld}, S.~A., {Carpenter}, J.~M., {Sargent}, A.~I., {Isella}, A., \&
+  {Ricci}, L. 2017, \apj, 851, 85, \dodoi{10.3847/1538-4357/aa989d}
+
+\bibitem[{{Beckwith} \& {Sargent}(1991)}]{beckwith91}
+{Beckwith}, S.~V.~W., \& {Sargent}, A.~I. 1991, \apj, 381, 250,
+  \dodoi{10.1086/170646}
+
+\bibitem[{{Beckwith} \& {Sargent}(1993)}]{beckwith93}
+---. 1993, \apj, 402, 280, \dodoi{10.1086/172131}
+
+\bibitem[{{Beckwith} {et~al.}(1990){Beckwith}, {Sargent}, {Chini}, \&
+  {Guesten}}]{beckwith90}
+{Beckwith}, S.~V.~W., {Sargent}, A.~I., {Chini}, R.~S., \& {Guesten}, R. 1990,
+  \aj, 99, 924, \dodoi{10.1086/115385}
+
+\bibitem[{{Bergin} {et~al.}(2013){Bergin}, {Cleeves}, {Gorti}, {Zhang},
+  {Blake}, {Green}, {Andrews}, {Evans}, {Henning}, {{\"O}berg}, {Pontoppidan},
+  {Qi}, {Salyk}, \& {van Dishoeck}}]{bergin13}
+{Bergin}, E.~A., {Cleeves}, L.~I., {Gorti}, U., {et~al.} 2013, \nat, 493, 644,
+  \dodoi{10.1038/nature11805}
+
+\bibitem[{{Birnstiel} {et~al.}(2011){Birnstiel}, {Ormel}, \&
+  {Dullemond}}]{birnstiel11}
+{Birnstiel}, T., {Ormel}, C.~W., \& {Dullemond}, C.~P. 2011, \aap, 525, A11,
+  \dodoi{10.1051/0004-6361/201015228}
+
+\bibitem[{{Birnstiel} {et~al.}(2018){Birnstiel}, {Dullemond}, {Zhu}, {Andrews},
+  {Bai}, {Wilner}, {Carpenter}, {Huang}, {Isella}, {Benisty}, {P{\'e}rez}, \&
+  {Zhang}}]{dsharp5}
+{Birnstiel}, T., {Dullemond}, C.~P., {Zhu}, Z., {et~al.} 2018, \apjl, 869, L45,
+  \dodoi{10.3847/2041-8213/aaf743}
+
+\bibitem[{{Bosman} {et~al.}(2018){Bosman}, {Walsh}, \& {van
+  Dishoeck}}]{bosman18}
+{Bosman}, A.~D., {Walsh}, C., \& {van Dishoeck}, E.~F. 2018, \aap, 618, A182,
+  \dodoi{10.1051/0004-6361/201833497}
+
+\bibitem[{{Cassen} \& {Moosman}(1981)}]{cassen81}
+{Cassen}, P., \& {Moosman}, A. 1981, Icarus, 48, 353,
+  \dodoi{10.1016/0019-1035(81)90051-8}
+
+\bibitem[{{Chapillon} {et~al.}(2010){Chapillon}, {Parise}, {Guilloteau},
+  {Dutrey}, \& {Wakelam}}]{chapillon10}
+{Chapillon}, E., {Parise}, B., {Guilloteau}, S., {Dutrey}, A., \& {Wakelam}, V.
+  2010, \aap, 520, A61, \dodoi{10.1051/0004-6361/201014841}
+
+\bibitem[{{Chiang} \& {Laughlin}(2013)}]{chiang13}
+{Chiang}, E., \& {Laughlin}, G. 2013, \mnras, 431, 3444,
+  \dodoi{10.1093/mnras/stt424}
+
+\bibitem[{{Cieza} {et~al.}(2019){Cieza}, {Ru{\'{\i}}z-Rodr{\'{\i}}guez},
+  {Hales}, {Casassus}, {P{\'e}rez}, {Gonzalez-Ruilova}, {C{\'a}novas},
+  {Williams}, {Zurlo}, {Ansdell}, {Avenhaus}, {Bayo}, {Bertrang},
+  {Christiaens}, {Dent}, {Ferrero}, {Gamen}, {Olofsson}, {Orcajo}, {Pe{\~n}a
+  Ram{\'{\i}}rez}, {Principe}, {Schreiber}, \& {van der Plas}}]{cieza19}
+{Cieza}, L.~A., {Ru{\'{\i}}z-Rodr{\'{\i}}guez}, D., {Hales}, A., {et~al.} 2019,
+  \mnras, 482, 698, \dodoi{10.1093/mnras/sty2653}
+
+\bibitem[{{Cuzzi} {et~al.}(2014){Cuzzi}, {Estrada}, \& {Davis}}]{cuzzi14}
+{Cuzzi}, J.~N., {Estrada}, P.~R., \& {Davis}, S.~S. 2014, \apjs, 210, 21,
+  \dodoi{10.1088/0067-0049/210/2/21}
+
+\bibitem[{{D'Alessio} {et~al.}(2001){D'Alessio}, {Calvet}, \&
+  {Hartmann}}]{dalessio01}
+{D'Alessio}, P., {Calvet}, N., \& {Hartmann}, L. 2001, \apj, 553, 321,
+  \dodoi{10.1086/320655}
+
+\bibitem[{{de Gregorio-Monsalvo} {et~al.}(2013){de Gregorio-Monsalvo},
+  {M{\'e}nard}, {Dent}, {Pinte}, {L{\'o}pez}, {Klaassen}, {Hales},
+  {Cort{\'e}s}, {Rawlings}, {Tachihara}, {Testi}, {Takahashi}, {Chapillon},
+  {Mathews}, {Juhasz}, {Akiyama}, {Higuchi}, {Saito}, {Nyman}, {Phillips},
+  {Rod{\'o}n}, {Corder}, \& {Van Kempen}}]{degregorio-monsalvo13}
+{de Gregorio-Monsalvo}, I., {M{\'e}nard}, F., {Dent}, W., {et~al.} 2013, \aap,
+  557, A133, \dodoi{10.1051/0004-6361/201321603}
+
+\bibitem[{{Debes} {et~al.}(2013){Debes}, {Jang-Condell}, {Weinberger},
+  {Roberge}, \& {Schneider}}]{debes13}
+{Debes}, J.~H., {Jang-Condell}, H., {Weinberger}, A.~J., {Roberge}, A., \&
+  {Schneider}, G. 2013, \apj, 771, 45, \dodoi{10.1088/0004-637X/771/1/45}
+
+\bibitem[{{Debes} {et~al.}(2008){Debes}, {Weinberger}, \&
+  {Schneider}}]{debes08}
+{Debes}, J.~H., {Weinberger}, A.~J., \& {Schneider}, G. 2008, \apjl, 673, L191,
+  \dodoi{10.1086/527546}
+
+\bibitem[{{Dodson-Robinson} {et~al.}(2018){Dodson-Robinson}, {Evans}, {Ramos},
+  {Yu}, \& {Willacy}}]{dodson-robinson18}
+{Dodson-Robinson}, S.~E., {Evans}, II, N.~J., {Ramos}, A., {Yu}, M., \&
+  {Willacy}, K. 2018, \apjl, 868, L37, \dodoi{10.3847/2041-8213/aaf0fd}
+
+\bibitem[{{Dohnanyi}(1969)}]{dohnanyi69}
+{Dohnanyi}, J.~S. 1969, \jgr, 74, 2531, \dodoi{10.1029/JB074i010p02531}
+
+\bibitem[{{Draine}(2006)}]{draine06}
+{Draine}, B.~T. 2006, \apj, 636, 1114, \dodoi{10.1086/498130}
+
+\bibitem[{{Dressing} \& {Charbonneau}(2013)}]{dressing13}
+{Dressing}, C.~D., \& {Charbonneau}, D. 2013, \apj, 767, 95,
+  \dodoi{10.1088/0004-637X/767/1/95}
+
+\bibitem[{{Dutrey} {et~al.}(1997){Dutrey}, {Guilloteau}, \&
+  {Guelin}}]{dutrey97}
+{Dutrey}, A., {Guilloteau}, S., \& {Guelin}, M. 1997, \aap, 317, L55
+
+\bibitem[{{Dutrey} {et~al.}(2003){Dutrey}, {Guilloteau}, \& {Simon}}]{dutrey03}
+{Dutrey}, A., {Guilloteau}, S., \& {Simon}, M. 2003, \aap, 402, 1003,
+  \dodoi{10.1051/0004-6361:20030317}
+
+\bibitem[{{Eisner} {et~al.}(2018){Eisner}, {Arce}, {Ballering}, {Bally},
+  {Andrews}, {Boyden}, {Di Francesco}, {Fang}, {Johnstone}, {Kim}, {Mann},
+  {Matthews}, {Pascucci}, {Ricci}, {Sheehan}, \& {Williams}}]{eisner18}
+{Eisner}, J.~A., {Arce}, H.~G., {Ballering}, N.~P., {et~al.} 2018, \apj, 860,
+  77, \dodoi{10.3847/1538-4357/aac3e2}
+
+\bibitem[{{Facchini} {et~al.}(2017){Facchini}, {Birnstiel}, {Bruderer}, \& {van
+  Dishoeck}}]{facchini17}
+{Facchini}, S., {Birnstiel}, T., {Bruderer}, S., \& {van Dishoeck}, E.~F. 2017,
+  \aap, 605, A16, \dodoi{10.1051/0004-6361/201630329}
+
+\bibitem[{{Favre} {et~al.}(2013){Favre}, {Cleeves}, {Bergin}, {Qi}, \&
+  {Blake}}]{favre13}
+{Favre}, C., {Cleeves}, L.~I., {Bergin}, E.~A., {Qi}, C., \& {Blake}, G.~A.
+  2013, \apjl, 776, L38, \dodoi{10.1088/2041-8205/776/2/L38}
+
+\bibitem[{{Finkbeiner} {et~al.}(1999){Finkbeiner}, {Davis}, \&
+  {Schlegel}}]{finkbeiner99}
+{Finkbeiner}, D.~P., {Davis}, M., \& {Schlegel}, D.~J. 1999, \apj, 524, 867,
+  \dodoi{10.1086/307852}
+
+\bibitem[{{Frerking} {et~al.}(1982){Frerking}, {Langer}, \&
+  {Wilson}}]{frerking82}
+{Frerking}, M.~A., {Langer}, W.~D., \& {Wilson}, R.~W. 1982, \apj, 262, 590,
+  \dodoi{10.1086/160451}
+
+\bibitem[{{Garufi} {et~al.}(2017){Garufi}, {Meeus}, {Benisty}, {Quanz},
+  {Banzatti}, {Kama}, {Canovas}, {Eiroa}, {Schmid}, {Stolker}, {Pohl},
+  {Rigliaco}, {M{\'e}nard}, {Meyer}, {van Boekel}, \& {Dominik}}]{garufi17}
+{Garufi}, A., {Meeus}, G., {Benisty}, M., {et~al.} 2017, \aap, 603, A21,
+  \dodoi{10.1051/0004-6361/201630320}
+
+\bibitem[{{Guilloteau} \& {Dutrey}(1998)}]{guilloteau98}
+{Guilloteau}, S., \& {Dutrey}, A. 1998, \aap, 339, 467
+
+\bibitem[{{Hayashi}(1981)}]{hayashi81}
+{Hayashi}, C. 1981, Progress of Theoretical Physics Supplement, 70, 35,
+  \dodoi{10.1143/PTPS.70.35}
+
+\bibitem[{{Henning} \& {Stognienko}(1996)}]{henning96}
+{Henning}, T., \& {Stognienko}, R. 1996, \aap, 311, 291
+
+\bibitem[{{Howard} {et~al.}(2010){Howard}, {Marcy}, {Johnson}, {Fischer},
+  {Wright}, {Isaacson}, {Valenti}, {Anderson}, {Lin}, \& {Ida}}]{howard10}
+{Howard}, A.~W., {Marcy}, G.~W., {Johnson}, J.~A., {et~al.} 2010, Science, 330,
+  653, \dodoi{10.1126/science.1194854}
+
+\bibitem[{{Hughes} {et~al.}(2008){Hughes}, {Wilner}, {Qi}, \&
+  {Hogerheijde}}]{hughes08}
+{Hughes}, A.~M., {Wilner}, D.~J., {Qi}, C., \& {Hogerheijde}, M.~R. 2008, \apj,
+  678, 1119, \dodoi{10.1086/586730}
+
+\bibitem[{{Ida} \& {Lin}(2004)}]{ida04}
+{Ida}, S., \& {Lin}, D.~N.~C. 2004, \apj, 604, 388, \dodoi{10.1086/381724}
+
+\bibitem[{{Isella} {et~al.}(2009){Isella}, {Carpenter}, \&
+  {Sargent}}]{isella09}
+{Isella}, A., {Carpenter}, J.~M., \& {Sargent}, A.~I. 2009, \apj, 701, 260,
+  \dodoi{10.1088/0004-637X/701/1/260}
+
+\bibitem[{{Kama} {et~al.}(2016){Kama}, {Bruderer}, {Carney}, {Hogerheijde},
+  {van Dishoeck}, {Fedele}, {Baryshev}, {Boland}, {G{\"u}sten}, {Aikutalp},
+  {Choi}, {Endo}, {Frieswijk}, {Karska}, {Klaassen}, {Koumpia}, {Kristensen},
+  {Leurini}, {Nagy}, {Perez Beaupuits}, {Risacher}, {van der Marel}, {van
+  Kempen}, {van Weeren}, {Wyrowski}, \& {Y{\i}ld{\i}z}}]{kama16a}
+{Kama}, M., {Bruderer}, S., {Carney}, M., {et~al.} 2016, \aap, 588, A108,
+  \dodoi{10.1051/0004-6361/201526791}
+
+\bibitem[{{Kastner} {et~al.}(1997){Kastner}, {Zuckerman}, {Weintraub}, \&
+  {Forveille}}]{kastner97}
+{Kastner}, J.~H., {Zuckerman}, B., {Weintraub}, D.~A., \& {Forveille}, T. 1997,
+  Science, 277, 67, \dodoi{10.1126/science.277.5322.67}
+
+\bibitem[{{Kataoka} {et~al.}(2014){Kataoka}, {Okuzumi}, {Tanaka}, \&
+  {Nomura}}]{kataoka14}
+{Kataoka}, A., {Okuzumi}, S., {Tanaka}, H., \& {Nomura}, H. 2014, \aap, 568,
+  A42, \dodoi{10.1051/0004-6361/201323199}
+
+\bibitem[{{Kataoka} {et~al.}(2013){Kataoka}, {Tanaka}, {Okuzumi}, \&
+  {Wada}}]{kataoka13}
+{Kataoka}, A., {Tanaka}, H., {Okuzumi}, S., \& {Wada}, K. 2013, \aap, 554, A4,
+  \dodoi{10.1051/0004-6361/201321325}
+
+\bibitem[{{Kusaka} {et~al.}(1970){Kusaka}, {Nakano}, \& {Hayashi}}]{kusaka70}
+{Kusaka}, T., {Nakano}, T., \& {Hayashi}, C. 1970, Progress of Theoretical
+  Physics, 44, 1580, \dodoi{10.1143/PTP.44.1580}
+
+\bibitem[{{Liu}(2019)}]{liu19}
+{Liu}, H.~B. 2019, arXiv e-prints.
+\newblock \doarXiv{1904.00333}
+
+\bibitem[{{Long} {et~al.}(2017){Long}, {Herczeg}, {Pascucci}, {Drabek-Maunder},
+  {Mohanty}, {Testi}, {Apai}, {Hendler}, {Henning}, {Manara}, \&
+  {Mulders}}]{long17}
+{Long}, F., {Herczeg}, G.~J., {Pascucci}, I., {et~al.} 2017, \apj, 844, 99,
+  \dodoi{10.3847/1538-4357/aa78fc}
+
+\bibitem[{{Luu} \& {Jewitt}(2002)}]{luu02}
+{Luu}, J.~X., \& {Jewitt}, D.~C. 2002, \araa, 40, 63,
+  \dodoi{10.1146/annurev.astro.40.060401.093818}
+
+\bibitem[{{Mannings} \& {Emerson}(1994)}]{mannings94}
+{Mannings}, V., \& {Emerson}, J.~P. 1994, \mnras, 267, 361
+
+\bibitem[{{McClure} {et~al.}(2016){McClure}, {Bergin}, {Cleeves}, {van
+  Dishoeck}, {Blake}, {Evans}, {Green}, {Henning}, {{\"O}berg}, {Pontoppidan},
+  \& {Salyk}}]{mcclure16}
+{McClure}, M.~K., {Bergin}, E.~A., {Cleeves}, L.~I., {et~al.} 2016, \apj, 831,
+  167, \dodoi{10.3847/0004-637X/831/2/167}
+
+\bibitem[{{Miguel} {et~al.}(2011){Miguel}, {Guilera}, \& {Brunini}}]{miguel11}
+{Miguel}, Y., {Guilera}, O.~M., \& {Brunini}, A. 2011, \mnras, 412, 2113,
+  \dodoi{10.1111/j.1365-2966.2010.17887.x}
+
+\bibitem[{{Min} {et~al.}(2012){Min}, {Canovas}, {Mulders}, \& {Keller}}]{min12}
+{Min}, M., {Canovas}, H., {Mulders}, G.~D., \& {Keller}, C.~U. 2012, \aap, 537,
+  A75, \dodoi{10.1051/0004-6361/201117333}
+
+\bibitem[{{Min} {et~al.}(2016){Min}, {Rab}, {Woitke}, {Dominik}, \&
+  {M{\'e}nard}}]{min16}
+{Min}, M., {Rab}, C., {Woitke}, P., {Dominik}, C., \& {M{\'e}nard}, F. 2016,
+  \aap, 585, A13, \dodoi{10.1051/0004-6361/201526048}
+
+\bibitem[{{Miotello} {et~al.}(2014){Miotello}, {Bruderer}, \& {van
+  Dishoeck}}]{miotello14}
+{Miotello}, A., {Bruderer}, S., \& {van Dishoeck}, E.~F. 2014, \aap, 572, A96,
+  \dodoi{10.1051/0004-6361/201424712}
+
+\bibitem[{{Miotello} {et~al.}(2016){Miotello}, {van Dishoeck}, {Kama}, \&
+  {Bruderer}}]{miotello16}
+{Miotello}, A., {van Dishoeck}, E.~F., {Kama}, M., \& {Bruderer}, S. 2016,
+  \aap, 594, A85, \dodoi{10.1051/0004-6361/201628159}
+
+\bibitem[{{Miotello} {et~al.}(2017){Miotello}, {van Dishoeck}, {Williams},
+  {Ansdell}, {Guidi}, {Hogerheijde}, {Manara}, {Tazzari}, {Testi}, {van der
+  Marel}, \& {van Terwisga}}]{miotello17}
+{Miotello}, A., {van Dishoeck}, E.~F., {Williams}, J.~P., {et~al.} 2017, \aap,
+  599, A113, \dodoi{10.1051/0004-6361/201629556}
+
+\bibitem[{{Miyake} \& {Nakagawa}(1993)}]{miyake93}
+{Miyake}, K., \& {Nakagawa}, Y. 1993, Icarus, 106, 20,
+  \dodoi{10.1006/icar.1993.1156}
+
+\bibitem[{{Molyarova} {et~al.}(2017){Molyarova}, {Akimkin}, {Semenov},
+  {Henning}, {Vasyunin}, \& {Wiebe}}]{molyarova17}
+{Molyarova}, T., {Akimkin}, V., {Semenov}, D., {et~al.} 2017, \apj, 849, 130,
+  \dodoi{10.3847/1538-4357/aa9227}
+
+\bibitem[{{Osterloh} \& {Beckwith}(1995)}]{osterloh95}
+{Osterloh}, M., \& {Beckwith}, S.~V.~W. 1995, \apj, 439, 288,
+  \dodoi{10.1086/175172}
+
+\bibitem[{{Pani{\'c}} {et~al.}(2009){Pani{\'c}}, {Hogerheijde}, {Wilner}, \&
+  {Qi}}]{panic09}
+{Pani{\'c}}, O., {Hogerheijde}, M.~R., {Wilner}, D., \& {Qi}, C. 2009, \aap,
+  501, 269, \dodoi{10.1051/0004-6361/200911883}
+
+\bibitem[{{P{\'e}rez} {et~al.}(2015){P{\'e}rez}, {Isella}, {Carpenter}, \&
+  {Chandler}}]{lperez15}
+{P{\'e}rez}, L.~M., {Isella}, A., {Carpenter}, J.~M., \& {Chandler}, C.~J.
+  2015, \apjl, 783, L13, \dodoi{10.1088/2041-8205/783/1/L13}
+
+\bibitem[{{P{\'e}rez} {et~al.}(2012){P{\'e}rez}, {Carpenter}, {Chandler},
+  {Isella}, {Andrews}, {Ricci}, {Calvet}, {Corder}, {Deller}, {Dullemond},
+  {Greaves}, {Harris}, {Henning}, {Kwon}, {Lazio}, {Linz}, {Mundy}, {Sargent},
+  {Storm}, {Testi}, \& {Wilner}}]{perez12}
+{P{\'e}rez}, L.~M., {Carpenter}, J.~M., {Chandler}, C.~J., {et~al.} 2012,
+  \apjl, 760, L17, \dodoi{10.1088/2041-8205/760/1/L17}
+
+\bibitem[{{Pi{\'e}tu} {et~al.}(2007){Pi{\'e}tu}, {Dutrey}, \&
+  {Guilloteau}}]{pietu07}
+{Pi{\'e}tu}, V., {Dutrey}, A., \& {Guilloteau}, S. 2007, \aap, 467, 163,
+  \dodoi{10.1051/0004-6361:20066537}
+
+\bibitem[{{Pi{\'e}tu} {et~al.}(2014){Pi{\'e}tu}, {Guilloteau}, {Di Folco},
+  {Dutrey}, \& {Boehler}}]{pietu14}
+{Pi{\'e}tu}, V., {Guilloteau}, S., {Di Folco}, E., {Dutrey}, A., \& {Boehler},
+  Y. 2014, \aap, 564, A95, \dodoi{10.1051/0004-6361/201322388}
+
+\bibitem[{{Pollack} {et~al.}(1994){Pollack}, {Hollenbach}, {Beckwith},
+  {Simonelli}, {Roush}, \& {Fong}}]{pollack94}
+{Pollack}, J.~B., {Hollenbach}, D., {Beckwith}, S., {et~al.} 1994, \apj, 421,
+  615, \dodoi{10.1086/173677}
+
+\bibitem[{{Reboussin} {et~al.}(2015){Reboussin}, {Wakelam}, {Guilloteau},
+  {Hersant}, \& {Dutrey}}]{reboussin15}
+{Reboussin}, L., {Wakelam}, V., {Guilloteau}, S., {Hersant}, F., \& {Dutrey},
+  A. 2015, \aap, 579, A82, \dodoi{10.1051/0004-6361/201525885}
+
+\bibitem[{{Ricci} {et~al.}(2010{\natexlab{a}}){Ricci}, {Testi}, {Natta}, \&
+  {Brooks}}]{ricci10b}
+{Ricci}, L., {Testi}, L., {Natta}, A., \& {Brooks}, K.~J. 2010{\natexlab{a}},
+  \aap, 521, A66, \dodoi{10.1051/0004-6361/201015039}
+
+\bibitem[{{Ricci} {et~al.}(2010{\natexlab{b}}){Ricci}, {Testi}, {Natta},
+  {Neri}, {Cabrit}, \& {Herczeg}}]{ricci10a}
+{Ricci}, L., {Testi}, L., {Natta}, A., {et~al.} 2010{\natexlab{b}}, \aap, 512,
+  A15, \dodoi{10.1051/0004-6361/200913403}
+
+\bibitem[{{Ricci} {et~al.}(2012){Ricci}, {Trotta}, {Testi}, {Natta}, {Isella},
+  \& {Wilner}}]{ricci12}
+{Ricci}, L., {Trotta}, F., {Testi}, L., {et~al.} 2012, \aap, 540, A6,
+  \dodoi{10.1051/0004-6361/201118296}
+
+\bibitem[{{Rosenfeld} {et~al.}(2013){Rosenfeld}, {Andrews}, {Wilner},
+  {Kastner}, \& {McClure}}]{rosenfeld13b}
+{Rosenfeld}, K.~A., {Andrews}, S.~M., {Wilner}, D.~J., {Kastner}, J.~H., \&
+  {McClure}, M.~K. 2013, \apj, 775, 136, \dodoi{10.1088/0004-637X/775/2/136}
+
+\bibitem[{{Rosotti} {et~al.}(2019){Rosotti}, {Booth}, {Tazzari}, {Clarke},
+  {Lodato}, \& {Testi}}]{rosotti19b}
+{Rosotti}, G.~P., {Booth}, R.~A., {Tazzari}, M., {et~al.} 2019, arXiv e-prints.
+\newblock \doarXiv{1905.00021}
+
+\bibitem[{{Stolker} {et~al.}(2016){Stolker}, {Dominik}, {Min}, {Garufi},
+  {Mulders}, \& {Avenhaus}}]{stolker16}
+{Stolker}, T., {Dominik}, C., {Min}, M., {et~al.} 2016, \aap, 596, A70,
+  \dodoi{10.1051/0004-6361/201629098}
+
+\bibitem[{{Tanaka} {et~al.}(1996){Tanaka}, {Inaba}, \& {Nakazawa}}]{tanaka96}
+{Tanaka}, H., {Inaba}, S., \& {Nakazawa}, K. 1996, \icarus, 123, 450,
+  \dodoi{10.1006/icar.1996.0170}
+
+\bibitem[{{Tazzari} {et~al.}(2016){Tazzari}, {Testi}, {Ercolano}, {Natta},
+  {Isella}, {Chandler}, {P{\'e}rez}, {Andrews}, {Wilner}, {Ricci}, {Henning},
+  {Linz}, {Kwon}, {Corder}, {Dullemond}, {Carpenter}, {Sargent}, {Mundy},
+  {Storm}, {Calvet}, {Greaves}, {Lazio}, \& {Deller}}]{tazzari16}
+{Tazzari}, M., {Testi}, L., {Ercolano}, B., {et~al.} 2016, \aap, 588, A53,
+  \dodoi{10.1051/0004-6361/201527423}
+
+\bibitem[{{Tazzari} {et~al.}(2017){Tazzari}, {Testi}, {Natta}, {Ansdell},
+  {Carpenter}, {Guidi}, {Hogerheijde}, {Manara}, {Miotello}, {van der Marel},
+  {van Dishoeck}, \& {Williams}}]{tazzari17}
+{Tazzari}, M., {Testi}, L., {Natta}, A., {et~al.} 2017, ArXiv e-prints.
+\newblock \doarXiv{1707.01499}
+
+\bibitem[{{Terebey} {et~al.}(1984){Terebey}, {Shu}, \& {Cassen}}]{terebey84}
+{Terebey}, S., {Shu}, F.~H., \& {Cassen}, P. 1984, \apj, 286, 529,
+  \dodoi{10.1086/162628}
+
+\bibitem[{{Trapman} {et~al.}(2019){Trapman}, {Facchini}, {Hogerheijde}, {van
+  Dishoeck}, \& {Bruderer}}]{trapman19}
+{Trapman}, L., {Facchini}, S., {Hogerheijde}, M.~R., {van Dishoeck}, E.~F., \&
+  {Bruderer}, S. 2019, arXiv e-prints.
+\newblock \doarXiv{1903.06190}
+
+\bibitem[{{Trapman} {et~al.}(2017){Trapman}, {Miotello}, {Kama}, {van
+  Dishoeck}, \& {Bruderer}}]{trapman17}
+{Trapman}, L., {Miotello}, A., {Kama}, M., {van Dishoeck}, E.~F., \&
+  {Bruderer}, S. 2017, \aap, 605, A69, \dodoi{10.1051/0004-6361/201630308}
+
+\bibitem[{{Tripathi} {et~al.}(2017){Tripathi}, {Andrews}, {Birnstiel}, \&
+  {Wilner}}]{tripathi17}
+{Tripathi}, A., {Andrews}, S.~M., {Birnstiel}, T., \& {Wilner}, D.~J. 2017,
+  \apj, 845, 44, \dodoi{10.3847/1538-4357/aa7c62}
+
+\bibitem[{{Tripathi} {et~al.}(2018){Tripathi}, {Andrews}, {Birnstiel},
+  {Chandler}, {Isella}, {P{\'e}rez}, {Harris}, {Ricci}, {Wilner}, {Carpenter},
+  {Calvet}, {Corder}, {Deller}, {Dullemond}, {Greaves}, {Henning}, {Kwon},
+  {Lazio}, {Linz}, \& {Testi}}]{tripathi18}
+{Tripathi}, A., {Andrews}, S.~M., {Birnstiel}, T., {et~al.} 2018, \apj, 861,
+  64, \dodoi{10.3847/1538-4357/aac5d6}
+
+\bibitem[{{Visser} {et~al.}(2009){Visser}, {van Dishoeck}, \&
+  {Black}}]{visser09}
+{Visser}, R., {van Dishoeck}, E.~F., \& {Black}, J.~H. 2009, \aap, 503, 323,
+  \dodoi{10.1051/0004-6361/200912129}
+
+\bibitem[{{Weidenschilling}(1977)}]{weidenschilling77}
+{Weidenschilling}, S.~J. 1977, \mnras, 180, 57
+
+\bibitem[{{Weintraub} {et~al.}(1989){Weintraub}, {Sandell}, \&
+  {Duncan}}]{weintraub89}
+{Weintraub}, D.~A., {Sandell}, G., \& {Duncan}, W.~D. 1989, \apjl, 340, L69,
+  \dodoi{10.1086/185441}
+
+\bibitem[{{Williams} \& {Best}(2014)}]{williamsbest14}
+{Williams}, J.~P., \& {Best}, W.~M.~J. 2014, \apj, 788, 59,
+  \dodoi{10.1088/0004-637X/788/1/59}
+
+\bibitem[{{Woitke} {et~al.}(2016){Woitke}, {Min}, {Pinte}, {Thi}, {Kamp},
+  {Rab}, {Anthonioz}, {Antonellini}, {Baldovin-Saavedra}, {Carmona}, {Dominik},
+  {Dionatos}, {Greaves}, {G{\"u}del}, {Ilee}, {Liebhart}, {M{\'e}nard},
+  {Rigon}, {Waters}, {Aresu}, {Meijerink}, \& {Spaans}}]{woitke16}
+{Woitke}, P., {Min}, M., {Pinte}, C., {et~al.} 2016, \aap, 586, A103,
+  \dodoi{10.1051/0004-6361/201526538}
+
+\bibitem[{{Yu} {et~al.}(2017){Yu}, {Evans}, {Dodson-Robinson}, {Willacy}, \&
+  {Turner}}]{yu17a}
+{Yu}, M., {Evans}, II, N.~J., {Dodson-Robinson}, S.~E., {Willacy}, K., \&
+  {Turner}, N.~J. 2017, \apj, 841, 39, \dodoi{10.3847/1538-4357/aa6e4c}
+
+\bibitem[{{Zhu} {et~al.}(2019){Zhu}, {Zhang}, {Jiang}, {Kataoka}, {Birnstiel},
+  {Dullemond}, {Andrews}, {Huang}, {Perez}, {Carpenter}, {Bai}, \&
+  {Wilner}}]{zhu19}
+{Zhu}, Z., {Zhang}, S., {Jiang}, Y.-F., {et~al.} 2019, arXiv e-prints.
+\newblock \doarXiv{1904.02127}
+
+\end{thebibliography}
