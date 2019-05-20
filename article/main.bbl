@@ -1,9 +1,7 @@
 \begin{thebibliography}{}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\href{#1}{#1}}
-\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
 \providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
-\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
 
 \bibitem[{{Aikawa} {et~al.}(1997){Aikawa}, {Umebayashi}, {Nakano}, \&
   {Miyama}}]{aikawa97}
@@ -145,6 +143,11 @@
 {D'Alessio}, P., {Calvet}, N., \& {Hartmann}, L. 2001, \apj, 553, 321,
   \dodoi{10.1086/320655}
 
+\bibitem[{{Dartois} {et~al.}(2003){Dartois}, {Dutrey}, \&
+  {Guilloteau}}]{dartois03}
+{Dartois}, E., {Dutrey}, A., \& {Guilloteau}, S. 2003, \aap, 399, 773,
+  \dodoi{10.1051/0004-6361:20021638}
+
 \bibitem[{{de Gregorio-Monsalvo} {et~al.}(2013){de Gregorio-Monsalvo},
   {M{\'e}nard}, {Dent}, {Pinte}, {L{\'o}pez}, {Klaassen}, {Hales},
   {Cort{\'e}s}, {Rawlings}, {Tachihara}, {Testi}, {Takahashi}, {Chapillon},
@@ -207,6 +210,11 @@
 {Finkbeiner}, D.~P., {Davis}, M., \& {Schlegel}, D.~J. 1999, \apj, 524, 867,
   \dodoi{10.1086/307852}
 
+\bibitem[{{Flaherty} {et~al.}(2015){Flaherty}, {Hughes}, {Rosenfeld},
+  {Andrews}, {Chiang}, {Simon}, {Kerzner}, \& {Wilner}}]{flaherty15}
+{Flaherty}, K.~M., {Hughes}, A.~M., {Rosenfeld}, K.~A., {et~al.} 2015, \apj,
+  813, 99, \dodoi{10.1088/0004-637X/813/2/99}
+
 \bibitem[{{Frerking} {et~al.}(1982){Frerking}, {Langer}, \&
   {Wilson}}]{frerking82}
 {Frerking}, M.~A., {Langer}, W.~D., \& {Wilson}, R.~W. 1982, \apj, 262, 590,
@@ -221,6 +229,11 @@
 \bibitem[{{Guilloteau} \& {Dutrey}(1998)}]{guilloteau98}
 {Guilloteau}, S., \& {Dutrey}, A. 1998, \aap, 339, 467
 
+\bibitem[{{Guilloteau} {et~al.}(2012){Guilloteau}, {Dutrey}, {Wakelam},
+  {Hersant}, {Semenov}, {Chapillon}, {Henning}, \& {Pi{\'e}tu}}]{guilloteau12}
+{Guilloteau}, S., {Dutrey}, A., {Wakelam}, V., {et~al.} 2012, \aap, 548, A70,
+  \dodoi{10.1051/0004-6361/201220331}
+
 \bibitem[{{Hayashi}(1981)}]{hayashi81}
 {Hayashi}, C. 1981, Progress of Theoretical Physics Supplement, 70, 35,
   \dodoi{10.1143/PTPS.70.35}
@@ -232,6 +245,11 @@
   {Wright}, {Isaacson}, {Valenti}, {Anderson}, {Lin}, \& {Ida}}]{howard10}
 {Howard}, A.~W., {Marcy}, G.~W., {Johnson}, J.~A., {et~al.} 2010, Science, 330,
   653, \dodoi{10.1126/science.1194854}
+
+\bibitem[{{Hughes} {et~al.}(2011){Hughes}, {Wilner}, {Andrews}, {Qi}, \&
+  {Hogerheijde}}]{hughes11}
+{Hughes}, A.~M., {Wilner}, D.~J., {Andrews}, S.~M., {Qi}, C., \& {Hogerheijde},
+  M.~R. 2011, \apj, 727, 85, \dodoi{10.1088/0004-637X/727/2/85}
 
 \bibitem[{{Hughes} {et~al.}(2008){Hughes}, {Wilner}, {Qi}, \&
   {Hogerheijde}}]{hughes08}
@@ -269,6 +287,11 @@
 {Kataoka}, A., {Tanaka}, H., {Okuzumi}, S., \& {Wada}, K. 2013, \aap, 554, A4,
   \dodoi{10.1051/0004-6361/201321325}
 
+\bibitem[{{Koerner} {et~al.}(1993){Koerner}, {Sargent}, \&
+  {Beckwith}}]{koerner93}
+{Koerner}, D.~W., {Sargent}, A.~I., \& {Beckwith}, S.~V.~W. 1993, Icarus, 106,
+  2, \dodoi{10.1006/icar.1993.1154}
+
 \bibitem[{{Kusaka} {et~al.}(1970){Kusaka}, {Nakano}, \& {Hayashi}}]{kusaka70}
 {Kusaka}, T., {Nakano}, T., \& {Hayashi}, C. 1970, Progress of Theoretical
   Physics, 44, 1580, \dodoi{10.1143/PTP.44.1580}
@@ -289,6 +312,10 @@
 
 \bibitem[{{Mannings} \& {Emerson}(1994)}]{mannings94}
 {Mannings}, V., \& {Emerson}, J.~P. 1994, \mnras, 267, 361
+
+\bibitem[{{Marsh} \& {Mahoney}(1992)}]{marsh92}
+{Marsh}, K.~A., \& {Mahoney}, M.~J. 1992, \apjl, 395, L115,
+  \dodoi{10.1086/186501}
 
 \bibitem[{{McClure} {et~al.}(2016){McClure}, {Bergin}, {Cleeves}, {van
   Dishoeck}, {Blake}, {Evans}, {Green}, {Henning}, {{\"O}berg}, {Pontoppidan},
@@ -390,15 +417,26 @@
 {Ricci}, L., {Trotta}, F., {Testi}, L., {et~al.} 2012, \aap, 540, A6,
   \dodoi{10.1051/0004-6361/201118296}
 
-\bibitem[{{Rosenfeld} {et~al.}(2013){Rosenfeld}, {Andrews}, {Wilner},
-  {Kastner}, \& {McClure}}]{rosenfeld13b}
+\bibitem[{{Rosenfeld} {et~al.}(2013{\natexlab{a}}){Rosenfeld}, {Andrews},
+  {Hughes}, {Wilner}, \& {Qi}}]{rosenfeld13a}
+{Rosenfeld}, K.~A., {Andrews}, S.~M., {Hughes}, A.~M., {Wilner}, D.~J., \&
+  {Qi}, C. 2013{\natexlab{a}}, \apj, 774, 16,
+  \dodoi{10.1088/0004-637X/774/1/16}
+
+\bibitem[{{Rosenfeld} {et~al.}(2013{\natexlab{b}}){Rosenfeld}, {Andrews},
+  {Wilner}, {Kastner}, \& {McClure}}]{rosenfeld13b}
 {Rosenfeld}, K.~A., {Andrews}, S.~M., {Wilner}, D.~J., {Kastner}, J.~H., \&
-  {McClure}, M.~K. 2013, \apj, 775, 136, \dodoi{10.1088/0004-637X/775/2/136}
+  {McClure}, M.~K. 2013{\natexlab{b}}, \apj, 775, 136,
+  \dodoi{10.1088/0004-637X/775/2/136}
 
 \bibitem[{{Rosotti} {et~al.}(2019){Rosotti}, {Booth}, {Tazzari}, {Clarke},
   {Lodato}, \& {Testi}}]{rosotti19b}
 {Rosotti}, G.~P., {Booth}, R.~A., {Tazzari}, M., {et~al.} 2019, arXiv e-prints.
 \newblock \doarXiv{1905.00021}
+
+\bibitem[{{Simon} {et~al.}(2000){Simon}, {Dutrey}, \& {Guilloteau}}]{simon00}
+{Simon}, M., {Dutrey}, A., \& {Guilloteau}, S. 2000, \apj, 545, 1034,
+  \dodoi{10.1086/317838}
 
 \bibitem[{{Stolker} {et~al.}(2016){Stolker}, {Dominik}, {Min}, {Garufi},
   {Mulders}, \& {Avenhaus}}]{stolker16}
