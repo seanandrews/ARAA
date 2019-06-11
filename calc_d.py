@@ -5,40 +5,36 @@ from astropy.io import ascii
 from plx_dist import plx_dist
 from scipy import stats
 
-plx_shift = 0.03
-sys_plx   = 0.1
-nsamples  = 100000
-CI_levs = [84.135, 15.865, 95.45, 4.55]
+def calc_d(db, plx_shift=0.03, sys_plx=0.1, nsamples=100000):
 
-# for safety, copy over database file
-os.system('cp -r DISKS.csv temp.csv')
+    CI_levs = [84.135, 15.865, 95.45, 4.55]
 
-# now load database
-db = ascii.read('temp.csv', format='csv', fast_reader=True)
+    # calculate distance posteriors and summaries
+    d, edhi, edlo = np.zeros(len(db)), np.zeros(len(db)), np.zeros(len(db))
+    for i in range(len(db)):
+        # modified parallax uncertainty
+        eplx  = np.sqrt(db['EPI'][i]**2 + sys_plx**2)
 
-# calculate distance posterior summaries
-d, ed_hi, ed_lo = np.zeros(len(db)), np.zeros(len(db)), np.zeros(len(db))
-for i in range(len(db)):
-    # modified parallax uncertainty
-    eplx  = np.sqrt(db['EPI'][i]**2 + sys_plx**2)
+        # distance posterior samples
+        pdist = plx_dist(db['PI'][i]+plx_shift, eplx, nsamples=nsamples)
 
-    # distance posterior samples
-    pdist = plx_dist(db['PI'][i]+plx_shift, eplx, nsamples=nsamples)
+        # store the distance posterior samples
+        np.savez('outputs/'+db['NAME'][i]+'.dpc.posterior.npz', dpc=pdist)
 
-    # find the peak of distance posterior
-    CI_dist = np.percentile(pdist, CI_levs)
-    kde_dist = stats.gaussian_kde(pdist)
-    ndisc = np.int(np.round((CI_dist[0] - CI_dist[1]) / 0.1))
-    x_dist = np.linspace(CI_dist[1], CI_dist[0], ndisc)
-    pk_dist = x_dist[np.argmax(kde_dist.evaluate(x_dist))]
+        # find the peak of distance posterior
+        CI_dist = np.percentile(pdist, CI_levs)
+        kde_dist = stats.gaussian_kde(pdist)
+        ndisc = np.int(np.round((CI_dist[0] - CI_dist[1]) / 0.1))
+        x_dist = np.linspace(CI_dist[1], CI_dist[0], ndisc)
+        pk_d = x_dist[np.argmax(kde_dist.evaluate(x_dist))]
 
-    # mean, upper, lower 1-sigma
-    d[i], ed_hi[i], ed_lo[i] = pk_dist, CI_dist[0]-pk_dist, pk_dist-CI_dist[1]
+        # mean, upper, lower 1-sigma
+        d[i], edhi[i], edlo[i] = pk_d, CI_dist[0]-pk_d, pk_d-CI_dist[1]
 
-# add these as columns to the database
-db['DPC2'] = d
-#db['EDPC_HI'] = ed_hi
-#db['EDPC_LO'] = ed_lo
+    # replace these columns in the modified database
+    db['DPC'] = d
+    db['EDPC_H'] = edhi
+    db['EDPC_L'] = edlo
 
-# write out the modified database
-ascii.write(db, 'temp.csv', format='csv', fast_writer=True, overwrite=True)
+    # return the modified database
+    return db
