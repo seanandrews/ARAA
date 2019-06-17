@@ -9,7 +9,7 @@ PISA:
 
 Baraffe15:
   age_range: [0.1, 80]
-  mass_range: [0.1, 1.4]
+  mass_range: [0.01, 1.4]
 
 Seiss:
   age_range: [0.1, 80]

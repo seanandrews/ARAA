@@ -22,7 +22,7 @@ A, eAhi, eAlo = np.zeros(ndb), np.zeros(ndb), np.zeros(ndb)
 fL = np.zeros(ndb)
 
 # loop through database
-for i in range(ndb):
+for i in np.arange(435, 483, 1):	#range(ndb):
 
     # tracker
     print('start ',i, db['NAME'][i])

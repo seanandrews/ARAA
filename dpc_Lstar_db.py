@@ -7,8 +7,8 @@ from post_summary import post_summary
 
 
 # load database
-os.system('cp -r DISKS.csv temp.csv')
-db = ascii.read('temp.csv', format='csv', fast_reader=True)
+os.system('cp -r DISKS.csv temp2.csv')
+db = ascii.read('temp2.csv', format='csv', fast_reader=True)
 ndb = len(db)
 
 # parallax systematics
