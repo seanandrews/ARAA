@@ -21,8 +21,9 @@ d, edhi, edlo = np.zeros(ndb), np.zeros(ndb), np.zeros(ndb)
 L, eLhi, eLlo = np.zeros(ndb), np.zeros(ndb), np.zeros(ndb)
 fL = np.zeros(ndb)
 
+
 # loop through database
-for i in range(ndb):
+for i in np.arange(483,589):	#range(ndb):
 
     # tracker
     print(i, db['NAME'][i])
@@ -52,14 +53,13 @@ for i in range(ndb):
         p_logT = np.random.normal(db['logTeff'][i], db['elogTeff'][i], ns)
         np.savez('outputs/'+db['NAME'][i]+'.logT.posterior.npz', logT=p_logT)
 
-
-# replace the new values in the relevant database columns
-db['DPC'] = d
-db['EDPC_H'] = edhi
-db['EDPC_L'] = edlo
-db['logLs'] = np.ma.masked_array(L, fL)
-db['elogLs_H'] = np.ma.masked_array(eLhi, fL)
-db['elogLs_L'] = np.ma.masked_array(eLlo, fL)
+        # replace the new values in the relevant database columns
+        db['DPC'][i] = d[i]
+        db['EDPC_H'][i] = edhi[i]
+        db['EDPC_L'][i] = edlo[i]
+        db['logLs'][i] = L[i]
+        db['elogLs_H'][i] = eLhi[i]
+        db['elogLs_L'][i] = eLlo[i]
 
 # write out the modified database
 ascii.write(db, 'temp.csv', format='csv', fast_writer=True, overwrite=True)

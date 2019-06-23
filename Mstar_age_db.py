@@ -22,7 +22,7 @@ A, eAhi, eAlo = np.zeros(ndb), np.zeros(ndb), np.zeros(ndb)
 fL = np.zeros(ndb)
 
 # loop through database
-for i in np.arange(435, 483, 1):	#range(ndb):
+for i in np.arange(483, 589):    #range(ndb):
 
     # tracker
     print('start ',i, db['NAME'][i])
@@ -36,10 +36,16 @@ for i in np.arange(435, 483, 1):	#range(ndb):
         logT = np.load('outputs/'+db['NAME'][i]+'.logT.posterior.npz')['logT']
         
         # compute and store log(age/yr) and log(Mstar/Msun) posteriors
-        pAM = lt_taum(10.**(logT[:ntrials]), logL[:ntrials], grid_name='MIST', 
-                      ntrials=ntrials, burn=nburn, nwalkers=nwalk)
-        plogAGE = pAM[:,0]   #np.log10(1e6*ptauMstar[:,0])
-        plogMs  = pAM[:,1]   #np.log10(ptauMstar[:,1]) 
+        if (db['logTeff'][i] > 3.498):
+            pAM = lt_taum(10.**(logT[:ntrials]), logL[:ntrials], 
+                          grid_name='MIST', ntrials=ntrials, burn=nburn, 
+                          nwalkers=nwalk)
+        else:
+            pAM = lt_taum(10.**(logT[:ntrials]), logL[:ntrials], 
+                          grid_name='Baraffe15', ntrials=ntrials, burn=nburn, 
+                          nwalkers=nwalk)
+        plogAGE = pAM[:,0]  
+        plogMs  = pAM[:,1]  
         np.savez('outputs/'+db['NAME'][i]+'.age-mass.posterior.npz', \
                  logAGE=plogAGE, logM=plogMs)
 
@@ -47,16 +53,16 @@ for i in np.arange(435, 483, 1):	#range(ndb):
         A[i], eAhi[i], eAlo[i] = post_summary(plogAGE, prec=0.01)
         M[i], eMhi[i], eMlo[i] = post_summary(plogMs, prec=0.01)
 
+        # replace the new values in the relevant database columns
+        db['logMs'][i] = M[i]
+        db['elogMs_H'][i] = eMhi[i]
+        db['elogMs_L'][i] = eMlo[i]
+        db['logt'][i] = A[i]
+        db['elogt_H'][i] = eAhi[i]
+        db['elogt_L'][i] = eAlo[i]
+
     # tracker
     print('finish ',i, db['NAME'][i])
-
-# replace the new values in the relevant database columns
-db['logMs'] = np.ma.masked_array(M, fL)
-db['elogMs_H'] = np.ma.masked_array(eMhi, fL)
-db['elogMs_L'] = np.ma.masked_array(eMlo, fL)
-db['logt'] = np.ma.masked_array(A, fL)
-db['elogt_H'] = np.ma.masked_array(eAhi, fL)
-db['elogt_L'] = np.ma.masked_array(eAlo, fL)
 
 
 # write out the modified database
