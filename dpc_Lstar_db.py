@@ -23,7 +23,7 @@ fL = np.zeros(ndb)
 
 
 # loop through database
-for i in np.arange(483,589):	#range(ndb):
+for i in np.arange(725,817):	#range(ndb):
 
     # tracker
     print(i, db['NAME'][i])
@@ -62,4 +62,4 @@ for i in np.arange(483,589):	#range(ndb):
         db['elogLs_L'][i] = eLlo[i]
 
 # write out the modified database
-ascii.write(db, 'temp.csv', format='csv', fast_writer=True, overwrite=True)
+ascii.write(db, 'temp2.csv', format='csv', fast_writer=True, overwrite=True)

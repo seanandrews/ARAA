@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from astropy.io import ascii
 
-reg = 'Cha'
+reg = 'sOri'
 
 
 # plot layout
