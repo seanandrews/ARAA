@@ -27,7 +27,7 @@ base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'T') & \
 
 
 # Lmm vs Mstar
-ok = ((db['FL_B7'] == 0) & (db['FL_logMs'] == 0) & base)
+ok = ((db['FL_B7'] == 0) & base)
 L = db['F_B7'][ok]*(db['DPC'][ok]/140.)**2
 M = 10.**(db['logMs'][ok])
 
