@@ -41,7 +41,8 @@ font1.set_family('sans-serif')
 font1.set_style('italic')
 font1.set_size('small')
 ax0.text(0.96, 0.03, 'scattered light', transform=ax0.transAxes, 
-         horizontalalignment='right', fontproperties=font1, color='w')
+         horizontalalignment='right', fontproperties=font1, color='w',
+         bbox={'facecolor': 'black', 'alpha': 0.8, 'pad': 2})
 ax1.text(0.96, 0.03, 'thermal continuum', transform=ax1.transAxes,
          horizontalalignment='right', fontproperties=font1, color='w')
 ax2.text(0.96, 0.03, 'spectral line emission', transform=ax2.transAxes,
@@ -51,7 +52,8 @@ font2.set_family('sans-serif')
 font2.set_size('large')
 font2.set_weight('semibold')
 ax0.text(0.08, 0.91, 'a', transform=ax0.transAxes, 
-         horizontalalignment='right', fontproperties=font2, color='w')
+         horizontalalignment='right', fontproperties=font2, color='w',
+         bbox={'facecolor': 'black', 'alpha': 0.8, 'pad': 2})
 ax1.text(0.08, 0.91, 'b', transform=ax1.transAxes,
          horizontalalignment='right', fontproperties=font2, color='w')
 ax2.text(0.08, 0.91, 'c', transform=ax2.transAxes,
@@ -62,7 +64,7 @@ ax2.text(0.08, 0.91, 'c', transform=ax2.transAxes,
 
 # SCATTERED LIGHT
 
-hdulist = fits.open('data/TWHya_Hband_Qr.fits')
+hdulist = fits.open('data/Hband_Qr_cleaned.fits_smooth')
 Iscat = hdulist[0].data[0]
 hdr = hdulist[0].header
 nx, ny = hdr['NAXIS1'], hdr['NAXIS2']
@@ -70,11 +72,11 @@ cellsize = 12.25 * 1e-3    # in arcseconds (based on IRDIS plate scale)
 RA, DEC = np.meshgrid(cellsize*(np.arange(nx)-0.5*nx+0.5), \
                       cellsize*(np.arange(ny)-0.5*ny+0.5))
 ext = (np.max(RA), np.min(RA), np.min(DEC), np.max(DEC))
-norm = ImageNormalize(vmin=0, vmax=45, stretch=LinearStretch())
+norm = ImageNormalize(vmin=10, vmax=45, stretch=LinearStretch())
 im = ax0.imshow(Iscat, origin='lower', cmap='afmhot', extent=ext, 
                 aspect='equal', norm=norm)
 beam = Ellipse((xlims[0] + 0.08*np.diff(xlims), xlims[1] - 0.06*np.diff(xlims)),
-               0.048, 0.048, 0.)
+               0.049, 0.049, 0.)
 beam.set_facecolor('w')
 ax0.add_artist(beam)
 #ax0.plot([-5,5],[0,0],'green')
