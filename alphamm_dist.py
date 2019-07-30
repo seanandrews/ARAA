@@ -1,50 +1,74 @@
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 import os
 import sys
 from astropy.io import ascii
-plt.rc('font', size=9)
+from plx_dist import plx_dist
+from scipy import stats
 
+nsamples  = 100000
+CI_levs = [84.135, 15.865, 95.45, 4.55]
 
-ind = '67'
-
-
-if (ind == '67'): alp_lbl = '(B6 / B7)'
-if (ind == '36'): alp_lbl = '(B3 / B6)'
-
-
-# load database
+# for safety, copy over database file
 os.system('cp -r DISKS.csv temp.csv')
+
+# now load database
 db = ascii.read('temp.csv', format='csv', fast_reader=True)
 
+a67, ea67_hi, ea67_lo = np.zeros(len(db)), np.zeros(len(db)), np.zeros(len(db))
+fl_a67, lim_a67 = np.zeros(len(db)), np.zeros(len(db))
+a36, ea36_hi, ea36_lo = np.zeros(len(db)), np.zeros(len(db)), np.zeros(len(db))
+fl_a36, lim_a36 = np.zeros(len(db)), np.zeros(len(db))
 
-# downselect targets with both a robust index and B6 flux density
-base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'T') & \
-         (db['FL_MULT'] != 'J') & (db['SED'] != 'III') )
+for i in range(len(db)):
+    
+    # no index information available (no measurement in 1 band, or upper limits
+    # in both bands)
+    if (db['FL_B7'][i] == -1 or db['FL_B6'][i] == -1):
+        fl_a67[i], a67[i], ea67_hi[i], ea67_lo[i], lim_a67[i] = -1, 0, 0, 0, 0
+    if (db['FL_B6'][i] == -1 or db['FL_B3'][i] == -1):
+        fl_a36[i], a36[i], ea36_hi[i], ea36_lo[i], lim_a36[i] = -1, 0, 0, 0, 0
+    if (db['FL_B7'][i] == 1 and db['FL_B6'][i] == 1):
+        fl_a67[i], a67[i], ea67_hi[i], ea67_lo[i], lim_a67[i] = -1, 0, 0, 0, 0
+    if (db['FL_B6'][i] == 1 and db['FL_B3'][i] == 1):
+        fl_a36[i], a36[i], ea36_hi[i], ea36_lo[i], lim_a36[i] = -1, 0, 0, 0, 0
 
-base = ( (db['FL_MULT'] != 'J') & (db['SED'] != 'III') )
+    # dual-band detections 
+    if (db['FL_B7'][i] == 0 and db['FL_B6'][i] == 0):
+        fl_a67[i], lim_a67[i] = 0, 0
+        a67[i] = np.log(db['F_B7'][i]/db['F_B6'][i]) / \
+                 np.log(db['nu_B7'][i]/db['nu_B6'][i])
+    if (db['FL_B6'][i] == 0 and db['FL_B3'][i] == 0):
+        fl_a36[i], lim_a36[i] = 0, 0
+        a36[i] = np.log(db['F_B6'][i]/db['F_B3'][i]) / \
+                 np.log(db['nu_B6'][i]/db['nu_B3'][i])
 
+    # single-band detections for *lower* limits on alpha
+    if (db['FL_B7'][i] == 0 and db['FL_B6'][i] == 1):
+        fl_a67[i], a67[i] = 1, -1
+        lim_a67[i] = np.log(db['F_B7'][i]/db['LIM_B6'][i]) / \
+                     np.log(db['nu_B7'][i]/db['nu_B6'][i])
+    if (db['FL_B6'][i] == 0 and db['FL_B3'][i] == 1):
+        fl_a36[i], a36[i] = 1, -1
+        lim_a36[i] = np.log(db['F_B6'][i]/db['LIM_B3'][i]) / \
+                     np.log(db['nu_B6'][i]/db['nu_B3'][i])
 
-# set up plots
-fig = plt.figure(figsize=(3.5, 2.0))
-gs = gridspec.GridSpec(1, 1)
-alims = [1.0, 5.0]
+    # single-band detections for *upper* limits on alpha
+    if (db['FL_B7'][i] == 1 and db['FL_B6'][i] == 0):
+        fl_a67[i], a67[i] = 2, -1
+        lim_a67[i] = np.log(db['LIM_B7'][i]/db['F_B6'][i]) / \
+                     np.log(db['nu_B7'][i]/db['nu_B6'][i])
+    if (db['FL_B6'][i] == 1 and db['FL_B3'][i] == 0):
+        fl_a36[i], a36[i] = 2, -1
+        lim_a36[i] = np.log(db['LIM_B6'][i]/db['F_B3'][i]) / \
+                     np.log(db['nu_B6'][i]/db['nu_B3'][i])
 
+# add the indices as columns to the database
+db['FL_A67'] = fl_a67
+db['A67'] = a67
+db['LIM_A67'] = lim_a67
+db['FL_A36'] = fl_a36
+db['A36'] = a36
+db['LIM_A36'] = lim_a36
 
-# extract sub-sample 
-alp_ok = ( (db['FL_A'+ind] == 0) )
-mu_alp = db['A'+ind][base & alp_ok]
-
-print(len(mu_alp))
-
-# plot
-ax0 = fig.add_subplot(gs[0, 0])
-ax0.set_xlim(alims)
-ax0.set_ylim([0, 1])
-ax0.plot(L_B6, alp, 'o', markersize=2.0)
-ax0.set_xlabel('$\\alpha$ '+alp_lbl)
-
-fig.subplots_adjust(left=0.07, right=0.93, bottom=0.09, top=0.98)
-fig.savefig('alpha_'+ind+'_dist.pdf')
-fig.clf()
+# write out the modified database
+ascii.write(db, 'temp.csv', format='csv', fast_writer=True, overwrite=True)
