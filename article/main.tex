@@ -98,18 +98,26 @@ In many ways, disk structures offer profound insights on how the properties of s
 Three categories of observational tracer are useful for studying disk structures: scattered light, thermal continuum emission, and (primarily molecular) spectral line emission.  The first two are sensitive to the physical conditions and distribution of solids, and the third is used to measure the properties of the gas.  Each observational probe is sensitive to different materials and physical conditions, ensuring considerable diversity in the disk appearance when viewed in different tracers.  An illustrative example is shown in {\bf Figure \ref{fig:ims}}. 
 
 
-\subsubsection{Scattered Light}
+\subsubsection{Scattered Light} \label{sec:primer_scat}
 Small ($\mu$m-sized) dust grains suspended in the disk atmosphere can reflect the optical and infrared radiation emitted by the the central host star.  This scattered light is especially sensitive to the vertical distribution of the dust, and how it changes with radius \citep[e.g.,][]{debes13,stolker16,garufi17}.  Spectral and polarization variations in the scattered light morphology can constrain the albedo and phase function of the scatterers, which are set by the size, shape, and composition of the grains \citep{debes08,min12,min16}.  Aside from uniquely probing the dust disk surface geometry, the key advantage of this tracer is resolution: adaptive optics systems operating at the diffraction limit on 8--10 m telescopes measure features at 30--50 mas scales ($\sim$5 au).  The important challenges are contrast with the host stars, which prevent measurements in the innermost disk ($\lesssim 10$ au), and sensitivity at large radii, due to the dilution of the stellar radiation field.  The latter issue has limited the sample of resolved scattered light measurements, and biased it toward disks with brighter (earlier type) hosts.    
 
 %The continuum and line emission are thermal radiative processes, so the kind of information about the disk structure available from a given tracer depends on its optical depth, $\tau_\nu$.  If the tracer emission is optically thin ($\tau_\nu \ll 1$), the intensity scales roughly with the product $I_\nu \propto X B_\nu(T) N$, where $B_\nu(T)$ is the Planck function at the local temperature, $N$ is column density, and $X$ is a (potentially complicated) conversion factor that quantifies how much emission is produced per unit mass for that tracer species.  With some information on $X$, $T$, and the disk geometry, a measurement of $I_\nu$ offers a density constraint.  If the emission is optically thick ($\tau_\nu \gtrsim 1$), the intensity scales with the temperature at the effective photosphere of the tracer, $I_\nu \propto B_\nu(T)$.  In this case, only lower bounds on the densities of the tracer species are available, and the emission can be affected by scattering.          
 
-\subsubsection{Continuum Emission}
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{twhya_gallery.pdf}
+\caption{Images of the disk around TW Hya in (a) 1.6 $\mu$m scattered light \citep{vanboekel17}, (b) 0.9 mm thermal continuum \citep{andrews16}, and (c) the $^{12}$CO $J$=3$-$2 emission line \citep{huang18}.  The spatial scales are the same in each panel (300 au on a side); the FWHM resolution for each image is shown as an ellipse in the lower left corner of each, but is generally too small to be easily visible.  This gallery illustrates how the appearance of the disk structure varies considerably with the observational tracer.}
+\label{fig:ims}
+\end{figure}
+
+
+\subsubsection{Continuum Emission} \label{sec:primer_cont}
 Disk solids also emit their own thermal continuum radiation that spans at least four decades in wavelength (from 1 $\mu$m to 1 cm).  Most of that emission is optically thick, and therefore a diagnostic of the temperature structure in the disk \citep[e.g., see][]{andrews15}.  Lower optical depths ($\tau_\nu$) are available at longer wavelengths, with the transition to optically thin traditionally expected in the sub-mm.  In the optically thin limit ($\tau_\nu \ll 1$), the continuum intensities scale with the product $I_\nu \propto \kappa_\nu B_\nu(T) \Sigma_s$, where $\kappa_\nu$ is the opacity (absorption cross section per unit mass), $B_\nu(T)$ the Planck function at the local temperature $T$, and $\Sigma_s$ the surface density of solids.  The mm continuum spectrum has a roughly power-law shape, $I_\nu \propto \nu^{\alpha_{\rm mm}}$, with the spectral index set by the sum of contributions from the Planck function ($B_\nu \propto \nu^{\alpha_{\rm Pl}}$, where $\alpha_{\rm Pl} \approx 1.7$--2.0 for $T > 15$ K) and the opacity spectrum ($\kappa_\nu \propto \nu^\beta$), so $\alpha_{\rm mm} \approx \alpha_{\rm Pl} + \beta$ \citep{beckwith91,ricci10a,ricci10b}.  The opacity index, $\beta$, depends on the sizes, shapes, and compositions of the solids \citep{miyake93,dalessio01,draine06}.  
 
 In principle, resolved measurements of the mm continuum provide an ideal opportunity to constrain the mass distribution (and particle properties) of the disk solids.  This broadband tracer is also relatively easy to observe at high resolution, down to 10--20 mas scales ($\sim$2 au; and no contrast issues with the host), thanks to the sensitivity and resolution of ALMA.  This means measurements are plentiful: much of the collective knowledge of resolved disk structures is based on mm continuum data.  There are two key ambiguities in interpreting these data.  First, some of the emission is likely optically thick, perhaps preferentially in the inner disk \citep[see][]{beckwith90,aw05}.  In that case, the intensities saturate to $B_\nu(T)$ and the spectral index reverts to $\alpha_{\rm Pl}$.  Self-scattering could diminish the intensities below $B_\nu(T)$ and permit $\alpha_{\rm mm}$ to vary in the range 1.5--2.5, depending on the frequency dependence of the albedo \citep{zhu19,liu19}.  And second, our relative ignorance of the microphysical particle properties that set $\kappa_\nu$ -- their mineralogical (and ice) compositions \citep{pollack94}, sizes \citep{miyake93}, and structures \citep{henning96} -- means that links between the emission and physical conditions are intrinsically uncertain, even when optical depths are low.
 
-\subsubsection{Spectral Line Emission}
-The dominant constituent by mass in a disk is cold H$_2$ gas.  But, H$_2$ lacks a permanent dipole moment and is therefore essentially `dark': there is no direct probe of the gas mass reservoir.  Instead, constraints on the structure of the gas disk rely on spatially and spectrally resolved measurements of trace molecular rotational transitions throughout the (sub-)mm bands.  Such emission lines can be optically thick or thin.  Like the continuum, optically thick line emission has $I_\nu \propto B_\nu(T)$ (where $T$ is formally the excitation temperature, equivalent to the gas temperature in local thermodynamic equilibrium): the key difference is that the line photosphere (where $\tau_\nu \sim 1$) can be located at a higher altitude above the midplane than the continuum \citep{beckwith93}.  For low optical depths, the line intensity scales with the product of the abundance of molecules of that species, the surface density of the gas, and the temperature, $I_\nu \propto [{\rm X}/{\rm H}_2] \Sigma_g B_\nu(T)$.  In either case, the spatio-kinematic morphology of the line emission is set by the gas dynamics, dominated by Keplerian rotation around the host star \citep{marsh92,koerner93}.  The line width is determined by thermal and non-thermal broadening contributions; the latter is typically associated with turbulence \citep{hughes11}.         
+
+\subsubsection{Spectral Line Emission} \label{sec:primer_lines}
+The dominant constituent by mass in a disk is cold H$_2$ gas.  But, H$_2$ lacks a permanent dipole moment and is therefore essentially `dark': there is no direct probe of the gas mass reservoir.  Instead, constraints on the structure of the gas disk rely on spatially and spectrally resolved measurements of trace molecular rotational transitions throughout the (sub-)mm bands.  Such emission lines can be optically thick or thin.  Like the continuum, optically thick line emission has $I_\nu \propto B_\nu(T)$ (where $T$ is formally the excitation temperature, equivalent to the gas temperature in local thermodynamic equilibrium, LTE): the key difference is that the line photosphere (where $\tau_\nu \sim 1$) can be located at a higher altitude above the midplane than the continuum \citep{beckwith93}.  For low optical depths, the line intensity scales with the product of the abundance of molecules of that species, the surface density of the gas, and the temperature, $I_\nu \propto [{\rm X}/{\rm H}_2] \Sigma_g B_\nu(T)$.  In either case, the spatio-kinematic morphology of the line emission is set by the gas dynamics, dominated by Keplerian rotation around the host star \citep{marsh92,koerner93}.  The line width is determined by thermal and non-thermal broadening contributions; the latter is typically associated with turbulence \citep{hughes11}.         
 
 Resolved measurements of multiple optically thick lines with a range of critical densities can be used to trace the temperature structure of the disk atmosphere \citep[e.g.,][]{dartois03}, and optically thin lines can theoretically be used to constrain gas densities.  With sufficient spectral resolution, such emission line datasets can be used to tomographically reconstruct the disk velocity field \citep{simon00,rosenfeld13a} and assess the level of turbulence \citep{guilloteau12,flaherty15}.  ALMA is in principle capable of resolving such line emission at tens of milliarcsecond scales ($\sim$2--5 au) in few m s$^{-1}$-wide velocity channels, but the narrow bandwidths and relatively low abundances of trace molecular species mean that sensitivity is a perennial challenge (particularly when optical depths are low).  Accordingly, line measurements of disks with the requisite sensitivity and resolution are considerably less common than for the continuum.  The two most prominent challenges in interpreting spectral line data are confusion with the emitting layer location (in the typical case where resolution is limited) and the large (potentially orders of magnitude) uncertainties in the molecular abundances (relative to H$_2$).         
 %In the literature, two tracer molecule options have been considered for $M_g$ constraints: HD (the primary isotopologue of H$_2$) and CO.  The advantage of HD is the simplicity of its associated chemical network, meaning the HD/H$_2$ abundance ratio is known well \citep{bergin13,mcclure16,trapman17}.  But with a ground state transition in the far-infrared (112 $\mu$m), HD measurements are scarce (and currently inaccessible).  CO is a popular alternative, but the rotational lines from the primary isotopologue are very optically thick \citep{beckwith93}.  Therefore, gas mass estimates rely on line luminosity measurements of rarer isotopologues, usually $^{13}$CO and C$^{18}$O together \citep{williamsbest14}.  The advantages of CO tracers are practical, since these lines are (relatively) bright and accessible (with a sequence of transitions throughout the microwave spectrum), but their abundances are more uncertain.  For reference, the utility of a suite of (less favorable) alternative tracers for $M_g$ measurements were explored by \citet{molyarova17}.
@@ -119,72 +127,43 @@ Resolved measurements of multiple optically thick lines with a range of critical
 
 \subsection{Statement of Scope} \label{sec:scope}
 
-This review covers four broad (and in most respects inter-related) topics that currently occupy much of the effort in the disk community: the impetus and techniques for measuring key properties of disk structures, like masses and density distributions (Section \ref{sec:structure}); the constraints on evolutionary and environmental dependencies based on demographics studies (Section \ref{sec:demographics}); the evidence for (and problems with) the growth and migration of disk solids (Section \ref{sec:solids}); and the properties and roles of small-scale {\it substructures} in shaping observables and facilitating planet formation (Section \ref{sec:substructures}).  It concludes with a summary (Section \ref{sec:summary}) and a discussion of some potentially fruitful avenues for future work (Section \ref{sec:future}).  
+Keeping in mind the foundational motivations for measuring disk structures, and the observational tools that are available, this review covers four broad (and inter-related) topics that currently occupy much of the effort in the disk community: (1) the inferred key properties of disk structures and their associated ambiguities (Section \ref{sec:structure}); (2) the constraints on evolutionary and environmental dependencies based on demographics studies (Section \ref{sec:demographics}); (3) the evidence for (and problems with) the growth and migration of disk solids (Section \ref{sec:solids}); and (4) the properties and roles of small-scale {\it substructures} in shaping observables and facilitating planet formation (Section \ref{sec:substructures}).  The review concludes with a summary that aims to distill the findings for these topics and reflect the current state of the field (Section \ref{sec:summary}), as well as a discussion of some potentially fruitful avenues for future work (Section \ref{sec:future}).  
 
 
 
 
 \section{KEY\ STRUCTURE\ PROPERTIES} \label{sec:structure}
 
-The spatial distribution of mass -- the density structure -- is without question the fundamental property of interest for disks.  The over-arching conceptual design of the field presumes that disk evolution is basically deterministic, such that a collection of ``snapshots" of disk density distributions that span an appropriate range of environmental and evolutionary states could be used to work out the mechanics of key physical processes and thereby refine a predictive model of how disks regulate star and planet formation.  This section of the review is focused on the underlying motivations, observational tracers, and lingering ambiguities associated with attempts to measure the mass distributions in disks.  Since the density structure is intrinsically tied to the thermal and dynamical state of the disk, constraints on temperatures (Section \ref{sec:temp}) and kinematics (Section \ref{sec:turb}) are also summarized.        
+The spatial distribution of mass -- the density structure -- is without question the fundamental property of interest for disks.  The over-arching conceptual design of the field presumes that disk evolution is basically deterministic, such that a collection of ``snapshots" of disk density distributions that span an appropriate range of environmental and evolutionary states could be used to work out the mechanics of key physical processes and thereby refine a predictive model of how disks regulate star and planet formation.  This section of the review is focused on the underlying motivations, observational constraints, and lingering ambiguities associated with the mass distributions in disks (Sections \ref{sec:mass}--\ref{sec:sigma}).  Because most probes of disk structures to date rely on their solids, special attention is paid to the continuum opacities and their links to particle properties (Section \ref{sec:opacities}).  The intrinsic connections (physical and observational) between the density structure and the thermal and dynamical state of the disk material are summarized in Section \ref{sec:temp} and \ref{sec:turb}, respectively.        
 
-\begin{textbox}[h]\section{Notation, Conventions, and Nomenclature}
-To set the practical framework for interpreting the results in this field, some discussion of standards and terminology is helpful.  The common characterization of the density structure in disks essentially condenses to a one-dimensional description through the radial surface density profil  e, $\Sigma$, defined such that the mass $M = 2\pi \int \Sigma \, r \, dr$.  This is not intended to diminish the azimuthal or vertical dimensions (with coordinates $\varphi$ and $z$, respectively), but rather reflects both a convenient simplification and the fact that disks are by their nature geometrically thin.  Because of their different physical and observable behaviors, it is also useful to differentiate the disk contents into two broad categories, solids and gas; their density profiles are related by the (vertically averaged) solids-to-gas ratio, $\zeta = \Sigma_s / \Sigma_g$.  The goals of this section are to motivate the physical interest in $\Sigma_s$ and $\Sigma_g$, establish the related observable properties, summarize the state of measurements, review some important limitations, and outline the links to the thermal and dynamical structures of disks.  
+\begin{textbox}[t]\section{Notation, Conventions, and Nomenclature}
+To set the practical framework for interpreting the results in this field, some discussion of standards and terminology is helpful.  The common characterization of the density structure in disks essentially condenses to a one-dimensional description through the radial surface density profile, $\Sigma$, defined such that the mass $M = 2\pi \int \Sigma \, r \, dr$.  This is not intended to diminish the azimuthal or vertical dimensions (with coordinates $\varphi$ and $z$, respectively), but rather reflects both a convenient simplification and the fact that disks are by their nature geometrically thin.  Because of their different physical and observable behaviors, it is also useful to differentiate the disk contents into two broad categories, solids and gas; their density profiles are related by the (vertically averaged) solids-to-gas ratio, $\zeta = \Sigma_s / \Sigma_g$.  The goals of this section are to motivate the physical interest in $\Sigma_s$ and $\Sigma_g$, establish the related observable properties, summarize the state of measurements, review some important limitations, and outline the links to the thermal and dynamical structures of disks.  
 \end{textbox}
 
 
 
 \subsection{Masses} \label{sec:mass}
 
-Most of the emphasis in the field is on the integrated quantity, disk masses, rather than their density distributions.  That is mostly a practical limitation, but many of the key techniques and issues can be illustrated well from this coarser perspective.  The primary interest here is that measurements of disk masses offer elementary constraints on the contents of planetary systems.  Summing the terrestrial planet and giant planet core masses offers a conservative lower bound on the solid mass of the Solar Nebula disk ($M_s > 45 M_\oplus$; \citealt{weidenschilling77}) or its exoplanet counterparts \citep[e.g.,][]{chiang13}.  Extrapolations of the current planetary atmosphere contents to the primordial H,He-rich gas expected in disks \citep[e.g.,][]{kusaka70} enable an analogous limit for the gas masses ($M_g > 0.01 M_\odot$; e.g., \citealt{hayashi81}).  The current census of exoplanets finds an abundance of worlds orbiting other stars \citep{howard10,dressing13}, but the efficiency of the metamorphosis of disk material into planetary systems is unclear without a comparison of the mass reservoirs in the parent and descendent populations.          
+Much of the emphasis in the field is on the integrated quantity, the disk mass, rather than the density distribution.  That is mostly a practical limitation, but many of the key insights and issues can be illustrated well from this coarser perspective.  The primary interest is that measurements of disk masses offer elementary constraints on the contents of planetary systems.  Summing the terrestrial planet and giant planet core masses offers a conservative lower bound on the solid mass of the Solar Nebula disk ($M_s > 45 M_\oplus$; \citealt{weidenschilling77}) or its exoplanet counterparts \citep[e.g.,][]{chiang13}.  Extrapolations of the current planetary atmosphere contents to the primordial H,He-rich gas expected in disks \citep[e.g.,][]{kusaka70} enable an analogous limit for the gas masses ($M_g > 0.01 M_\odot$; e.g., \citealt{hayashi81}).  The current census of exoplanets finds an abundance of worlds orbiting other stars \citep{howard10,dressing13}, but the efficiency of the metamorphosis of disk material into planetary systems is unclear without a comparison of the mass reservoirs in the parent and descendent populations.          
 
 
-\subsubsection{Observational Tracers}
-Disk solids are a minor contributor to the total mass ($\sim$1\%), but the crucial roles they play in all aspects of disk evolution and planet formation justify special attention to their mass reservoir, $M_s$.  Solids emit a broadband thermal continuum spectrum that depends on their temperature and microphysical properties (composition, internal structure, size).  Assuming reasonable properties for the solids and disk physical conditions, optical depths have traditionally been expected to be low enough at microwave wavelengths that the continuum luminosity is proportional to $M_s$ \citep{beckwith90}.  
-\begin{marginnote}[]
-\entry{microwave}{Generic term adopted here to refer to wavelengths from a few hundred $\mu$m to a few cm.}
-\end{marginnote}
-
-Of course, the continuum spectrum emitted by solids in a typical disk spans at least four decades in wavelength ($\sim$1 $\mu$m to 1 cm).  But most of it is optically thick, and therefore more a diagnostic of the thermal structure than the mass.  High resolution infrared imaging can also trace scattered starlight from the small solids lofted high above the disk midplane, but again such measurements are insensitive to the mass.  While these alternate tracers are unquestionably informative in other contexts, the comparatively bright microwave continuum and its unique access to $M_s$ make it an especially valuable probe.            
-
-Most of the mass in a disk is H$_2$ gas.  However, H$_2$ lacks a permanent dipole moment and is therefore essentially `dark': there is no {\it direct} probe of the dominant gas reservoir.  Constraints on gas masses in disks ($M_g$) must instead be derived from the spectral line emission of rarer molecule species.  The optimal tracers are optically thin emission lines from molecules that have a reasonably well-understood abundance relative to H$_2$.  In such a case, the emission line luminosity can be converted into a measurement of $M_g$.
-
-In the literature, two tracer molecule options have been considered for $M_g$ constraints: HD (the primary isotopologue of H$_2$) and CO.  The advantage of HD is the simplicity of its associated chemical network, meaning the HD/H$_2$ abundance ratio is known well \citep{bergin13,mcclure16,trapman17}.  But with a ground state transition in the far-infrared (112 $\mu$m), HD measurements are scarce (and currently inaccessible).  CO is a popular alternative, but the rotational lines from the primary isotopologue are very optically thick \citep{beckwith93}.  Therefore, gas mass estimates rely on line luminosity measurements of rarer isotopologues, usually $^{13}$CO and C$^{18}$O together \citep{williamsbest14}.  The advantages of CO tracers are practical, since these lines are (relatively) bright and accessible (with a sequence of transitions throughout the microwave spectrum), but their abundances are more uncertain.  For reference, the utility of a suite of (less favorable) alternative tracers for $M_g$ measurements were explored by \citet{molyarova17}.
-
-
-\subsubsection{Overview of Mass Measurements}
-The advent of bolometer detectors on single-dish microwave telescopes motivated a series of continuum photometry surveys designed to measure $M_s$ for hundreds of disks starting 30 years ago \citep{weintraub89,beckwith90,andre94,osterloh95,aw05,aw07b}, and continuing today with more sensitive interferometers \citep[e.g.,][]{andrews13,ansdell16,cieza19}.  The microwave continuum luminosities (hereafter $L_{\rm mm}$) from these surveys span at least three orders of magnitude.  Though this composite $L_{\rm mm}$ distribution is clearly influenced by observational and physical selection effects (see Section \ref{sec:demographics}), it helps provide some rough guidance on $M_s$ values.  For some fiducial assumptions for the disk-averaged temperature ($\langle T \rangle \approx 20$ K, based on crude models of infrared emission; \citealt{aw05}) and opacity ($\langle \kappa_\nu \rangle \approx 2.3$ cm$^2$ g $^{-1}$ at $\lambda = 1.3$ mm, as asserted by \citealt{beckwith90}), these luminosities imply a range $M_s \approx 1$--1000 $M_\oplus$.
+\subsubsection{Overview of Measurements}
+While disk solids are a minor contributor to the total mass budget (with a disk-averaged $\langle \zeta \rangle \approx 0.01$), the crucial roles they play in all aspects of disk evolution and planet formation justify special attention to their mass reservoir, $M_s$.  As discussed in Section \ref{sec:primer_cont}, the luminosity of the mm continuum emission should scale roughly with $M_s$.  The advent of bolometer detectors on single-dish telescopes motivated a series of photometry surveys designed to measure $M_s$ for hundreds of disks starting 30 years ago \citep{weintraub89,beckwith90,andre94,osterloh95,aw05,aw07b}, and continuing today with more sensitive interferometers \citep[e.g.,][]{andrews13,ansdell16,cieza19}.  The measured luminosity (hereafter $L_{\rm mm}$) distribution spans at least three decades and, though clearly influenced by observational and physical selection effects (Section \ref{sec:demographics}), it provides some rough guidance on $M_s$ values.  For standard assumptions about the disk-averaged temperature ($\langle T \rangle \approx 20$ K, based on crude models of infrared emission; \citealt{aw05}) and opacity ($\langle \kappa_\nu \rangle \approx 2.3$ cm$^2$ g $^{-1}$ at $\lambda = 1.3$ mm, as asserted by \citealt{beckwith90}), these luminosities imply a range $M_s \approx 1$--1000 $M_\oplus$.
 % additional photometry surveys: 
 % single-dish = reipurth93, henning93, jensen94, jensen96, nurnberger98, cieza15, ansdell15; 
 % interferometry = williams05, mann09, mann10, mann14, mann15, harris12, akeson14, akeson19, carpenter14, pascucci16, vanderplas16, barenfeld17, ansdell17, law17, eisner06, eisner08, eisner16, cox17, eisner18, ward-duong18, ruiz-rodriguez18
 
-There are many fewer available estimates of $M_g$ in disks, owing to the intrinsically more challenging observations of the emission line tracers.  The ground state HD emission line was detected from only three disks, suggesting $M_g \ge 0.01 M_\odot$ based on detailed models of their thermal structures \citep{bergin13,mcclure16}.  Larger samples of CO isotopologue emission line luminosities typically infer considerably lower values, $M_g < 0.001 M_\odot$ \citep[and detection rates are relatively low; e.g.,][]{ansdell16,long17}, when referenced to an extensive grid of model structures that assumes the CO/H$_2$ abundance in disks is comparable to the interstellar medium \citep{williamsbest14}.     
+There are many fewer estimates of gas masses, $M_g$, owing to the intrinsically more challenging observations of the emission line tracers (Section \ref{sec:primer_lines}).  In the literature, two tracer molecule options have been considered for $M_g$ constraints: HD (the primary isotopologue of H$_2$) and CO.  The advantage of HD is the simplicity of its associated chemical network, meaning the HD/H$_2$ abundance ratio is known well \citep{bergin13,mcclure16,trapman17}.  But with a ground state transition in the far-infrared (112 $\mu$m), HD measurements are scarce (and currently inaccessible).  CO is a popular alternative, but the rotational lines from the primary isotopologue are very optically thick \citep{beckwith93}.  Therefore, gas mass estimates rely on line luminosity measurements of rarer isotopologues, usually $^{13}$CO and C$^{18}$O together \citep{williamsbest14}.  The advantages of CO tracers are practical, since these lines are (relatively) bright and accessible (with a sequence of transitions throughout the microwave spectrum), but their abundances are more uncertain.  For reference, the utility of a suite of (less favorable) alternative tracers for $M_g$ measurements were explored by \citet{molyarova17}.  The ground state HD emission line has been detected from only three disks, suggesting $M_g \ge 0.01 M_\odot$ based on detailed models of their thermal structures \citep{bergin13,mcclure16}.  Larger samples of CO isotopologue emission line luminosities typically infer considerably lower values, $M_g < 0.001 M_\odot$ \citep[and detection rates are relatively low; e.g.,][]{ansdell16,long17}, when referenced to an extensive grid of model structures that assumes the CO/H$_2$ abundance in disks is comparable to the interstellar medium \citep{williamsbest14}.     
 
 
 \subsubsection{Caveats and Ambiguities}
-There are large uncertainties in any inference of $M_s$ from microwave continuum data, for two primary reasons.  First, the assertion that the emission is optically thin is unlikely to be valid at all disk locations.  Once optical depths are high, the emission saturates and mass is hidden ($M_s$ is under-estimated).  The significance of this effect depends on the surface area of the thick emission, which will be revisited in various contexts throughout this review.  Second, even in the $\tau_\nu \ll 1$ limit, the continuum luminosity scales with the product of the temperature, opacity, and mass.  The uncertainty in $T$ will be addressed in Section \ref{sec:temp}.  There is considerable ambiguity in $M_s$ estimates due solely to our relative ignorance of the microphysical particle properties that set $\kappa_\nu$, including their mineralogical (and ice) compositions \citep{pollack94}, sizes \citep{miyake93}, and internal structure (porosity; \citealt{henning96}).  
+Section \ref{sec:primer} outlines the key sources of ambiguity in the (continuum or spectral line) tracers of mass: some of the emission may be optically thick (so the intensity saturates and mass is hidden), and the exchange rate between optically thin emission and mass can be considerably uncertain.  The first of these implies that masses could be underestimated.  Insight on the severity of this ambiguity is available with measurements of the surface area of the optically thick contamination, which will be revisited in various contexts below.  The second issue largely reflects our limited knowledge of the particle properties (manifested in $\kappa_\nu$) in the reservoir of solids or the chemical evolution (manifested in [${\rm X}/{\rm H}_2$]) in the gas phase, although uncertainties in the thermal structure also play a part (see Section \ref{sec:temp}).  Uncertainties in the opacities are significant enough in various aspects of the field that they merit their own discussion (Section \ref{sec:opacities}).           
 
-%Information about the compositions of disk solids can be accessed through spectral features in the infrared, particularly from silicates \citep{kessler-silacci06,bouwman08,sargent09b} and common ices \citep{oberg08,bottinelli10,mcclure15}.  Various carbonaceous materials are also expected to be primary constituents \citep{zubko96,jaeger98}.  The implied compositions are commensurate with {\it in situ} measurements of dust particles, meteorites, and larger ``primordial" bodies in the Solar System \citep[e.g.,][]{clayton04,mumma11}.  In that sense, the composition-related ambiguities in $\kappa_\nu$ are probably less associated with the mineralogy and more on lingering uncertainties in the corresponding dielectric properties and how those are combined for realistic composites \citep[e.g.,][]{min16,demyk17}.  
+%Shifting attention to the gas mass, there are direct analogues of these same ambiguities.  First, there is also the concern that the optically thin approximation is at least partially invalid, particularly for the HD and $^{13}$CO lines, implying again that mass may be hidden ($M_g$ is under-estimated).  As with the microwave continuum, the emission from an optically thin spectral line traces the produce of temperature and column density (i.e., mass).  The key difference is that the line emission originates from a more two-dimensional geometry (radial and vertical), which can potentially incorporate pronounced temperature gradients that are directly related to the distribution of the tracer abundances.  This is especially significant for $M_g$ estimates from the HD ground state line, which by a quirk of its excitation physics has an exponential $T$ dependence \citep{bergin13}.  In any case, a good model or measurement of $T(r, z)$ is required for a robust estimate of $M_g$ (see Section \ref{sec:temp}).    
 
-Because the particle properties encoded in $\kappa_\nu$ are so fundamentally important for interpreting observations, this latter issue is worth elaboration.  The sizes and morphologies of the emitting particles have the most pronounced effects on the behavior of $\kappa_\nu$.  Size distributions are often approximated as power-laws, $n(a) \propto a^{-q}$ for size (radius) $a \in [a_{\rm min}, a_{\rm max}]$, with indices comparable to the expectation for a self-similar collisional cascade ($q \approx 3.5$; \citealt{dohnanyi69,tanaka96}) or more top-heavy variants ($q \approx 2.5$; e.g., \citealt{birnstiel11}).  The particle morphologies are characterized by their porosities, usually parameterized with a volume filling factor $f_s$ ($\sim$1 for compact particles, but can be as low as $\sim$10$^{-4}$ in aggregates; \citealt{kataoka13}).  The microwave opacity spectrum is roughly a power-law, $\kappa_\nu \approx \kappa_0 (\nu/\nu_0)^\beta$, where $\kappa_0$ and $\beta$ both depend on \{$q$, $a_{\rm max}$, $f_s$\}.  
+The $M_g$ ambiguities associated with the abundances of tracer molecules can be significant.  For HD, the  chemical network is simple enough that the gas phase abundance should be fairly robust; the open questions are related to the unaccounted contribution of enhanced D fractionation in ices or hydrocarbons that could lead to an under-estimate of HD/H$_2$ (and therefore $M_g$).  The situation with CO is more complicated.  Presuming the interstellar CO/H$_2$ abundance ratio and isotopic fractionation \citep{frerking82}, the observed CO isotopologue luminosities from disks suggest surprisingly low $M_g$ values (by a factor of $\sim$5--10; \citealt{williamsbest14}) relative to other gas tracers in the same disks \citep{chapillon10,favre13,kama16a} or estimates of $M_s$ and presumed interstellar solids-to-gas ratios ($\zeta \approx 0.01$; \citealt{kastner97,dutrey03,ansdell16,long17}).  This apparent anomaly can be reconciled by invoking a higher solids-to-gas ratio ($\zeta \ge 0.1$) or modifying the assumed abundances.  The right direction and amplitude of abundance changes are expected from various chemical processes, including adsorption onto solids (freezeout; \citealt{aikawa97,aikawa02,dutrey97}), isotope-selective photodissociation \citep{visser09,miotello14,miotello16}, or C and O sequestration into other species (e.g., CO$_2$ ice, complex organics; \citealt{reboussin15,yu17a,miotello17,bosman18,dodson-robinson18}).
 
-For reference, Figure \ref{fig:opac} illustrates how opacity properties generally respond to particle properties, for some representative model variations (see \citealt{cuzzi14}, \citealt{woitke16}, or \citealt{dsharp5} for more detailed explorations of the parameter-space). When $a_{\rm max} \ll \lambda$, $\kappa_0$ is roughly independent of the size cut-off and $\beta$ is high ($\sim$1.7, as for the small dust grains in the interstellar medium; \citealt{finkbeiner99}).  When $a_{\rm max} \gg \lambda$, $\kappa_0$ decreases with $a_{\rm max}$ at a rate depending on $q$ (lower $q$ means a steeper fall-off; e.g., \citealt{ricci10a}) and $\beta$ is lower (scaling roughly with $q$; \citealt{draine06}).  When $a_{\rm max} \sim \lambda$, resonances drive up both $\kappa_0$ and $\beta$.  Porosity dampens those resonant amplifications.  Specifically, $\kappa_\nu$ varies with the product $a_{\rm max} f_s$, such that porous particles have a lower $\kappa_0$ and higher $\beta$ than compact particles with the same size distribution \citep{kataoka14}.  
-
-\begin{figure}[t]
-\includegraphics[width=\textwidth]{opac_pars.pdf}
-\caption{kappa0, beta, albedo as fn of amax (different q, phi, composition, mixing rule, DDA v Mie)}
-\label{fig:opac}
-\end{figure}
-
-While continuum luminosities cannot constrain $\kappa_0$, information about the particle properties are accessible from the {\it shape} of an optically thin microwave spectrum, which varies like $L_\nu \propto \kappa_\nu B_\nu(T) \propto \nu^{\alpha_{\rm mm}}$.  The spectral index (i.e., the ``color") tracks the opacity index, $\alpha_{\rm mm} \approx \alpha_{\rm Pl} + \beta$, where $\alpha_{\rm Pl} \approx 1.7$--2.0 approximates the shape of $B_\nu(T)$ for disk-averaged temperatures $>$15 K.  Multiwavelength photometry surveys find $\alpha_{\rm mm} \approx 2$--3 \citep{beckwith91,mannings94,ricci10a,ricci10b,ricci12}, implying a disk-averaged $\beta \le 1$ and $a_{\rm max} \ge 1$ mm.  There is a sort of apocryphal notion that continuum emission traces particles with sizes up to $a_{\rm max} \sim \lambda$.  But a more accurate statement is that the emission is most {\it efficient} with this criterion since it corresponds to the peak $\kappa_0$ (giving the most emission per mass), but even much larger particles still contribute.  Therein lies the key ambiguity: the opacity can decrease (by orders of magnitude) if larger solids are present (see Fig.~\ref{fig:opac}), and the ambiguities of interpreting $\beta$ constraints permit such a possibility.  Note that the fiducial opacities adopted in the literature ($\sim$1--3 cm$^2$ g$^{-1}$ at $\lambda = 1.3$ mm) are effectively upper bounds on $\kappa_\nu$ (see Fig.~\ref{fig:opac}), reflecting the fact that $L_{\rm mm}$ measurements are really yielding lower limits on $M_s$. 
-
-Unresolved spectral index measurements naturally gloss over some important complexities.  The particle properties, and thereby the opacities, are expected to vary spatially in disks.  The (presumably inter-dependent) morphologies of those variations make it difficult to determine the impact of $\kappa_\nu$ changes on inferences of $M_s$ without spatially resolved measurements of $\alpha_{\rm mm}$.  Moreover, an unknown fraction of the continuum emission can be optically thick, where $\alpha_{\rm mm} \approx 1.5$--2.5 depending on $T$ (or $\alpha_{\rm Pl}$) and the spectral dependence of the albedo \citep{zhu19,liu19}.  This would diminish unresolved (disk-averaged) estimates of $\beta$, again limiting an assessment of the $M_s$ uncertainty due to the opacities.
-
-Shifting attention to the gas mass, there are direct analogues of these same ambiguities.  First, there is also the concern that the optically thin approximation is at least partially invalid, particularly for the HD and $^{13}$CO lines, implying again that mass may be hidden ($M_g$ is under-estimated).  As with the microwave continuum, the emission from an optically thin spectral line traces the produce of temperature and column density (i.e., mass).  The key difference is that the line emission originates from a more two-dimensional geometry (radial and vertical), which can potentially incorporate pronounced temperature gradients that are directly related to the distribution of the tracer abundances.  This is especially significant for $M_g$ estimates from the HD ground state line, which by a quirk of its excitation physics has an exponential $T$ dependence \citep{bergin13}.  In any case, a good model or measurement of $T(r, z)$ is required for a robust estimate of $M_g$ (see Section \ref{sec:temp}).    
-
-The key ambiguities in $M_g$ measurements from optically thin emission lines come from the uncertain chemical abundances of the tracer molecules relative to H$_2$.  For HD, the associated chemical network is simple enough that the gas phase abundance should be fairly robust; the open questions are related to the unaccounted contribution of enhanced D fractionation in ices or hydrocarbons that could lead to an under-estimate of HD/H$_2$ (and therefore $M_g$).  The situation with CO is more complicated.  Presuming the interstellar CO/H$_2$ abundance ratio and isotopic fractionation \citep{frerking82}, the observed CO isotopologue luminosities from disks suggest surprisingly low $M_g$ values (by a factor of $\sim$5--10; \citealt{williamsbest14}) relative to other gas tracers in the same disks \citep{chapillon10,favre13,kama16a} or estimates of $M_s$ and presumed interstellar solids-to-gas ratios ($\zeta \approx 0.01$; \citealt{kastner97,dutrey03,ansdell16,long17}).  This apparent anomaly can be reconciled by invoking a higher solids-to-gas ratio ($\zeta \ge 0.1$) or modifying the assumed abundances.  The right direction and amplitude of abundance changes are expected from various chemical processes, including adsorption onto solids (``freezeout"; \citealt{aikawa97,aikawa02,dutrey97}), isotope-selective photodissociation \citep{visser09,miotello14,miotello16}, or C and O sequestration into other species (e.g., CO$_2$ ice, complex organics; \citealt{reboussin15,yu17a,miotello17,bosman18,dodson-robinson18}).             
-
-As for the continuum emission, additional information about these ambiguities is in principle available from resolved maps of the spatial distribution of the relevant tracers.  
+The salient point is that the adoption of standard abundance ratios is more or less designed to offer lower limits on $M_g$.  Depending on the tracer, those estimates could in principle be too low by a factor of a few (HD) to several orders of magnitude (CO isotopologues).  An analogous choice routinely made for the standard mm opacities (see Section \ref{sec:opacities}) means that the same is true for estimates of $M_s$.
 
 
 %there is the subtle, added complication of the continuum too (optically thick line-blocking, and even subtraction issues a la weaver).  so, you also sort of want a good model of the continuum (ugh).
@@ -193,50 +172,152 @@ As for the continuum emission, additional information about these ambiguities is
 
 \subsection{Sizes} \label{sec:sizes}
 
-The first step toward measuring the spatial mass distributions in disks is an estimate of their sizes.  But there is no obvious general definition for size from an observational perspective, since any metric depends on the prescription adopted for interpreting the radial variation of a given tracer.  There is an expectation that the mass distribution exhibits a break at some radius, beyond which it drops off more precipitously into the background.  That practical notion was originally motivated by the sharp cut-off of larger bodies in the Solar System around 40 au \citep[e.g.,][]{luu02}, but it is now supported by many disk observations \citep[e.g.,][]{andrews18}.  Nevertheless, there is no {\it a priori} knowledge of the detailed behavior of that transition, nor how it manifests in different tracers.  The ideal solution would be to employ a robust parametric model for the physical structure and use that to homogenize size measurements.  But it should be clear at this point in the review that such an effort is littered with ambiguities.  Recognizing that ignorance for the time being, the more practical approach is to assign an empirical definition of size as the effective radius that encircles some fixed fraction of the tracer luminosity. 
+The first step in progressing from total mass measurements to resolved density profiles is through estimates of disk sizes.  There is no obvious general definition for size from an observational perspective, since any metric depends on the prescription adopted for interpreting the radial variation of a given tracer.  There is an expectation that the mass distribution exhibits a break at some radius, beyond which it drops off more precipitously into the background.  That practical notion was originally motivated by the sharp cut-off of larger bodies in the Solar System around 40 au \citep[e.g.,][]{luu02}, but it is now supported by many disk observations \citep[e.g.,][]{andrews18}.  Nevertheless, there is no {\it a priori} knowledge of the detailed behavior of that transition, nor how it manifests in different tracers.  The ideal solution would be to employ a robust parametric model for the physical structure and use that to homogenize size measurements.  But it should be clear at this point that such an effort is littered with ambiguities.  Recognizing that ignorance for the time being, the more practical approach is to assign an empirical definition of size as the effective radius that encircles some fixed fraction of the tracer luminosity. 
 
-There are resolved size measurements of the $\lambda \approx 1$ mm continuum emission from solids for $>$100 nearby disks, with effective radii spanning $\sim$5--200 au \citep{tripathi17,tazzari17,barenfeld17_sizes,andrews18}.  Crude size constraints, falling in the same range, are available for another $\sim$100 targets \citep[e.g.,][]{eisner18,cieza19}.  The lower bound of that range is presumably resolution-limited.  There is a striking tight correlation between the continuum sizes and luminosities \citep{andrews10,pietu14}, with a scaling relation $L \propto R^{1/2}$ \citep{tripathi17,andrews18}.  Figure \ref{fig:continuumstuff} shows the continuum size distribution and this size--luminosity scaling.  This relationship is presumably produced by the evolution of disk solids \citep{tripathi17,rosotti19b}, although extracting more information in that context is potentially muddled by a degeneracy with high optical depths \citep{andrews18,zhu19}.  
 
-The spatial variation of the microwave spectrum shape suggests that the continuum size is correlated with the observing frequency \citep[e.g.,][]{perez12,lperez15,tazzari16}.  The proper context of such inferences will be revisited elsewhere, but explicit estimates of the shapes of this correlation indicate a modest scaling, $R \propto \nu^{0.2-0.5}$ \citep{tripathi18}.  An alternative size metric is available from the extent of the optical/infrared starlight scattered off the disk surface.  Despite the difficulties of measuring that signal at large distances from the star, the current suite of scattered light images clearly indicate that the $\mu$m-sized dust grains that reflect starlight are distributed out to considerably large distances than the larger particles responsible for the microwave continuum.  
+\subsubsection{Overview of Measurements}
+Resolved size measurements of the $\lambda \approx 1$ mm continuum emission from solids are available for more than 100 nearby disks, with radii in the range $\sim$5--200 au (\citealt{tripathi17,tazzari17,andrews18}, Hendler et al.~2019).  Coarser constraints find similar values for another $\sim$100 targets \citep[e.g.,][]{barenfeld17_sizes,eisner18,cieza19}.  The lower bound of this range is presumably limited by resolution.  In general, there is a tight correlation between the continuum sizes and luminosities \citep{andrews10,pietu14} with a scaling relation $L_{\rm mm} \propto R_{\rm mm}^{1/2}$ \citep{tripathi17,andrews18}, although this may flatten out at the low end or exhibit some other demographic dependence (Hendler et al.~2019; see Section \ref{sec:demographics}).  {\bf Figure \ref{fig:sizes}} shows the this size--luminosity scaling behavior.  This relationship is presumably produced by the evolution of disk solids \citep{tripathi17,rosotti19b}, although extracting more information in that context is potentially muddled by a degeneracy with high optical depths \citep{andrews18,zhu19}.  
 
-Sensitivity limitations mean there are many fewer size measurements in spectral line tracers of the gas.  The $^{12}$CO lines typically extend to radii of $\sim$100--500 au \citep{ansdell18}, although there are a few exceptional outliers on the high end \citep[e.g.,][]{guilloteau98,panic09}.  Smaller disks presumably exist, but are missing in current samples due to sensitivity limitations \citep[e.g.,][]{barenfeld17_sizes}.  Nevertheless, tracer size comparisons for individual disks make it clear that the spectral line emission extends typically twice as far from the host star as the microwave continuum \citep{ansdell18}.  Some of that size discrepancy is produced by the different optical depths of the tracers \citep{hughes08,trapman19}, but detailed modeling efforts have convincingly argued for a genuine variation between the tracer densities as well \citep[e.g.,][]{panic09,andrews12,degregorio-monsalvo13,rosenfeld13b,facchini17}.  The implication is a radial decrease in the solids-to-gas ratio, an expected consequence of the evolution of disk solids that will be addressed further in Section \ref{sec:solids}.
+The spatial variation of the mm spectrum shape suggests that the continuum size is correlated with the observing frequency (e.g., \citealt{perez12,lperez15,tazzari16}).  The context of such inferences will be revisited elsewhere (see Section \ref{sec:solids}), but explicit estimates of the shape of this correlation indicate a modest scaling, $R_{\rm mm} \propto \nu^{0.2-0.5}$ \citep[e.g.,][]{tripathi18}.  An alternative size metric for the solids is available from the extent of the optical/infrared starlight scattered off the disk surface.  Despite the difficulties of measuring that signal at large distances from the star, the current suite of scattered light images clearly indicate that the $\mu$m-sized dust grains that reflect starlight are distributed out to considerably large distances than the larger particles responsible for the mm continuum ({\bf Figure \ref{fig:ims}} illustrates this with a particularly clear example).  
+
+Owing to limited sensitivity, there are many fewer size measurements in spectral line tracers of the gas.  The $^{12}$CO lines typically extend to radii of $\sim$100--500 au \citep{ansdell18}, although there are a few exceptional outliers on the high end \citep[e.g.,][]{guilloteau98,panic09}.  Smaller disks presumably exist, but are weak enough line emitters that they are missing in current samples \citep[e.g.,][]{barenfeld17_sizes}.  Nevertheless, tracer size comparisons for individual disks make it clear that the spectral line emission extends typically twice as far from the host star as the microwave continuum (\citealt{ansdell18}; see {\bf Figure \ref{fig:sizes}}).  Some of that size discrepancy is produced by the different optical depths of the tracers \citep{hughes08,trapman19}, but detailed modeling efforts have convincingly argued for a genuine variation between the tracer densities as well \citep[e.g.,][]{panic09,andrews12,degregorio-monsalvo13,rosenfeld13b,facchini17}.  The implication is a radial decrease in the solids-to-gas ratio ($\zeta$), an expected consequence of the evolution of disk solids (see Section \ref{sec:solids}).
+
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{sizes.pdf}
+\caption{(a) The observed correlation between the $\lambda = 0.9$ mm continuum sizes (the effective radii that encircle 68\%\ of the flux density) and luminosities (in flux density units, scaled to a distance of 140 pc), with the inferred $R_{\rm eff} \propto L_{\rm mm}^{0.5}$ scaling relation overlaid (data from \citealt{tripathi17,andrews18}, Hendler et al.~2019).  (b) A comparison of the sizes inferred from the mm continuum and the $^{12}$CO line emission, with markers indicating various levels of discrepancy (data from \citealt{ansdell18} and elsewhere).}
+\label{fig:sizes}
+\end{figure}
+
+
+\subsubsection{Caveats and Ambiguities}
+The important caveat to such empirical size measurements is that they are not directly (or linearly) tied to the mass distribution.  While their behavior may point to fundamental physical relationships, a translation  into physical radii is not obvious (and indeed does not make much sense).  This is particularly challenging in the comparisons of mm continuum and $^{12}$CO sizes, where optical depth effects and radial opacity variations are important.  Ultimately, a quantitative version of that comparison relies on more detailed radiative transfer calculations; evidence for the size discrepancy is only available in a logical negation of the assumption that $\zeta(r) \approx {\rm constant}$.    
 
 
 
 \subsection{Surface Density Profiles} \label{sec:sigma}
 
-Spatially resolved measurements of the same mass tracers introduced in Section \ref{sec:mass} can in principle be used to constrain the radial surface density profiles of the solids ($\Sigma_s$) or gas ($\Sigma_g$), albeit subject to the ambiguities and caveats discussed above.  
+In principle, spatially resolved measurements of the same mass tracers introduced in Section \ref{sec:mass} can be used to constrain the radial surface density profiles of the solids ($\Sigma_s$) or gas ($\Sigma_g$).  In simple models for the gas evolution, measurements of $\Sigma_g$ offer insights on the turbulent viscosity (e.g., \citealt{hartmann98,hueso05}) or large-scale winds \citep[e.g.,][]{blandford82,pudritz83,bai13} that regulate the accretion and angular momentum transfer of disk material.  The behavior of $\Sigma_g$ also determines what types of planets and system architectures can be formed \citep[e.g.,][]{miguel11,alibert13}, and how they will evolve via migration \citep[e.g.,][]{paardekooper10,baruteau11}.  Meanwhile, the processes that drive the growth of dust grains into planetesimals are largely dictated by the $\Sigma_s$ profile \citep[e.g.,][]{garaud07,johansen09,birnstiel12}.  It is not an overstatement to claim that the disk density structure ties into all the key physical processes relevant to planet formation.        
 
-A key emphasis on the interpretation of modest resolution ($\sim$20--50 au) interferometric observations of the microwave continuum morphologies has been on estimating the density gradient \citep{guilloteau98,aw07a,pietu07,andrews09,andrews10,isella09,pietu14}, since that is presumed to influence the architectures of future planetary systems \citep[e.g.,][]{miguel11}.  The mechanics and parameterizations of the modeling used to measure those gradients varies substantially between studies, but a crude distillation of the results in terms of a broken power-law profile suggests $\Sigma_s \propto 1/r$ or shallower in the inner disk, and $\Sigma_s \propto 1/r^3$ or steeper at large radii.  It is worth remembering that these data are really measuring gradients at large radii: the extrapolations to the inner disk are determined by the functional form of the adopted $\Sigma_s$ parameterization and at best a few resolution elements that trace a turnover toward the inner disk.  The inferred surface density normalizations from these studies typically span $\sim$0.001--1 g cm$^{-2}$ (of solids) at radii of 50--100 au, comparable to the disk-averaged $\langle \Sigma_s \rangle$ expected from the normalization of the continuum size--luminosity relation and similar assumptions about the temperatures and opacities \citep{tripathi17}.  Efforts to more robustly quantify $\Sigma_s$ have been stymied by the evidence that optical depths are likely high inside a few tens of au and that $\kappa_\nu$ clearly varies with radius (see Section \ref{sec:solids}).   
+\subsubsection{Overview of Measurements}
+A key emphasis on the interpretation of modest resolution ($\sim$20--50 au) interferometric observations of the mm continuum morphologies has been on estimating the shape of $\Sigma_s$ \citep{aw07a,pietu07,pietu14,andrews09,andrews10,isella09}.  The mechanics and parameterizations of the modeling used to measure those gradients varies substantially between studies, but a crude distillation of the results in terms of a broken power-law prescription suggests $\Sigma_s \propto r^{-1}$ or shallower in the inner disk, and $\Sigma_s \propto r^{-3}$ or steeper at large radii.  These studies are really measuring the gradients at large distances from the host star (tens to hundreds of au): extrapolations to the inner disk are determined by the functional form of the adopted $\Sigma_s$ parameterization and (at best) a few resolution elements that trace a turnover toward the inner disk.  The inferred $\Sigma_s$ values span $\sim$0.001--1 g cm$^{-2}$ at $r \approx 50$--100 au, comparable to the disk-averaged $\langle \Sigma_s \rangle$ expected from the normalization of the continuum size--luminosity relation and similar assumptions about the temperatures and opacities \citep{tripathi17}.  
+
+Measurements of $\Sigma_g$ from line emission are still relatively rare, due primarily to the weaker emission from optically thin spectral lines.  The basic methodology is similar to the continuum work, where parameterized density prescriptions and thermal structures are forward-modeled to match the resolved interferometric data \citep[e.g.,][]{guilloteau98,isella07,qi08,qi11,rosenfeld13b,williams16}, in some cases with a more sophisticated backend to properly treat realistic abundances from chemical equilibrium models, heating, and molecular excitation \citep[e.g.,][]{woitke09,bruderer14,miotello18}.  Ideally, some of the intrinsic degeneracies can be mitigated by modeling multiple species or transitions of a given tracer molecule \citep[e.g.,][]{dartois03,schwarz16,zhang17,cleeves17}.  Some creative recent methodologies aim to get around the requirement of an assumed tracer abundance, using either excitation constraints from density-sensitive line ratios \citep[e.g.,][]{dutrey17} or multiwavelength continuum size measurements and a simplified model for the aerodynamics of solids embedded in the gas \citep{powell17,powell19}.       
 
 
+\subsubsection{Caveats and Ambiguities}
+The inferences and interpretations of density profiles suffer the same ambiguities outlined for the masses (Section \ref{sec:mass}), although with the added complexity that comes with access to their spatial variations.  Efforts to quantify $\Sigma_s$ are stymied by the evidence that optical depths can be high inside a few tens of au and that $\kappa_\nu$ varies with radius (see Section \ref{sec:solids}).  Analogous concerns limit estimates of $\Sigma_g$ (for the standard approaches).  Moreover, if solid densities are high spectral line emission can be prevented from reaching the observer if it originates below the continuum photosphere or from the back side of the disk \citep[e.g.,][]{weaver18,isella18}.  If that continuum blocking is significant, robust estimates of $\Sigma_g$ from line data will also need to simultaneously infer $\Sigma_s$ from (multiwavelength) continuum data (a daunting prospect).  
+
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{tw_sigma.pdf}
+\caption{tbd}
+\label{fig:tw_sigmas}
+\end{figure}
+
+It is safe to argue that the ability to quantitatively measure density profiles is still in an exploratory phase, with progress that is severely limited by systematics related both to the methodology and the intrinsic degeneracies.  This is illustrated in {\bf Figure \ref{fig:tw_sigmas}}, which shows the wide range of $\Sigma_g$ and $\Sigma_s$ estimates for the TW Hya disk from various approaches in the literature, along with some standard benchmarks for reference.    
+
+ 
 
 
-%clever ideas: discuss Dutrey approach = multi-transition resolved spectral images to trace 2-D temperature structure; couple that with density-dependent excitation diagnostics.  use sizes and some simplified theoretical assumptions about dust evolution, etc. to crudely estimate gas densities (powell).  not easy or independent of model structure prescription, but principled.
+\subsection{Opacities and Particle Properties} \label{sec:opacities}
+
+Although not a formal aspect of the disk structure, the microphysical properties of an ensemble of solids -- compositions \citep{pollack94}, sizes \citep{miyake93}, morphologies \citep{henning96} -- are strongly influenced by their local physical conditions, and therefore merit some elaboration.  In a sense, these characteristics are useful, albeit indirect, diagnostics of the disk structure (see Section \ref{sec:solids}).  The particle properties are encoded in the absorption and scattering opacities, and are therefore fundamentally important for interpreting observations of thermal continuum emission.          
+
+%There are large uncertainties in any inference of $M_s$ from microwave continuum data, for two primary reasons.  First, the assertion that the emission is optically thin is unlikely to be valid at all disk locations.  Once optical depths are high, the emission saturates and mass is hidden ($M_s$ is under-estimated).  The significance of this effect depends on the surface area of the thick emission, which will be revisited in various contexts throughout this review.  Second, even in the $\tau_\nu \ll 1$ limit, the continuum luminosity scales with the product of the temperature, opacity, and mass.  The uncertainty in $T$ will be addressed in Section \ref{sec:temp}.  There is considerable ambiguity in $M_s$ estimates due solely to our relative ignorance of the microphysical particle properties that set $\kappa_\nu$, including their mineralogical (and ice) compositions \citep{pollack94}, sizes \citep{miyake93}, and internal structure (porosity; \citealt{henning96}).  
+
+Information about the compositions of disk solids can be accessed through spectral features in the infrared, particularly from silicates \citep{kessler-silacci06,bouwman08,sargent09b} and common ices \citep{oberg08,bottinelli10,mcclure15}.  Various carbonaceous materials are also expected to be primary constituents \citep{zubko96,jaeger98}.  The implied compositions are commensurate with {\it in situ} measurements of dust particles, meteorites, and larger ``primordial" bodies in the Solar System \citep[e.g.,][]{clayton04,mumma11}.  The sizes and morphologies of the emitting particles have the most pronounced effects on the behavior of the opacities.  Size distributions are often approximated as power-laws, $n(a) \propto a^{-q}$ for size (radius) $a \in [a_{\rm min}, a_{\rm max}]$, with indices comparable to the expectation for a self-similar collisional cascade ($q \approx 3.5$; \citealt{dohnanyi69,tanaka96}) or more top-heavy variants ($q \approx 2.5$; e.g., \citealt{birnstiel11}).  The particle morphologies are characterized by their porosities, usually parameterized with a volume filling factor $f_s$ ($\sim$1 for compact particles, but can be as low as $\sim$10$^{-4}$ in aggregates; \citealt{kataoka13}).  The mm opacity spectrum is roughly a power-law, $\kappa_\nu \approx \kappa_0 (\nu/\nu_0)^\beta$, where $\kappa_0$ and $\beta$ both depend on \{$q$, $a_{\rm max}$, $f_s$\}.  
+
+For reference, {\bf Figure \ref{fig:opac}} illustrates how the opacities respond to particle properties, for some representative model variations (see \citealt{cuzzi14}, \citealt{woitke16}, or \citealt{dsharp5} for more detailed explorations of the parameter-space). When $a_{\rm max} \ll \lambda$, the absorption opacity normalization, $\kappa_0^{\rm abs}$, is roughly independent of the size cut-off, $\beta$ is high ($\sim$1.7, as for the small dust grains in the interstellar medium; \citealt{finkbeiner99}), and scattering is negligible (the albedo $\omega_\nu \approx 0$).  When $a_{\rm max} \gg \lambda$, $\kappa_0^{\rm abs}$ decreases with $a_{\rm max}$ at a rate that depends on $q$ (lower $q$ means a steeper fall-off; e.g., \citealt{ricci10a}), $\beta$ is lower (scaling roughly with $q$; \citealt{draine06}), and albedos depend on $q$ (large $q$ implies higher $\omega_\nu$).  When $a_{\rm max} \sim \lambda$, resonances drive up $\kappa_0^{\rm abs}$, $\beta$, and $\omega_\nu$.  Porosity dampens those resonant amplifications in the absorption opacities, but can enhance albedos \citep{kataoka14}.  
+% consider swapping notation to have albedo = eta (not omega); that's what Birnstiel does (check what Draine
+% and other folks do)
+%Specifically, $\kappa_0^{\rm abs}$ varies with the product $a_{\rm max} f_s$, such that porous particles have a lower $\kappa_0^{\rm abs}$ and higher $\beta$ than compact particles with the same size distribution \citep{kataoka14}.  %%% SA: this is clearly not generically true (or true in detail)!
+
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{opac.pdf}
+\caption{kappa0, beta, albedo as fn of amax (different q, phi, composition, mixing rule, DDA v Mie)}
+\label{fig:opac}
+\end{figure}
+
+\subsubsection{Overview of Measurements}
+Access to information about the opacities comes from thermal continuum emission from the particles, as described in Section \ref{sec:primer_cont}.  Even if optically thin, the continuum emission intensity cannot directly constrain $\kappa_0^{\rm abs}$ because of the degeneracy with $\Sigma_s$.  Instead, information about the particle properties are primarily accessible from the shape (or ``color") of the mm continuum spectrum, $\alpha_{\rm mm}$, presuming all of the emission is optically thin.  Multiwavelength photometry surveys find disk-averaged $\langle \alpha_{\rm mm} \rangle \approx 2$--3 \citep{beckwith91,mannings94,ricci10a,ricci10b,ricci12}, implying $\langle \beta \rangle \le 1$ and $\langle a_{\rm max} \rangle \gtrsim 1$ mm.  {\bf Figure \ref{fig:opac}} also shows how $\langle \alpha_{\rm mm} \rangle$ varies with $L_{\rm mm}$ and $R_{\rm mm}$.  Spatially resolved inferences of $\alpha_{\rm mm}$ typically show a radial increase from $\sim$2 to $\gtrsim$3, typically interpreted as evidence that particle sizes are considerably larger at smaller disk radii ($a_{\rm max}$ decreases from a few cm to sub-mm sizes; e.g., \citealt{perez12,lperez15,menu14,tazzari16}; see Section \ref{sec:solids}). 
+
+Complementary insights on particle sizes are available from the polarization of self-scattered sub-mm/mm continuum emission \citep{hughes09b,kataoka15}.  Albedos increase sharply at $a_{\rm max} \sim \lambda / 2\pi$ (see {\bf Figure \ref{fig:opac}}), while the polarization fraction exhibits the opposite behavior.  The net effect implies that the wavelength dependence of the polarization fraction sets a stringent limit on $a_{\rm max}$.  Resolved observations of the sub-mm/mm polarization morphology are consistent with model predictions for scattering \citep{kataoka16a,yang17,stephens17,hull18,bacciotti18,dent19}.  The few disks with measured multiwavelength polarization fractions indicate that $a_{\rm max}$ is in the sub-mm range \citep[e.g.,][]{kataoka16b,ohashi18}.  
+
+%,  presuming scattering is the dominant polarization mechanism.        
+
+\subsubsection{Caveats and Ambiguities}
+There are both technical and observational ambiguities associated with the particle properties.  On the technical side, the conversion of the physical characteristics of the particles into their corresponding optical properties is important, and could be considerably more complicated than is often assumed.  Some of these key issues include accounting for the temperature dependence of the constituent refractive indices, the methodology adopted for mixing those dielectric properties in a composite particle, appropriately calculating absorption and scattering cross sections of porous, non-spherical particles, and the over-simplified assumption of a single power-law size distribution, to name only a few (for more details, see the discussion by \citealt{dsharp5}).   
+
+Putting aside these technical issues, there are some general systematic uncertainties associated with interpreting observational diagnostics of the particle properties.  There is a sort of apocryphal notion that optically thin continuum emission traces particles with a size comparable to the observing wavelength: a more accurate statement is that the emission is most efficient with this criterion, since it corresponds to the peak $\kappa_0^{\rm abs}$ (giving the most emission per mass).  However, particles of all sizes still contribute, and that facilitates the fundamental ambiguity that the opacities can be arbitrarily low if large solids are present.  The key practical point is that a constraint on $\beta$ from a measurement of $\alpha_{\rm mm}$ only sets a lower bound on $a_{\rm max}$, since $\beta$ saturates once $a_{\rm max} \gg \lambda$ (see {\bf Figure \ref{fig:opac}}).  That, in turn, sets an upper bound on $\kappa_0^{\rm abs}$, and correspondingly a lower bound on $\Sigma_s$ (or $M_s$).  
+\begin{marginnote}
+Note in {\bf Figure \ref{fig:opac}} that the opacities routinely adopted in the literature ($\sim$2 cm$^2$ g$^{-1}$ at $\lambda = 1.3$ mm) are effectively upper bounds. 
+\end{marginnote}
+
+The presence of optically thick emission severely complicates the interpretations of these diagnostics of the particle properties (see Section \ref{sec:primer_cont}).  Low $\alpha_{\rm mm}$ values could alternatively be attributed to high optical depths, even if nominally the filling factor is rather modest \citep[e.g.,][]{ricci12}.  The preferentially flatter spectra inferred at smaller disk radii from resolved multiwavelength data could instead be attributed to optically thick inner disks, with $\alpha_{\rm mm}$ there being more of a diagnostic of the spectral variation of the albedo \citep{zhu19,liu19}.  That scenario may help reconcile the mild tension between the particle sizes inferred from $\alpha_{\rm mm}$ and the polarization fractions, and could then offer a tight constraint on the particle sizes in the continuum photosphere layer.  Well-resolved, multiwavelength polarization measurements would be crucial in this regard, since there are plausible alternative mechanisms for polarizing the continuum \citep[e.g.,][]{matsakos16,stephens17,tazaki17,yang19,kataoka19}; though with peak polarization fractions of a few percent, this is a challenging observational task.            
+%key problem is that low spectral index can also mean optically thick, although nominally with modest filling factor.  it sort of depends on how optically thick emission is distributed though (ricci).  spatially resolved alpha might point out that inner disk is thick.
+
+%polarization signatures can be induced by other mechanisms; ideally want higher resolution view at many wavelengths to understand better (but that's hard with ~few percent pol levels).  one possible solution to apparent tension in amax estimates is to have an optically thick photosphere with just the right particle sizes to get v high albedos, right pol, and then sub-planckian emission to give you wonky alphamm.
+
+%Unresolved spectral index measurements naturally gloss over some important complexities.  The particle properties, and thereby the opacities, are expected to vary spatially in disks.  The (presumably inter-dependent) morphologies of those variations make it difficult to determine the impact of $\kappa_\nu$ changes on inferences of $M_s$ without spatially resolved measurements of $\alpha_{\rm mm}$.  Moreover, an unknown fraction of the continuum emission can be optically thick, where $\alpha_{\rm mm} \approx 1.5$--2.5 depending on $T$ (or $\alpha_{\rm Pl}$) and the spectral dependence of the albedo \citep{zhu19,liu19}.  This would diminish unresolved (disk-averaged) estimates of $\beta$, again limiting an assessment of the $M_s$ uncertainty due to the opacities.
+
+
 
 %honest assessment: the only robust way to do this is long term: model resolved multi-line emission, rely on iterative self-cal of chemical models, etc.  painful, but could illuminate a path forward with (a) some effort here and (b) some more datasets that may point to important patterns.
 
 
 \subsection{Thermal Structure} \label{sec:temp}
 
-physics overview: irradiation heating, dominated by the vertical distribution of small grains.  temperature depends on host luminosity/spectrum, particle size, porosity, compositions (IR opacity), optical depths, flaring angle (set partially by turbulence/diffusion), and any shadowing.  surface layers can be super-heated and Tgas can deviate from Tdust when line cooling becomes comparable to small grains.  secondary heating source could be mechanical work from viscosity in inner disk.  smaller effects from radioactivity, CRs (?), see d'alessio papers.
-%viscous deposition; accretion shocks; radioactivity; external sources
+The thermal structure of a disk helps determine the distribution and evolution of its constituent material.  Its role is usually distilled in terms of a fundamental kinematic scale, the sound speed $c_s$ ($\propto \sqrt{T}$), or a related spatial scale, the gas pressure scale height $H_p = c_s / \Omega_{\rm k}$ ($\propto \sqrt{T r^3}$) where $\Omega_{\rm k}$ is the Keplerian angular velocity.  Irradiation by the host star is the primary factor determining the temperature distribution.  Small dust grains in the disk atmosphere absorb starlight efficiently (due to their large $\kappa_\nu^{\rm abs}$ in the infrared), and re-radiate some of that energy deeper into the disk \citep[e.g.,][]{chiang97,dalessio98}.  The net results are an increasing $T(z)$ \citep{calvet91} and a decreasing $T(r)$ \citep{kenyon87,adams90}.  This heating mechanism depends on the host star spectrum and luminosity ($L_\ast$), as well as the microphysical properties (see Section \ref{sec:opacities}) and vertical distribution of the particles, which dominate the opacity \citep{dalessio99b,dalessio06,dullemond02,dullemond04b}.  The height at which starlight is absorbed is set by the balance between turbulent diffusion (vertical mixing), particle growth, and the coupling of solids to the hydrostatic support of the gas \citep{dubrulle95,turner10}.  If all else is equal, more vigorous mixing or a smaller $z$-component of the gravity (relative to the pressure) increases the height (and therefore irradiated area) of this surface layer, which in turn leads to a warmer disk.  
+
+Since the molecular excitation and thermal emission in both spectral lines and the mm continuum depend so intimately on the temperature distribution, it is important to consider additional contributing factors to the disk heating and cooling.  For example, some spectral line emission originates in locations where $\zeta$ is low (e.g., high in the disk atmosphere or at large radii; see Section \ref{sec:solids}) and the broadband continuum cooling is therefore diminished; then, collision rates can be low enough that the gas is super-heated ($T_g > T_s$; e.g., \citealt{jonkheid04,kamp04,bruderer13}).  And, while usually secondary to stellar irradiation, alternative heating sources -- viscous dissipation \citep{shakura73,dalessio98}, spiral shocks \citep{rafikov16}, radioactivity \citep[e.g.,][]{cleeves13}, external irradiation (e.g., from an envelope; \citealt{dalessio97}) -- or other perturbations (e.g., self-shadowing; \citealt{dullemond04a}) to the thermal structure of a disk can still play important physical and observational roles.  
 
 
-observations: you want to access optically thick tracers over a range of disk locations.  some information in infrared SED, limits on vertical distribution of dust (scattering, thermal).  there are benchmarks available (in principle) from chemical signatures (e.g., CO snowlines).  the ideal approach is to use the excitation constraints from multiple transitions of a given molecular species, and use that to sound out things.  limited success in this so far, because its time-consuming.  but it really is necessary.  worry about non-LTE in some cases.  ultimately want to link these things all together.  this is the key...once you have a T(r,z) model that is robust to the data, then you can try to get gas densities.
+\subsubsection{Overview of Measurements}
+Optically thick tracers offer superior constraints on the thermal structure in disks.  The classical approach is to forward-model the spatially unresolved infrared spectral energy distribution (SED) with a reasonable density (and opacity) prescription, because its shape and amplitude are sensitive to the gradient and normalization of $T(r)$ in the photosphere layer, respectively \citep{adams90,chiang97,dalessio98}.  Some additional constraints are available from scattered light or mm continuum images that resolved the vertical structure of the disk, particularly for edge-on viewing geometries \citep[e.g.,][]{stapelfeldt98,lee17}.
 
-%The key advantage of the CO isotopologues is that their line emission is often sufficiently bright and extended to facilitate spatially resolved measurements.  Typical gas disk radii as traced by CO emission are 100--1000 au \citep[e.g.,][]{ansdell18}, considerably larger than for the continuum (see Section 4).  For an optically thin species and assuming some prescription for the abundance distribution of that tracer \citep[e.g.,][]{miotello18}, the line intensity scales with the product of the local density and temperature, $\Sigma_g T_g$ (i.e., the gas pressure, $P_g$).  In constraining $\Sigma_g$, the $T_g$-dependence can be treated parametrically \citep{guilloteau98,isella07,williams16}, derived from models of the continuum emission \citep{qi08,qi11,rosenfeld13b}, or informed by modeling the excitation from multiple transitions of a given species \citep{dartois03,schwarz16,zhang17}.  
+The radial intensity profile of an optically thick spectral line is sensitive to the temperature distribution at the height of the (vertically narrow) line photosphere \citep[e.g.,][]{beckwith93,dutrey14,weaver18}.  With sufficient resolution, the two dimensional geometry of that specific emission layer can be measured direcly (e.g., \citealt{rosenfeld13a,pinte18}, Dullemond et al.~2019).  In principle, an empirical constraint on $T(r,z)$ is possible by probing the temperature profiles at different depths in the disk atmosphere with multiple transitions (or other tracer lines) with a range of excitation conditions \citep[e.g.,][]{dartois03,qi04,schwarz16}.  Ideally, that multi-line reconstruction effort can be supplemented with discrete benchmarks in $T(r)$ that are accessible from chemical signposts of condensation fronts (snowlines), where major volatile species (CO, N$_2$) are removed from the gas phase when they freeze onto particle surfaces (e.g., \citealt{qi11,qi13,qi15}, Qi et al.~2019).    
 
 
-\subsection{Dynamical Structure} \label{sec:turb}
+\subsubsection{Caveats and Ambiguities}
+The fundamental challenge in measuring disk temperatures, particularly from continuum emission, are the intricate physical degeneracies involved.  For example, the optical properties (and thereby opacities) of the particles are $T$-dependent \citep[e.g.,][]{boudet05,demyk17}, but the temperatures are set by the local variations in $\kappa_\nu$.  Treating this complexity in a self-consistent way is a computational challenge, and even when successful requires a curtailed model sophistication for tractability \citep[e.g.,][]{woitke16}.  The resulting ambiguity somewhat limits the power of temperature constraints from continuum measurements \citep[e.g.,][]{heese17}.  
 
+There are few successful examples of the spectral line approach for $T(r,z)$ measurements in disks, primarily because collecting data for the different tracers demands a substantial observational investment.  The primary challenge is achieving appropriate sensitivity at high resolution, although there are more technical concerns related to continuum contamination \citep{weaver18} and non-LTE excitation.  However, a compromise in data quality might be compensated with a sufficient volume of different tracers \citep[e.g.,][]{fedele16}.  Ultimately, this approach is essentially a requirement for robust constraints on the disk structure: only once a data-based $T(r,z)$ model is available can optically thin spectral line measurements facilitate estimates of the gas densities.
+
+
+
+\subsection{Dynamics and Structure} \label{sec:turb}
+All of the key structure properties outlined above are heavily influenced by the dynamics of the gas disk.  The dynamical structure of this fluid controls the transport of mass and angular momentum in the disk, and thereby determines the evolution of its density distribution.  The dynamical coupling between the gas and solids is fundamental to planet formation, since it plays crucial roles in particle growth from dust grains to planetesimals and beyond (Section \ref{sec:solids}).  The dominant contribution to the dynamics of a parcel of gas is its orbital motion around the host star.  But deviations from that Keplerian velocity field ($v_{\rm k}$) are expected, due to effects like pressure support, self-gravity, winds and outflows, magnetohydrodynamic (MHD) flows, and viscous transport.  
+
+Beyond these factors that control the ordered dynamical structure of a disk, there is special interest in  random motions.  Turbulence has traditionally been asserted as the origin of the disk viscosity that facilitates angular momentum transport (and ultimately accretion onto the host star), drives chemical mixing, and sets the relative velocities of solids, among other diffusive processes.  The amount of turbulence is usually characterized in terms of a dimensionless coefficient, $\alpha_{\rm t} = \nu / c_s H_p$, where $\nu$ is the fluid viscosity.  For traditional models of turbulence driven by the magnetorotational instability (MRI), the expectation is $\alpha_{\rm t} \sim 0.001$--0.01.  But a shifting theoretical paradigm now argues that the MRI is suppressed over much of the disk volume by non-ideal MHD effects, suggesting that turbulence (and viscous transport itself) is minimal, with an effective $\alpha_{\rm t} \lesssim 10^{-4}$.  
+
+
+\subsubsection{Overview of Measurements}
+A tomographic reconstruction of the disk velocity field is possible with a collection of spatially and spectrally resolved maps of emission lines with a variety of optical depths.  The process is conceptually similar to deriving the thermal structure (Section \ref{sec:temp}), but with a focus on the kinematic pattern rather than the line intensities.  That said, the same limitations on sensitivity and resolution have made suitable datasets rare.  The available data confirm only that orbital motions are dominant \citep{simon00,msimon17,rosenfeld12,czekala15,czekala16}.  Deviations from Keplerian motions are expected at the few percent level at radii of tens to hundreds of au \citep{rosenfeld13a}.  Recently, some kinematic signatures of winds \citep[e.g.,][]{guedel18} and small-scale pressure modulations \citep{yen16,teague18a,teague18b,pinte18b} have been teased out from emission line maps of especially bright targets.  
+
+Constraints on turbulence are available from a few different observational probes.  First, and most direct, is a resolved measurement of spectral line broadening since the linewidth is set by the composite distribution of thermal (with characteristic width $(k T / m)^{0.5}$ for molecular mass $m$) and non-thermal (with width $\delta v_{\rm t}$) motions.  Constraints on $\delta v_{\rm t}$ are available for only three examples.  In two cases only upper limits are identified from various CO, CS, and DCO$^+$ lines that probe radial scales of $\gtrsim$50--100 au and heights of $\sim$1--3 $H_p$, with $\delta v_{\rm t} < 0.03$--0.08 $c_s$ or $\alpha_{\rm t} \lesssim 0.002$--0.007 \citep{hughes11,flaherty15,flaherty17,flaherty18,teague18a}.  The third case finds a much broader CS linewidth, $\delta v_{\rm t} \approx 0.6$ $c_s$ ($\alpha_{\rm t} \approx 0.4$), at similar radial and vertical scales, although the adopted prescription for converting the broadening measurement into a turbulence constraint may be inappropriate in that case \citep{guilloteau12}.   
+
+% TW Hya from Flaherty+ 18: dv < 0.1 cs at 2-3 Hp (alpha < 0.007) from CO 2-1.
+%             Teague+ 18 agrees based on CS lines
+%             Hughes+ 11 numbers are only slightly less stringent (if at all) from CO 3-2
+% HD 163296 from Flaherty+ 17: dv < 0.05 cs (alpha < 0.003) from CO 2-1, C18O 2-1, DCO+ 3-2 
+%                Flaherty+ 15: dv < 0.03 cs (alpha < 0.002) from CO 3-2 and other CO 2-1 isotopologues
+%                Hughes+ 11 found a marginal detection that must be wrong
+% DM Tau from Guilloteau+ 12: dv ~ 0.6 cs (alpha ~ 0.4 !?) from CS 3-2 at ~2-3 Hp
+
+second, can quantify diffusion based on nominally ``sharp" features.  for example, the radial widths (dullemond) or vertical heights (pinte) of dust continuum features are connected to turbulent mixing processes.  discuss constraints / upper limits in context of alpha.  mention Owen's snowline idea.  point out that both types of measurement suggest that turbulence is low, alpha < 1e-3ish, consistent with concept that MRI is suppressed over most of the disk volume due to non-ideal MHD effects.
+
+
+\subsubsection{Caveats and Ambiguities}
+Inferring that turbulent contribution from interferometric observations of a molecular emission line are a challenge, primarily because the thermal term dominates.
+same issues with line measurements, and limited resolution can cause you to screw up your v-field reconstruction if you do not know the line photosphere location.  there's some special ambiguities due to warps.  structural perturbations are secondary effects; they matter at the per cent level.  that also implies they are not easy to separate from the dominant rotation field (though teague, yen have worked on ways to do this properly).
+
+line broadening measurements are difficult, because there is a direct degeneracy with the (poorly constrained) thermal structure of the line-emitting region.  that introduces some ambiguity, but the fact remains that no evidence for turbulent broadening is found (limits might change a bit).  the degeneracies of the continuum-based diffusion constraints are orthogonal: they depend on the sizes of the particles responsible for the continuum emission.  fact that they agree in scale with the line broadening limits suggests that the conclusion of little turbulence is robust, even if precision is still lacking.  
  
 
-\begin{figure}[h]
-\includegraphics[width=3in]{SampleFigure}
-\caption{Figure caption with descriptions of parts a and b}
-\label{fig:continuumstuff}
-\end{figure}
+%\begin{figure}[h]
+%\includegraphics[width=3in]{SampleFigure}
+%\caption{Figure caption with descriptions of parts a and b}
+%\label{fig:continuumstuff}
+%\end{figure}
 
 
 \begin{textbox}[h]\section{Summary}
@@ -250,21 +331,38 @@ TBD
 %\subsection{Summary}
 
 
-%Example of a Figure
-\section{DEMOGRAPHIC\ INSIGHTS} \label{sec:demographics}
-%\subsection{Figures}Figures should be cited in the main text in chronological order. This is dummy text with a citation to the first figure (\textbf{Figure \ref{fig1}}). Citations to \textbf{Figure \ref{fig1}} (and other figures) will be bold. 
 
-\subsection{Links to Host Masses}
+
+\section{DEMOGRAPHIC\ INSIGHTS} \label{sec:demographics}
+some flowery introduction.
+
+
+\subsection{Links to Host Properties}
+somehow triggered to think that disk masses are tied to host masses.  naive gravitational intuition.  in reality, there is no need for this to be true, at least at the typical ages for which we measure disk masses, since it all depends on early evolution (accretion, etc.).  nonetheless, there are indirect hints based on connections made in the exoplanet population (run through that conceptually).
+
+as continuum surveys expand their dynamic range in both mhost and lmm, found hints for a correlation.  quantitatively characterize this.  comment on deviations between surveys.  some of the differences are more tied to how one interprets the lmm -to- ms connection (describe why), but similar behavior in lmm - mhost only.  comment on scatter origins -- multiplicity, evolution, temperature, opacity, density structures, and sizes are possibilities.  not yet clear if line emission diagnostics of Mg scale too, although some hints that line and continuum luminosities scale.
+
+growing information on connection between mhost and disk sizes.  any correlation is quite weak, although that is to be expected based on the mhost - lmm and lmm - size relations (quantify these things).  
+
+its compelling to note that the scalings seem a bit tighter with lstar compared to mstar.  hard to know what the real dependent variable is, since most of the sample is roughly co-eval with a single stellar mass-lum relation.  describe how in any case the only way you can get these relationships is if there is an intrinsic scaling between the host mass/lum and the disk size (or continuum size).  
+
+too limited to address connection to gas disk sizes, although rafikov and najita like to make the leap because of potential connections to viscous evolution.  some of that is motivated by connections to accretion rates.  discuss manara and mulders results.  again, not clear if the fundamental relation is the mhost - mdot relation or the mhost - mdisk relation...but because of the inter-connections, the other always follows.
+
 
 \subsection{Environmental Effects}
 
 two key environmental effects, on local scales/``internal" (multiplicity) and global scales/``external" (stripping via tidal encounters or harsh irradiation from nearby massive stars).  
 
+
 \subsubsection{Multiplicity}
-basic mechanics of disk truncation idea.  field population multiplicity rates and separation/eccentricity distributions.  differences there for nearby low-mass clusters.  that implies an expectation that multiplicity is pretty important in shaping observables.  see evidence for diminished continuum luminosities for pairs with closer separations (projected).  weird CB disk exception.  primaries have more mass in majority, but not all, cases.  population of stars in multiples follows similar scaling with host mass.  there is not good evidence for a continuum size vs separation relationship predicted by theory; maybe partly due to not using gas as the tracer, but could also be related to evidence for non-coplanarity (discuss that).  worth noting that fainter disks at smaller separations does not necessarily imply lower densities (consider how much emission you would get for v small optically thick disks).  FIGURE: show separation-Lmm distribution for all available pairs (maybe in left panel of 2-panel figure).
+basic mechanics of disk truncation idea.  field population multiplicity rates and separation/eccentricity distributions.  differences there for nearby low-mass clusters.  that implies an expectation that multiplicity is pretty important in shaping observables.  see evidence for diminished continuum luminosities for pairs with closer separations (projected).  weird CB disk exception.  
+
+primaries have more mass in majority, but not all, cases.  population of stars in multiples follows similar scaling with host mass.  there is not good evidence for a continuum size vs separation relationship predicted by theory; maybe partly due to not using gas as the tracer, but could also be related to evidence for non-coplanarity (discuss that).  worth noting that fainter disks at smaller separations does not necessarily imply lower densities (consider how much emission you would get for v small optically thick disks).  FIGURE: show separation-Lmm distribution for all available pairs (maybe in left panel of 2-panel figure).
+
 
 \subsubsection{Close Encounters}
-need to read up
+natural extension of tidal truncation in multiple systems is the effect of close, one-time encounters in a dense cluster environment.  this is generally though to be rare in the diffuse T associations where work has focused so far, but might actually be comparatively frequent because most stars are born in much denser/richer clusters.  general evidence is now limited by this selection bias, although there are a few compelling test examples nearby that conform with general tidal truncation expectations.  
+
 
 \subsubsection{External Photoevaporation}
 need to catch up.  FIGURE: probably second panel here showing Lmm versus distance from theta1 Oric.
@@ -272,6 +370,7 @@ need to catch up.  FIGURE: probably second panel here showing Lmm versus distanc
 
 
 \subsection{Evolutionary Signatures}
+
 
 \subsection{Summary}
 
@@ -281,6 +380,7 @@ need to catch up.  FIGURE: probably second panel here showing Lmm versus distanc
 %The standard assumption is that solids contribute a small fraction, $\sim$1\%, of the total mass budget in a disk.  Even in that case, solids play outsized roles in disks by helping to regulate their thermal balance (as the dominant opacity source) and facilitating complex chemical networks (as the sites of ice-modulated reactions), among other things.  Perhaps most significantly, disk solids are ultimately the seeds for the formation of planets.  As points of reference, the current census of exoplanets indicates that ``rocky" worlds are especially common \citep[e.g.,][]{howard10,dressing13,malhotra15}, and {\it in situ} measurements indicate that the giant planets in our Solar System contain massive sold cores \citep{saumon04,bolton17}.  Constraints on the spatial distribution of solids are essential for developing models of disk physics, and would be crucial resources for understanding the first steps of the planet formation process. 
 
 \subsection{Particle Growth and Migration}
+ 
 
 \subsection{Observational Constraints and Conundrums}
 
@@ -312,8 +412,6 @@ need to catch up.  FIGURE: probably second panel here showing Lmm versus distanc
 \section{FUTURE\ PROSPECTS} \label{sec:future}
 
 
-% ACKNOWLEDGMENTS: Seba Perez (for HD 169142 images), James Owen (for advice on reviews), David Wilner (sounding board), 
-
 \begin{figure}[h]
 \includegraphics[width=3in]{SampleFigure}
 \caption{Figure caption with descriptions of parts a and b}
@@ -323,70 +421,70 @@ need to catch up.  FIGURE: probably second panel here showing Lmm versus distanc
 % Example of a Table
 %\subsection{Tables} Tables should also be cited in the main text in chronological order (\textbf {Table \ref{tab1}}).
 
-\begin{table}[h]
-\tabcolsep7.5pt
-\caption{Table caption}
-\label{tab1}
-\begin{center}
-\begin{tabular}{@{}l|c|c|c|c@{}}
-\hline
-Head 1 &&&&Head 5\\
-{(}units)$^{\rm a}$ &Head 2 &Head 3 &Head 4 &{(}units)\\
-\hline
-Column 1 &Column 2 &Column3$^{\rm b}$ &Column4 &Column\\
-Column 1 &Column 2 &Column3 &Column4 &Column\\
-Column 1 &Column 2 &Column3 &Column4 &Column\\
-Column 1 &Column 2 &Column3 &Column4 &Column\\
-\hline
-\end{tabular}
-\end{center}
-\begin{tabnote}
-$^{\rm a}$Table footnote; $^{\rm b}$second table footnote.
-\end{tabnote}
-\end{table}
+%\begin{table}[h]
+%\tabcolsep7.5pt
+%\caption{Table caption}
+%\label{tab1}
+%\begin{center}
+%\begin{tabular}{@{}l|c|c|c|c@{}}
+%\hline
+%Head 1 &&&&Head 5\\
+%{(}units)$^{\rm a}$ &Head 2 &Head 3 &Head 4 &{(}units)\\
+%\hline
+%Column 1 &Column 2 &Column3$^{\rm b}$ &Column4 &Column\\
+%Column 1 &Column 2 &Column3 &Column4 &Column\\
+%Column 1 &Column 2 &Column3 &Column4 &Column\\
+%Column 1 &Column 2 &Column3 &Column4 &Column\\
+%\hline
+%\end{tabular}
+%\end{center}
+%\begin{tabnote}
+%$^{\rm a}$Table footnote; $^{\rm b}$second table footnote.
+%\end{tabnote}
+%\end{table}
 
 % Example of lists
 %\subsection{Lists and Extracts} Here is an example of a numbered list:
-\begin{enumerate}
-\item List entry number 1,
-\item List entry number 2,
-\item List entry number 3,\item List entry number 4, and
-\item List entry number 5.
-\end{enumerate}
+%\begin{enumerate}
+%\item List entry number 1,
+%\item List entry number 2,
+%\item List entry number 3,\item List entry number 4, and
+%\item List entry number 5.
+%\end{enumerate}
 
-Here is an example of a extract.
-\begin{extract}
-This is an example text of quote or extract.
-This is an example text of quote or extract.
-\end{extract}
+%Here is an example of a extract.
+%\begin{extract}
+%This is an example text of quote or extract.
+%This is an example text of quote or extract.
+%\end{extract}
 
 %\subsection{Sidebars and Margin Notes}
 % Margin Note
-\begin{marginnote}[]
-\entry{Term A}{definition}
-\entry{Term B}{definition}
-\entry{Term C}{defintion}
-\end{marginnote}
+%\begin{marginnote}[]
+%\entry{Term A}{definition}
+%\entry{Term B}{definition}
+%\entry{Term C}{defintion}
+%\end{marginnote}
 
-\begin{textbox}[h]\section{SIDEBARS}
-Sidebar text goes here.
-\subsection{Sidebar Second-Level Heading}
-More text goes here.\subsubsection{Sidebar third-level heading}
-Text goes here.\end{textbox}
+%\begin{textbox}[h]\section{SIDEBARS}
+%Sidebar text goes here.
+%\subsection{Sidebar Second-Level Heading}
+%More text goes here.\subsubsection{Sidebar third-level heading}
+%Text goes here.\end{textbox}
 
 
 
 %\subsection{Equations}
 % Example of a single-line equation
-\begin{equation}
-a = b \ {\rm ((Single\ Equation\ Numbered))}
-\end{equation}
+%\begin{equation}
+%a = b \ {\rm ((Single\ Equation\ Numbered))}
+%\end{equation}
 %Example of multiple-line equation
-Equations can also be multiple lines as shown in Equations 2 and 3.
-\begin{eqnarray}
-c = 0 \ {\rm ((Multiple\  Lines, \ Numbered))}\\
-ac = 0 \ {\rm ((Multiple \ Lines, \ Numbered))}
-\end{eqnarray}
+%Equations can also be multiple lines as shown in Equations 2 and 3.
+%\begin{eqnarray}
+%c = 0 \ {\rm ((Multiple\  Lines, \ Numbered))}\\
+%ac = 0 \ {\rm ((Multiple \ Lines, \ Numbered))}
+%\end{eqnarray}
 
 % Summary Points
 \begin{summary}[SUMMARY POINTS]
@@ -410,94 +508,17 @@ ac = 0 \ {\rm ((Multiple \ Lines, \ Numbered))}
 
 %Disclosure
 \section*{DISCLOSURE STATEMENT}
-If the authors have noting to disclose, the following statement will be used: The authors are not aware of any affiliations, memberships, funding, or financial holdings that
+The author is not aware of any affiliations, memberships, funding, or financial holdings that
 might be perceived as affecting the objectivity of this review. 
 
 % Acknowledgements
 \section*{ACKNOWLEDGMENTS}
 Acknowledgements, general annotations, funding.
-
-% References
-%
-% Margin notes within bibliography
-\section*{LITERATURE\ CITED}
-
-%To download the appropriate bibliography style file, please see \url{http://www.annualreviews.org/page/authors/author-instructions/preparing/latex}. \\
-
-\noindent
-Please see the Style Guide document for instructions on preparing your Literature Cited.
-
-The citations should be listed in alphabetical order, with no titles. For example:
+% ACKNOWLEDGMENTS: Seba Perez (for HD 169142 images), Roy van Boekel (for TW Hya image), Jane Huang (for TW Hya images), Til Birnstiel (for help with DSHARP opacity software), James Owen (for advice on reviews), David Wilner (sounding board), Kevin Flaherty (thoughts on turbulence),  
 
 
-
-
-
-
-\begin{verbatim}
-\begin{thebibliography}{00}
-
-\bibitem[Acevedo \& Fitzjarrald(2001)]{Acevedo:01}
-Acevedo O, Fitzjarrald D. 2001.
-\textit{J. Atmos. Sci.} 58:2650--67
-
-\bibitem[Acevedo et~al.(2009)Acevedo, Moraes, Degrazia, Fitzjarrald, Manzi \&
-  Campos]{Acevedo:09}
-\textit{Agric. For. Meteorol.} 149:1--10
-
-\bibitem[Baas et~al.(2006)Baas, Steeneveld, {van de Weil} \& Holtslag]{Baas:09}
-Baas P, Steeneveld G, {van de Weil} B, Holtslag A. 2006.
-\textit{J. Atmos. Sci.} 63:3045--54
-
-\bibitem[Badran et~al.(1991)]{Badran:91}
-Badran F, Thiria S, Crepon M. 1991.
-\textit{J. Geophys. Res.} 96:20,521--29
-
-\bibitem[Bakas \& Ioannou(2007)]{Bakas:07}
-Bakas NA, Ioannou PJ. 2007.
-\textit{J. Atmos. Sci.} 64:1509--29
-
-\bibitem[Calanca et~al.(1998)]{Calanca:98}
-Calanca P, Forrer J, Rotach M. 1998.
-\textit{Q. J. R. Meteorol. Soc.} 124:1--18
-
-\bibitem[D'Asaro \& Lien(2000)]{DAsaro:00}
-D'Asaro EA, Lien RC. 2000.
-\textit{J. Phys. Oceanog.} 30:123--45
-
-\bibitem[de~Silva et~al.(1996)de~Silva, Fernando, Eaton \& Hebert]{deSilva:96}
-de~Silva I, Fernando H, Eaton F, Hebert D. 1996.
-\textit{Earth Planetary Sci. Let.} 143:217--31
-
-
-
-\end{thebibliography}
-\end{verbatim}
 
 
 \bibliography{references}
-
-
-%\begin{thebibliography}{00}
-
-%\bibitem[Alibert et al.(2005)]{alibert05}
-%Alibert Y., Mordasini C., Benz W., Winisdoerffer C. 2004.
-%\textit{A\&A} 434:343--353
-
-%\bibitem[Cassen \& Moosman(1981)]{cassen81}
-%Cassen P., Moosman A. 1981.
-%\textit{Icarus} 48:353--376
-
-%\bibitem[Ida \& Lin(2004)]{ida04}
-%Ida S., Lin D.N.C. 2004.
-%\textit{ApJ} 604:388--413
-
-%\bibitem[Terebey et al.(1984)]{terebey84}
-%Terebey S., Shu F.H., Cassen P. 1984.
-%\textit{ApJ} 286:529--551
-
-%\end{thebibliography}
-
-%\bibliography{references}
 
 \end{document}

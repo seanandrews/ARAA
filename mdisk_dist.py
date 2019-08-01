@@ -4,8 +4,33 @@ import sys
 from astropy.io import ascii
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
+import matplotlib
 from km_estimator import km_estimator
-plt.rc('font', size=9)
+
+from matplotlib import rcParams
+rcParams['pdf.fonttype'] = 42
+
+from matplotlib import rc
+rc("font", **{"sans-serif": ["Roboto"]})
+rc("font", **{"family": "serif", "serif": ["Palatino"]})
+rc("text", usetex = True)
+rc("mathtext", default="regular")
+
+rc("axes", linewidth=2)
+rc("xtick.major", width=2)
+rc("xtick.minor", width=1.5)
+rc("xtick.major", size=4.5)
+rc("xtick.minor", size=2.6)
+rc("ytick.major", width=2)
+rc("ytick.minor", width=1.5)
+rc("ytick.major", size=4.5)
+rc("ytick.minor", size=2.6)
+
+rc("axes", labelsize=12)
+rc("xtick", labelsize=12)
+rc("ytick", labelsize=12)
+
+
 
 # set up plot
 fig = plt.figure(figsize=(6.33, 2.6))
@@ -17,11 +42,9 @@ ax0.set_xlim(Mlims)
 ax0.set_xscale('log')
 ax0.set_xticks([0.1, 1, 10, 100, 1000, 10000])
 ax0.set_xticklabels(['0.1', '1', '10', '100', '1000', '10$^4$'])
-#ax0.set_ylim([0.001, 1.])
-#ax0.set_yscale('log')
 ax0.set_ylim([0, 1])
-ax0.set_ylabel('$\mathsf{p} (> M)$')
-ax0.set_xlabel('$M$  (M$_\oplus$)')
+ax0.set_ylabel('$p$ ($\ge M$)')
+ax0.set_xlabel('$M \;$ (M$_\oplus$)')
 
 
 # for safety, copy over database file
@@ -84,7 +107,7 @@ ax0.plot(Mdust, pMdust, 'C0', drawstyle='steps-mid')
 
 
 
-fig.subplots_adjust(left=0.2, right=0.8, bottom=0.15, top=0.98)
+fig.subplots_adjust(left=0.2, right=0.8, bottom=0.16, top=0.98)
 fig.savefig('mdisk_dist.pdf')
 fig.clf()
 

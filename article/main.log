@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 MAY 2019 23:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 JUN 2019 14:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -168,8 +168,7 @@ Type  H <return>  for immediate help.
                                                   
 l.33 \ProcessOptions\relax
                           
-? s
-OK, entering \scrollmode...
+? 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks15
@@ -319,6 +318,33 @@ Overfull \hbox (23.5945pt too wide) in paragraph at lines 96--96
 
 LaTeX Warning: Reference `fig:ims' on page 3 undefined on input line 98.
 
+<twhya_gallery.pdf, id=17, 505.89pt x 173.448pt>
+File: twhya_gallery.pdf Graphic file (type pdf)
+<use twhya_gallery.pdf>
+Package pdftex.def Info: twhya_gallery.pdf  used on input line 107.
+(pdftex.def)             Requested size: 366.0pt x 125.48853pt.
+
+Overfull \hbox (2.05554pt too wide) in paragraph at lines 107--108
+[] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+
+ []
+
+
+Package natbib Warning: Citation `vanboekel17' on page 3 undefined on input lin
+e 108.
+
+
+Package natbib Warning: Citation `andrews16' on page 3 undefined on input line 
+108.
+
+
+Package natbib Warning: Citation `huang18' on page 3 undefined on input line 10
+8.
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -335,9 +361,13 @@ Overfull \hbox (90.0pt too wide) has occurred while \output is active
 []
  []
 
-[4]
+[4 <./twhya_gallery.pdf>]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `sec:opacities' on page 5 undefined on input line 137.
+
+
+
+Underfull \vbox (badness 1173) has occurred while \output is active []
 
 
 Overfull \hbox (90.0pt too wide) has occurred while \output is active
@@ -345,7 +375,12 @@ Overfull \hbox (90.0pt too wide) has occurred while \output is active
  []
 
 [5]
-Underfull \vbox (badness 1502) has occurred while \output is active []
+
+LaTeX Warning: Reference `sec:primer_cont' on page 6 undefined on input line 15
+1.
+
+
+Underfull \vbox (badness 2310) has occurred while \output is active []
 
 
 Overfull \hbox (90.0pt too wide) has occurred while \output is active
@@ -353,23 +388,57 @@ Overfull \hbox (90.0pt too wide) has occurred while \output is active
  []
 
 [6]
+
+LaTeX Warning: Reference `sec:primer_lines' on page 7 undefined on input line 1
+56.
+
+
+LaTeX Warning: Reference `sec:opacities' on page 7 undefined on input line 160.
+
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (90.0pt too wide) has occurred while \output is active
 []
  []
 
 [7]
-<opac_pars.pdf, id=46, 469.755pt x 122.85901pt>
-File: opac_pars.pdf Graphic file (type pdf)
-<use opac_pars.pdf>
-Package pdftex.def Info: opac_pars.pdf  used on input line 174.
-(pdftex.def)             Requested size: 366.0pt x 95.72276pt.
 
-Overfull \hbox (2.05554pt too wide) in paragraph at lines 174--175
+LaTeX Warning: Reference `sec:opacities' on page 8 undefined on input line 166.
+
+
+
+LaTeX Warning: Reference `fig:sizes' on page 8 undefined on input line 179.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (90.0pt too wide) has occurred while \output is active
+[]
+ []
+
+[8]
+
+LaTeX Warning: Reference `fig:ims' on page 9 undefined on input line 181.
+
+
+LaTeX Warning: Reference `fig:sizes' on page 9 undefined on input line 183.
+
+<sizes.pdf, id=87, 505.89pt x 180.675pt>
+File: sizes.pdf Graphic file (type pdf)
+<use sizes.pdf>
+Package pdftex.def Info: sizes.pdf  used on input line 186.
+(pdftex.def)             Requested size: 366.0pt x 130.71721pt.
+
+Overfull \hbox (2.05554pt too wide) in paragraph at lines 186--187
 [] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--175
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
 
@@ -381,15 +450,112 @@ Overfull \hbox (90.0pt too wide) has occurred while \output is active
 []
  []
 
-[8 <./opac_pars.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[9 <./sizes.pdf>]
+
+Package natbib Warning: Citation `hartmann98' on page 10 undefined on input lin
+e 199.
 
 
-Overfull \hbox (90.0pt too wide) has occurred while \output is active
-[]
- []
+Package natbib Warning: Citation `hueso05' on page 10 undefined on input line 1
+99.
 
-[9]
+
+Package natbib Warning: Citation `blandford82' on page 10 undefined on input li
+ne 199.
+
+
+Package natbib Warning: Citation `pudritz83' on page 10 undefined on input line
+ 199.
+
+
+Package natbib Warning: Citation `bai13' on page 10 undefined on input line 199
+.
+
+
+Package natbib Warning: Citation `alibert13' on page 10 undefined on input line
+ 199.
+
+
+Package natbib Warning: Citation `paardekooper10' on page 10 undefined on input
+ line 199.
+
+
+Package natbib Warning: Citation `baruteau11' on page 10 undefined on input lin
+e 199.
+
+
+Package natbib Warning: Citation `garaud07' on page 10 undefined on input line 
+199.
+
+
+Package natbib Warning: Citation `johansen09' on page 10 undefined on input lin
+e 199.
+
+
+Package natbib Warning: Citation `birnstiel12' on page 10 undefined on input li
+ne 199.
+
+
+Package natbib Warning: Citation `isella07' on page 10 undefined on input line 
+204.
+
+
+Package natbib Warning: Citation `qi08' on page 10 undefined on input line 204.
+
+
+
+Package natbib Warning: Citation `qi11' on page 10 undefined on input line 204.
+
+
+
+Package natbib Warning: Citation `williams16' on page 10 undefined on input lin
+e 204.
+
+
+Package natbib Warning: Citation `woitke09' on page 10 undefined on input line 
+204.
+
+
+Package natbib Warning: Citation `bruderer14' on page 10 undefined on input lin
+e 204.
+
+
+Package natbib Warning: Citation `miotello18' on page 10 undefined on input lin
+e 204.
+
+
+Package natbib Warning: Citation `schwarz16' on page 10 undefined on input line
+ 204.
+
+
+Package natbib Warning: Citation `zhang17' on page 10 undefined on input line 2
+04.
+
+
+Package natbib Warning: Citation `cleeves17' on page 10 undefined on input line
+ 204.
+
+
+Package natbib Warning: Citation `dutrey17' on page 10 undefined on input line 
+204.
+
+
+Package natbib Warning: Citation `powell17' on page 10 undefined on input line 
+204.
+
+
+Package natbib Warning: Citation `powell19' on page 10 undefined on input line 
+204.
+
+
+Package natbib Warning: Citation `weaver18' on page 10 undefined on input line 
+208.
+
+
+Package natbib Warning: Citation `isella18' on page 10 undefined on input line 
+208.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -398,74 +564,214 @@ Overfull \hbox (90.0pt too wide) has occurred while \output is active
  []
 
 [10]
-Package epstopdf Info: Source file: <SampleFigure.eps>
-(epstopdf)                    date: 2019-05-14 21:59:24
-(epstopdf)                    size: 427083 bytes
-(epstopdf)             Output file: <SampleFigure-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-05-15 11:58:47
-(epstopdf)                    size: 22283 bytes
-(epstopdf)             Command: <repstopdf --outfile=SampleFigure-eps-converted
--to.pdf SampleFigure.eps>
-(epstopdf)             \includegraphics on input line 236.
-Package epstopdf Info: Output file is already uptodate.
-<SampleFigure-eps-converted-to.pdf, id=96, 288.07625pt x 162.6075pt>
-File: SampleFigure-eps-converted-to.pdf Graphic file (type pdf)
-<use SampleFigure-eps-converted-to.pdf>
-Package pdftex.def Info: SampleFigure-eps-converted-to.pdf  used on input line 
-236.
-(pdftex.def)             Requested size: 216.81pt x 122.38457pt.
+<tw_sigma.pdf, id=134, 505.89pt x 224.037pt>
+File: tw_sigma.pdf Graphic file (type pdf)
+<use tw_sigma.pdf>
+Package pdftex.def Info: tw_sigma.pdf  used on input line 211.
+(pdftex.def)             Requested size: 366.0pt x 162.08934pt.
 
-Overfull \hbox (2.05554pt too wide) in paragraph at lines 236--237
+Overfull \hbox (2.05554pt too wide) in paragraph at lines 211--212
 [] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--237
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
 
  []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `fig:tw_sigmas' on page 11 undefined on input line 216
+.
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 261--262
-\OT1/cmr/m/n/9 two key en-vi-ron-men-tal ef-fects, on lo-cal scales/``internal"
- (mul-ti-plic-ity) and global
- []
+Package natbib Warning: Citation `kessler-silacci06' on page 11 undefined on in
+put line 227.
 
 
-Underfull \vbox (badness 6252) has occurred while \output is active []
+Package natbib Warning: Citation `bouwman08' on page 11 undefined on input line
+ 227.
+
+
+Package natbib Warning: Citation `sargent09b' on page 11 undefined on input lin
+e 227.
+
+
+Package natbib Warning: Citation `oberg08' on page 11 undefined on input line 2
+27.
+
+
+Package natbib Warning: Citation `bottinelli10' on page 11 undefined on input l
+ine 227.
+
+
+Package natbib Warning: Citation `mcclure15' on page 11 undefined on input line
+ 227.
+
+
+Package natbib Warning: Citation `zubko96' on page 11 undefined on input line 2
+27.
+
+
+Package natbib Warning: Citation `jaeger98' on page 11 undefined on input line 
+227.
+
+
+Package natbib Warning: Citation `clayton04' on page 11 undefined on input line
+ 227.
+
+
+Package natbib Warning: Citation `mumma11' on page 11 undefined on input line 2
+27.
 
 
 Overfull \hbox (90.0pt too wide) has occurred while \output is active
 []
  []
 
-[11 <./SampleFigure-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <SampleFigure.eps>
-(epstopdf)                    date: 2019-05-14 21:59:24
-(epstopdf)                    size: 427083 bytes
-(epstopdf)             Output file: <SampleFigure-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-05-15 11:58:47
-(epstopdf)                    size: 22283 bytes
-(epstopdf)             Command: <repstopdf --outfile=SampleFigure-eps-converted
--to.pdf SampleFigure.eps>
-(epstopdf)             \includegraphics on input line 318.
-Package epstopdf Info: Output file is already uptodate.
-File: SampleFigure-eps-converted-to.pdf Graphic file (type pdf)
-<use SampleFigure-eps-converted-to.pdf>
-Package pdftex.def Info: SampleFigure-eps-converted-to.pdf  used on input line 
-318.
-(pdftex.def)             Requested size: 216.81pt x 122.38457pt.
+[11 <./tw_sigma.pdf>]
+<opac.pdf, id=173, 505.89pt x 252.945pt>
+File: opac.pdf Graphic file (type pdf)
+<use opac.pdf>
+Package pdftex.def Info: opac.pdf  used on input line 235.
+(pdftex.def)             Requested size: 366.0pt x 183.0041pt.
 
-Overfull \hbox (2.05554pt too wide) in paragraph at lines 318--319
+Overfull \hbox (2.05554pt too wide) in paragraph at lines 235--236
 [] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
 
  []
+
+
+LaTeX Warning: Reference `sec:primer_cont' on page 12 undefined on input line 2
+41.
+
+
+Package natbib Warning: Citation `menu14' on page 12 undefined on input line 24
+1.
+
+
+Underfull \vbox (badness 3168) has occurred while \output is active []
+
+
+Overfull \hbox (90.0pt too wide) has occurred while \output is active
+[]
+ []
+
+[12 <./opac.pdf>]
+
+Package natbib Warning: Citation `hughes09b' on page 13 undefined on input line
+ 243.
+
+
+Package natbib Warning: Citation `kataoka15' on page 13 undefined on input line
+ 243.
+
+
+Package natbib Warning: Citation `kataoka16a' on page 13 undefined on input lin
+e 243.
+
+
+Package natbib Warning: Citation `yang17' on page 13 undefined on input line 24
+3.
+
+
+Package natbib Warning: Citation `stephens17' on page 13 undefined on input lin
+e 243.
+
+
+Package natbib Warning: Citation `hull18' on page 13 undefined on input line 24
+3.
+
+
+Package natbib Warning: Citation `bacciotti18' on page 13 undefined on input li
+ne 243.
+
+
+Package natbib Warning: Citation `dent19' on page 13 undefined on input line 24
+3.
+
+
+Package natbib Warning: Citation `kataoka16b' on page 13 undefined on input lin
+e 243.
+
+
+Package natbib Warning: Citation `ohashi18' on page 13 undefined on input line 
+243.
+
+
+LaTeX Warning: Reference `sec:primer_cont' on page 13 undefined on input line 2
+55.
+
+
+Package natbib Warning: Citation `matsakos16' on page 13 undefined on input lin
+e 255.
+
+
+Package natbib Warning: Citation `stephens17' on page 13 undefined on input lin
+e 255.
+
+
+Package natbib Warning: Citation `tazaki17' on page 13 undefined on input line 
+255.
+
+
+Package natbib Warning: Citation `yang19' on page 13 undefined on input line 25
+5.
+
+
+Package natbib Warning: Citation `kataoka19' on page 13 undefined on input line
+ 255.
+
+
+Package natbib Warning: Citation `chiang97' on page 13 undefined on input line 
+269.
+
+
+Package natbib Warning: Citation `dalessio98' on page 13 undefined on input lin
+e 269.
+
+
+Package natbib Warning: Citation `calvet91' on page 13 undefined on input line 
+269.
+
+
+Package natbib Warning: Citation `kenyon87' on page 13 undefined on input line 
+269.
+
+
+Package natbib Warning: Citation `adams90' on page 13 undefined on input line 2
+69.
+
+
+LaTeX Warning: Reference `sec:opacities' on page 13 undefined on input line 269
+.
+
+
+Package natbib Warning: Citation `dalessio99b' on page 13 undefined on input li
+ne 269.
+
+
+Package natbib Warning: Citation `dalessio06' on page 13 undefined on input lin
+e 269.
+
+
+Package natbib Warning: Citation `dullemond02' on page 13 undefined on input li
+ne 269.
+
+
+Package natbib Warning: Citation `dullemond04b' on page 13 undefined on input l
+ine 269.
+
+
+Package natbib Warning: Citation `dubrulle95' on page 13 undefined on input lin
+e 269.
+
+
+Package natbib Warning: Citation `turner10' on page 13 undefined on input line 
+269.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -475,49 +781,159 @@ Overfull \hbox (90.0pt too wide) has occurred while \output is active
 []
  []
 
-[12]
-Overfull \hbox (90.0pt too wide) has occurred while \output is active
-[]
- []
-
 [13]
-Package color Info: Redefining color shadecolor on input line 392.
-Package color Info: Redefining color shadecolor on input line 402.
+
+Package natbib Warning: Citation `jonkheid04' on page 14 undefined on input lin
+e 271.
+
+
+Package natbib Warning: Citation `kamp04' on page 14 undefined on input line 27
+1.
+
+
+Package natbib Warning: Citation `bruderer13' on page 14 undefined on input lin
+e 271.
+
+
+Package natbib Warning: Citation `shakura73' on page 14 undefined on input line
+ 271.
+
+
+Package natbib Warning: Citation `dalessio98' on page 14 undefined on input lin
+e 271.
+
+
+Package natbib Warning: Citation `rafikov16' on page 14 undefined on input line
+ 271.
+
+
+Package natbib Warning: Citation `cleeves13' on page 14 undefined on input line
+ 271.
+
+
+Package natbib Warning: Citation `dalessio97' on page 14 undefined on input lin
+e 271.
+
+
+Package natbib Warning: Citation `dullemond04a' on page 14 undefined on input l
+ine 271.
+
+
+Package natbib Warning: Citation `adams90' on page 14 undefined on input line 2
+75.
+
+
+Package natbib Warning: Citation `chiang97' on page 14 undefined on input line 
+275.
+
+
+Package natbib Warning: Citation `dalessio98' on page 14 undefined on input lin
+e 275.
+
+
+Package natbib Warning: Citation `stapelfeldt98' on page 14 undefined on input 
+line 275.
+
+
+Package natbib Warning: Citation `lee17' on page 14 undefined on input line 275
+.
+
+
+Package natbib Warning: Citation `dutrey14' on page 14 undefined on input line 
+277.
+
+
+Package natbib Warning: Citation `weaver18' on page 14 undefined on input line 
+277.
+
+
+Package natbib Warning: Citation `pinte18' on page 14 undefined on input line 2
+77.
+
+
+Package natbib Warning: Citation `qi04' on page 14 undefined on input line 277.
+
+
+
+Package natbib Warning: Citation `schwarz16' on page 14 undefined on input line
+ 277.
+
+
+Package natbib Warning: Citation `qi11' on page 14 undefined on input line 277.
+
+
+
+Package natbib Warning: Citation `qi13' on page 14 undefined on input line 277.
+
+
+
+Package natbib Warning: Citation `qi15' on page 14 undefined on input line 277.
+
+
+
+Package natbib Warning: Citation `boudet05' on page 14 undefined on input line 
+281.
+
+
+Package natbib Warning: Citation `demyk17' on page 14 undefined on input line 2
+81.
+
+
+Package natbib Warning: Citation `heese17' on page 14 undefined on input line 2
+81.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Overfull \hbox (90.0pt too wide) has occurred while \output is active
 []
  []
 
 [14]
-Overfull \hbox (7.27066pt too wide) in paragraph at lines 475--475
-[]\OT1/cmtt/m/n/9 \bibitem[Baas et~al.(2006)Baas, Steeneveld, {van de Weil} \& 
-Holtslag]{Baas:09}[] 
- []
+
+Package natbib Warning: Citation `weaver18' on page 15 undefined on input line 
+283.
 
 
-Overfull \hbox (2.54572pt too wide) in paragraph at lines 475--475
-[]\OT1/cmtt/m/n/9 \bibitem[de~Silva et~al.(1996)de~Silva, Fernando, Eaton \& He
-bert]{deSilva:96}[] 
- []
+Package natbib Warning: Citation `fedele16' on page 15 undefined on input line 
+283.
 
-(./main.bbl
-./main.bbl:8: Undefined control sequence.
-l.8 ...Nakano}, T., \& {Miyama}, S.~M. 1997, \apjl
-                                                  ,
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-./main.bbl:9: Undefined control sequence.
-l.9   486, L51, \dodoi
-                      {10.1086/310837}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Package natbib Warning: Citation `msimon17' on page 15 undefined on input line 
+294.
+
+
+Package natbib Warning: Citation `rosenfeld12' on page 15 undefined on input li
+ne 294.
+
+
+Package natbib Warning: Citation `czekala15' on page 15 undefined on input line
+ 294.
+
+
+Package natbib Warning: Citation `czekala16' on page 15 undefined on input line
+ 294.
+
+
+Package natbib Warning: Citation `guedel18' on page 15 undefined on input line 
+294.
+
+
+Package natbib Warning: Citation `yen16' on page 15 undefined on input line 294
+.
+
+
+Package natbib Warning: Citation `teague18a' on page 15 undefined on input line
+ 294.
+
+
+Package natbib Warning: Citation `teague18b' on page 15 undefined on input line
+ 294.
+
+
+Package natbib Warning: Citation `pinte18b' on page 15 undefined on input line 
+294.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -528,42 +944,103 @@ Overfull \hbox (90.0pt too wide) has occurred while \output is active
  []
 
 [15]
+
+Package natbib Warning: Citation `flaherty17' on page 16 undefined on input lin
+e 296.
+
+
+Package natbib Warning: Citation `flaherty18' on page 16 undefined on input lin
+e 296.
+
+
+Package natbib Warning: Citation `teague18a' on page 16 undefined on input line
+ 296.
+
+
+Overfull \hbox (90.0pt too wide) has occurred while \output is active
+[]
+ []
+
+[16]
+Underfull \hbox (badness 1655) in paragraph at lines 354--355
+\OT1/cmr/m/n/9 two key en-vi-ron-men-tal ef-fects, on lo-cal scales/``internal"
+ (mul-ti-plic-ity) and global
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (90.0pt too wide) has occurred while \output is active
+[]
+ []
+
+[17]
+Package epstopdf Info: Source file: <SampleFigure.eps>
+(epstopdf)                    date: 2019-06-03 18:38:08
+(epstopdf)                    size: 427083 bytes
+(epstopdf)             Output file: <SampleFigure-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-05-15 11:58:47
+(epstopdf)                    size: 22283 bytes
+(epstopdf)             Command: <repstopdf --outfile=SampleFigure-eps-converted
+-to.pdf SampleFigure.eps>
+(epstopdf)             \includegraphics on input line 416.
+runsystem(repstopdf --outfile=SampleFigure-eps-converted-to.pdf SampleFigure.ep
+s)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <SampleFigure-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-06-03 14:39:28
+(epstopdf)                    size: 22283 bytes.
+<SampleFigure-eps-converted-to.pdf, id=234, 288.07625pt x 162.6075pt>
+File: SampleFigure-eps-converted-to.pdf Graphic file (type pdf)
+<use SampleFigure-eps-converted-to.pdf>
+Package pdftex.def Info: SampleFigure-eps-converted-to.pdf  used on input line 
+416.
+(pdftex.def)             Requested size: 216.81pt x 122.38457pt.
+
+Overfull \hbox (2.05554pt too wide) in paragraph at lines 416--417
+[] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
+
+ []
+
+Package color Info: Redefining color shadecolor on input line 490.
+
+Overfull \hbox (90.0pt too wide) has occurred while \output is active
+[]
+ []
+
+[18 <./SampleFigure-eps-converted-to.pdf>]
+Package color Info: Redefining color shadecolor on input line 500.
+ (./main.bbl
+./main.bbl:8: Undefined control sequence.
+l.8 ...Nakano}, T., \& {Miyama}, S.~M. 1997, \apjl
+                                                  ,
+? 
+./main.bbl:9: Undefined control sequence.
+l.9   486, L51, \dodoi
+                      {10.1086/310837}
+? 
 ./main.bbl:14: Undefined control sequence.
 l.14   2002, \aap
                  , 386, 622, \dodoi{10.1051/0004-6361:20020037}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+? 
 ./main.bbl:14: Undefined control sequence.
 l.14   2002, \aap, 386, 622, \dodoi
                                    {10.1051/0004-6361:20020037}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+? 
 ./main.bbl:18: Undefined control sequence.
 l.18 ...nz}, W., \& {Winisdoerffer}, C. 2005, \aap
                                                   ,
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+? 
 ./main.bbl:19: Undefined control sequence.
 l.19   434, 343, \dodoi
                        {10.1051/0004-6361:20042032}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+? s
+OK, entering \scrollmode...
 ./main.bbl:22: Undefined control sequence.
 l.22 {Andre}, P., \& {Montmerle}, T. 1994, \apj
                                                , 420, 837, \dodoi{10.1086/17...
@@ -852,6 +1329,12 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+
+Overfull \hbox (90.0pt too wide) has occurred while \output is active
+[]
+ []
+
+[19]
 ./main.bbl:97: Undefined control sequence.
 l.97 ...}, L.~I., {Gorti}, U., {et~al.} 2013, \nat
                                                   , 493, 644,
@@ -1230,15 +1713,6 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (90.0pt too wide) has occurred while \output is active
-[]
- []
-
-[16]
 ./main.bbl:206: Undefined control sequence.
 l.206   2013, \apjl
                    , 776, L38, \dodoi{10.1088/2041-8205/776/2/L38}
@@ -1518,6 +1992,15 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (90.0pt too wide) has occurred while \output is active
+[]
+ []
+
+[20]
 ./main.bbl:293: Undefined control sequence.
 l.293   2, \dodoi
                  {10.1006/icar.1993.1154}
@@ -1833,15 +2316,6 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (90.0pt too wide) has occurred while \output is active
-[]
- []
-
-[17]
 ./main.bbl:387: Undefined control sequence.
 l.387 ...trey}, A., \& {Guilloteau}, S. 2007, \aap
                                                   , 467, 163,
@@ -2139,6 +2613,15 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (90.0pt too wide) has occurred while \output is active
+[]
+ []
+
+[21]
 ./main.bbl:481: Undefined control sequence.
 l.481   \apj
             , 845, 44, \dodoi{10.3847/1538-4357/aa7c62}
@@ -2284,11 +2767,15 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 )
+
+Package natbib Warning: There were undefined citations.
+
+
 Overfull \hbox (90.0pt too wide) has occurred while \output is active
 []
  []
 
-[18] (./main.aux)
+[22] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.74pt have occurred.
@@ -2296,15 +2783,18 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 2917 strings out of 492616
- 40532 string characters out of 6129482
+ 2935 strings out of 492616
+ 40892 string characters out of 6129482
  121533 words of memory out of 5000000
- 6770 multiletter control sequences out of 15000+600000
- 14623 words of font info for 55 fonts, out of 8000000 for 9000
+ 6786 multiletter control sequences out of 15000+600000
+ 13810 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,15n,27p,1585b,526s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,15n,31p,1830b,580s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><
 /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
@@ -2326,12 +2816,11 @@ xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2019/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2019/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2019/texmf-dist/f
-onts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (18 pages, 356583 bytes).
+/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on main.pdf (22 pages, 573427 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
+ 328 PDF objects out of 1000 (max. 8388607)
+ 189 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
