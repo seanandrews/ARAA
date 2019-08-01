@@ -98,12 +98,12 @@ Mgas, pMgas, epMgas, mukm = km_estimator(Mg, flag_Mg)
 
 # plots
 ax0.fill_between(Mgas, pMgas+epMgas, pMgas-epMgas,
-                 facecolor='C1', alpha=0.5)
-ax0.plot(Mgas, pMgas, 'C1', drawstyle='steps-mid')
+                 facecolor='C1', alpha=0.5, step='post')
+ax0.plot(Mgas, pMgas, 'C1', drawstyle='steps-post')
 
 ax0.fill_between(Mdust, pMdust+epMdust, pMdust-epMdust, 
-                 facecolor='C0', alpha=0.5)
-ax0.plot(Mdust, pMdust, 'C0', drawstyle='steps-mid')
+                 facecolor='C0', alpha=0.5, step='post')
+ax0.plot(Mdust, pMdust, 'C0', drawstyle='steps-post')
 
 
 
