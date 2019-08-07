@@ -1,0 +1,15 @@
+pdf.fonttype : 42
+mathtext.default : regular
+
+axes.linewidth : 2
+axes.labelsize : 12
+xtick.labelsize : 12
+ytick.labelsize : 12
+xtick.major.width : 2
+xtick.minor.width : 1.5
+xtick.major.size : 4.5
+xtick.minor.size : 2.6
+ytick.major.width : 2
+ytick.minor.width : 1.5
+ytick.major.size : 4.5
+ytick.minor.size : 2.6
