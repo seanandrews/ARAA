@@ -2,112 +2,145 @@ import numpy as np
 import os
 import sys
 from astropy.io import ascii
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-import matplotlib
 from km_estimator import km_estimator
 
-from matplotlib import rcParams
-rcParams['pdf.fonttype'] = 42
-
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+plt.style.use('araa')
 from matplotlib import rc
-rc("font", **{"sans-serif": ["Roboto"]})
+rc('text.latex', preamble=r'\usepackage{amsmath}')
 rc("font", **{"family": "serif", "serif": ["Palatino"]})
 rc("text", usetex = True)
-rc("mathtext", default="regular")
-
-rc("axes", linewidth=2)
-rc("xtick.major", width=2)
-rc("xtick.minor", width=1.5)
-rc("xtick.major", size=4.5)
-rc("xtick.minor", size=2.6)
-rc("ytick.major", width=2)
-rc("ytick.minor", width=1.5)
-rc("ytick.major", size=4.5)
-rc("ytick.minor", size=2.6)
-
-rc("axes", labelsize=12)
-rc("xtick", labelsize=12)
-rc("ytick", labelsize=12)
-
 
 
 # set up plot
 fig = plt.figure(figsize=(6.33, 2.6))
 gs = gridspec.GridSpec(1, 1)
+ax = fig.add_subplot(gs[0, 0])
+
+# set up axes, labels
+plims = [0., 1.]
 Mlims = [0.05, 20000.]		# earth masses
 
-ax0 = fig.add_subplot(gs[0, 0])
-ax0.set_xlim(Mlims)
-ax0.set_xscale('log')
-ax0.set_xticks([0.1, 1, 10, 100, 1000, 10000])
-ax0.set_xticklabels(['0.1', '1', '10', '100', '1000', '10$^4$'])
-ax0.set_ylim([0, 1])
-ax0.set_ylabel('$p$ ($\ge M$)')
-ax0.set_xlabel('$M \;$ (M$_\oplus$)')
+ax.set_xlim(Mlims)
+ax.set_xscale('log')
+ax.set_xticks([0.1, 1, 10, 100, 1000, 10000])
+ax.set_xticklabels(['0.1', '1', '10', '100', '1000', '10$^4$'])
+
+ax.set_ylim(plims)
+ax.set_ylabel('$p$ ($\ge M$)')
+ax.set_xlabel('$M \;$ (M$_{\\boldsymbol{\oplus}}$)')
+
+# show the spectral index test?
+show_test = False
 
 
-# for safety, copy over database file
+
+### Load the database 
+
+# safe copy + load
 os.system('cp -r DISKS.csv temp.csv')
-
-# now load database
 db = ascii.read('temp.csv', format='csv', fast_reader=True)
-print(len(db))
 
-# base selections
+# baseline selections
 base = ( (db['FL_MULT'] != 'J') & (db['SED'] != 'III') & 
-         (db['SFR'] != 'Oph') )
-print(len(db[base]))
-
-# reference distance
-dref = 150.
+         (db['SED'] != 'DEBRIS') & (db['SFR'] != 'Oph') )
 
 
-# DUST DISK MASSES
-# B7 data
-have_b7 = ( (db['FL_B7'] != -1) & base )
-flag_b7 = (db['FL_B7'][have_b7] == 1)
-Fb7 = 1e-3 * db['F_B7'][have_b7]
-limb7 = 1e-3 * db['LIM_B7'][have_b7]
-Fb7[flag_b7] = limb7[flag_b7]
-Lb7 = Fb7 * (db['DPC'][have_b7] / dref)**2
-names = db['NAME'][have_b7]
-print(len(Lb7))
-
-# convert to dust masses
+### Set some constants
+d_ref, nu_ref = 150., 340.
 h, c, k = 6.626e-27, 2.9979e10, 1.381e-16
-mean_kap7 = 3.5
-mean_T = 20.
-mean_nu = 340e9
-Bnu = (2.*h*mean_nu**3/c**2) / (np.exp(h*mean_nu/(k*mean_T)) + 1)
-mdust_simple = (dref*3.09e18)**2 * 1e-23 * Lb7 / (mean_kap7 * Bnu) 	# in g
-mdust_simple /= 5.974e27
-
-# cumulative distribution
-Mdust, pMdust, epMdust, mukm = km_estimator(mdust_simple, flag_b7)
+pc, mearth, mjup = 3.0857e18, 5.974e27, 1.898e30
+kappa, Tdust, alp = 3.5, 20., 2.3
 
 
-# GAS DISK MASSES
+### Calculate CDFs for a test of the B6-->B7 conversion
+if (show_test == True):
+    dualband = ( (db['FL_B7'] == 0) & (db['FL_B6'] == 0) & base )
+    flags = (db['FL_B7'][dualband] == 1)
+    L7 = 1e-3 * db['F_B7'][dualband] * (db['DPC'][dualband] / d_ref)**2
+    nu7 = db['nu_B7'][dualband] * 1e9
+    L6 = 1e-3 * db['F_B6'][dualband] * (db['DPC'][dualband] / d_ref)**2
+    nu6 = db['nu_B6'][dualband] * 1e9
+
+    Bnu = (2 * h * nu7**3 / c**2) / (np.exp(h * nu7 / (k * Tdust)) - 1)
+    M7 = (d_ref * pc)**2 * 1e-23 * L7 / (kappa * Bnu) 
+    M6 = (d_ref * pc)**2 * 1e-23 * L6 * (nu7 / nu6)**alp / (kappa * Bnu) 
+
+    Ms7, pMs7, epMs7, mukm = km_estimator(M7 / mearth, flags)
+    Ms6, pMs6, epMs6, mukm = km_estimator(M6 / mearth, flags)
+
+    ax.fill_between(Ms7, pMs7+epMs7, pMs7-epMs7, 
+                    facecolor='C0', alpha=0.5, step='post')
+    ax.plot(Ms7, pMs7, 'C0', drawstyle='steps-post')
+
+    ax.fill_between(Ms6, pMs6+epMs6, pMs6-epMs6,
+                    facecolor='C1', alpha=0.5, step='post')
+    ax.plot(Ms6, pMs6, 'C1', drawstyle='steps-post')
+
+
+### Selection and combination of mm luminosities
+# calculate luminosities and upper limits
+L7 = 1e-3 * db['F_B7'] * (nu_ref / db['nu_B7'])**alp * (db['DPC'] / d_ref)**2
+L6 = 1e-3 * db['F_B6'] * (nu_ref / db['nu_B6'])**alp * (db['DPC'] / d_ref)**2
+limL7 = 1e-3 * db['LIM_B7'] * (nu_ref/db['nu_B7'])**alp * (db['DPC']/d_ref)**2
+limL6 = 1e-3 * db['LIM_B6'] * (nu_ref/db['nu_B6'])**alp * (db['DPC']/d_ref)**2
+
+# Planck function at the reference frequency
+Bnu = (2*h*(nu_ref*1e9)**3 / c**2) / (np.exp(h*nu_ref*1e9 / (k*Tdust)) - 1)
+
+# targets with B7 detections
+detB7 = ( (db['FL_B7'] == 0) & base )
+M_detB7 = L7[detB7] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+d_detB7 = (db['FL_B7'][detB7] == 1)
+
+# targets with **only** B6 detections (i.e., no B7 or B7 limit)
+detB6 = ( (db['FL_B7'] != 0) & (db['FL_B6'] == 0) & base )
+M_detB6 = L6[detB6] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+d_detB6 = (db['FL_B7'][detB6] == 0)
+
+# targets with **only** limits or missing data
+# (there should be **no entry** without a limit in at least B6 or B7)
+lims = ( (db['FL_B7'] != 0) & (db['FL_B6'] != 0) & base )
+dlims = np.ma.column_stack( (limL7[lims], limL6[lims]) )
+M_lims = np.ma.min(dlims, 1) * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+d_lims = np.ones(len(M_lims), dtype=bool)
+
+
+### Solid mass distribution
+# combine all sub-samples
+Ms = np.ma.concatenate( (M_detB7, M_detB6, M_lims) )
+flags = np.ma.concatenate( (d_detB7, d_detB6, d_lims) )
+
+# calculate the combined CDF
+Msolids, pMsolids, epMsolids, mukm = km_estimator(Ms, flags)
+
+
+
+### Gas mass distribution
 have_Mg = ( (db['FL_Mgas'] == 0) & base )
-flag_Mg = (db['FL_Mgas'][have_Mg] == 1)
-Mg = db['Mgas'][have_Mg] * 1.898e30 / 5.974e27
+flagg = (db['FL_Mgas'][have_Mg] == 1)
+Mg = db['Mgas'][have_Mg] * mjup / mearth 
 
 # cumulative distribution
-Mgas, pMgas, epMgas, mukm = km_estimator(Mg, flag_Mg)
+Mgas, pMgas, epMgas, mukm = km_estimator(Mg, flagg)
 
 
-# plots
-ax0.fill_between(Mgas, pMgas+epMgas, pMgas-epMgas,
-                 facecolor='C1', alpha=0.5, step='post')
-ax0.plot(Mgas, pMgas, 'C1', drawstyle='steps-post')
 
-ax0.fill_between(Mdust, pMdust+epMdust, pMdust-epMdust, 
-                 facecolor='C0', alpha=0.5, step='post')
-ax0.plot(Mdust, pMdust, 'C0', drawstyle='steps-post')
+### Plot the distributions 
+ax.fill_between(Mgas, pMgas+epMgas, pMgas-epMgas,
+                facecolor='gray', alpha=0.3, step='post')
+ax.plot(Mgas, pMgas, 'gray', drawstyle='steps-post', linewidth=3)
+
+ax.fill_between(Msolids, pMsolids+epMsolids, pMsolids-epMsolids, 
+                facecolor='m', alpha=0.3, step='post')
+ax.plot(Msolids, pMsolids, 'm', drawstyle='steps-post', linewidth=3)
+
+
+### Annotations
 
 
 
 fig.subplots_adjust(left=0.2, right=0.8, bottom=0.16, top=0.98)
 fig.savefig('mdisk_dist.pdf')
 fig.clf()
-
