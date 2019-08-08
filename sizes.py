@@ -19,15 +19,15 @@ ax0 = fig.add_subplot(gs[0, 0])
 ax1 = fig.add_subplot(gs[0, 1])
 
 # set up axes, labels
-Llims  = [0.3, 3333.]
+Llims  = [0.05, 5000.]
 Rlims  = [2.0, 500.]
 COlims = [5, 2000]
 
 # Panel (a) setups  [size-luminosity relation]
 ax0.set_xlim(Llims)
 ax0.set_xscale('log')
-ax0.set_xticks([1, 10, 100, 1000])
-ax0.set_xticklabels(['1', '10', '100', '1000'])
+ax0.set_xticks([0.1, 1, 10, 100, 1000])
+ax0.set_xticklabels(['0.1', '1', '10', '100', '1000'])
 ax0.set_xlabel('$L_{\\rm mm} \;$ (mJy at 150 pc)')
 
 ax0.set_ylim(Rlims)
@@ -101,6 +101,6 @@ ax1.errorbar(RCO_det, Rmm_det, xerr=eRCO_det, marker='o', color='C0',
 
 
 fig.subplots_adjust(wspace=0.37)
-fig.subplots_adjust(left=0.105, right=0.895, bottom=0.19, top=0.98)
+fig.subplots_adjust(left=0.10, right=0.90, bottom=0.19, top=0.98)
 fig.savefig('sizes.pdf')
 fig.clf()
