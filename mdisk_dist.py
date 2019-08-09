@@ -14,7 +14,7 @@ rc("text", usetex = True)
 
 
 # set up plot
-fig = plt.figure(figsize=(6.33, 2.6))
+fig = plt.figure(figsize=(6.33, 2.5))
 gs = gridspec.GridSpec(1, 1)
 ax = fig.add_subplot(gs[0, 0])
 
@@ -26,10 +26,10 @@ ax.set_xlim(Mlims)
 ax.set_xscale('log')
 ax.set_xticks([0.1, 1, 10, 100, 1000, 10000])
 ax.set_xticklabels(['0.1', '1', '10', '100', '1000', '10$^4$'])
+ax.set_xlabel('$M \;$ (M$_{\\boldsymbol{\oplus}}$)')
 
 ax.set_ylim(plims)
 ax.set_ylabel('$p$ ($\ge M$)')
-ax.set_xlabel('$M \;$ (M$_{\\boldsymbol{\oplus}}$)')
 
 # show the spectral index test?
 show_test = False
@@ -141,6 +141,6 @@ ax.plot(Msolids, pMsolids, 'm', drawstyle='steps-post', linewidth=3)
 
 
 
-fig.subplots_adjust(left=0.2, right=0.8, bottom=0.16, top=0.98)
+fig.subplots_adjust(left=0.2, right=0.8, bottom=0.165, top=0.98)
 fig.savefig('mdisk_dist.pdf')
 fig.clf()
