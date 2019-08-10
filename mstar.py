@@ -13,7 +13,7 @@ rc("text", usetex = True)
 
 
 # set up plot
-fig = plt.figure(figsize=(6.33, 2.2))
+fig = plt.figure(figsize=(6.33, 2.25))
 gs = gridspec.GridSpec(1, 2)
 ax0 = fig.add_subplot(gs[0, 0])
 ax1 = fig.add_subplot(gs[0, 1])
