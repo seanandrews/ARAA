@@ -3,6 +3,8 @@ import os
 import sys
 from astropy.io import ascii
 import cloudpickle as cp
+from scipy.interpolate import interp1d
+import scipy.integrate as sci
 
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
@@ -22,7 +24,7 @@ ax1 = fig.add_subplot(gs[0, 1])
 # set up axes, labels
 alims = [0., 200.]
 elims = [1.7, 4.7]
-Rlims = [2.0, 500.]
+Rlims = [0., 220.]
 wlims = [0.5, 20.]
 
 # Panel (a) setups  [epsilon(r) profiles]
@@ -37,15 +39,15 @@ ax0.set_ylabel('$\\varepsilon$')
 
 # Panel (b) setups  [Rmm versus wavelength]
 ax1.set_xlim(wlims)
-#ax1.set_xscale('log')
-#ax1.set_xticks([10, 100, 1000])
-#ax1.set_xticklabels(['10', '100', '1000'])
+ax1.set_xscale('log')
+ax1.set_xticks([1, 10])
+ax1.set_xticklabels(['1', '10'])
 ax1.set_xlabel('$\\lambda \;$ (mm)')
 
 ax1.set_ylim(Rlims)
-ax1.set_yscale('log')
-ax1.set_yticks([10, 100])
-ax1.set_yticklabels(['10', '100'])
+#ax1.set_yscale('log')
+#ax1.set_yticks([10, 100])
+#ax1.set_yticklabels(['10', '100'])
 ax1.set_ylabel('$R_{\\rm mm} \;$ (au)')
 
 
@@ -76,6 +78,29 @@ for i in range(len(name)):
                     (1./(Ib*np.log(wl[b]/wl[a])))**2 * eIb**2 )
     ax0.fill_between(rau, eps+eeps, eps-eeps, facecolor=col[i], alpha=0.5)
     ax0.plot(rau, eps, '-'+col[i])
+
+
+### calculate effective radii
+    reffs = np.zeros(len(wl)) 
+    ereffs_lo, ereffs_hi = np.zeros(len(wl)), np.zeros(len(wl))
+    for j in range(len(reffs)):
+        Fcum = sci.cumtrapz(2.*np.pi*data[name[i]]['intensity'][j][:,1]*rau,
+                            rau, initial=0.)
+        fint = interp1d(Fcum / Fcum[-1], rau)
+        reffs[j] = fint(0.90)
+
+        Fcum = sci.cumtrapz(2.*np.pi*data[name[i]]['intensity'][j][:,0]*rau,
+                            rau, initial=0.)
+        lint = interp1d(Fcum / Fcum[-1], rau)
+        ereffs_lo[j] = reffs[j] - lint(0.90)
+
+        Fcum = sci.cumtrapz(2.*np.pi*data[name[i]]['intensity'][j][:,2]*rau,
+                            rau, initial=0.)
+        hint = interp1d(Fcum / Fcum[-1], rau)
+        ereffs_hi[j] = hint(0.90) - reffs[j]
+
+    ax1.errorbar(wl, reffs, yerr=[5.*ereffs_lo, 7.*ereffs_hi], fmt='o', color=col[i], 
+                 markersize=4) 
 
 
 fig.subplots_adjust(wspace=0.37)
