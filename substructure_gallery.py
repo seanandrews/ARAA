@@ -18,10 +18,10 @@ from matplotlib.patches import Ellipse
 
 
 # set up plot
-hr = 0.22
+hr = 0.27
 fig = plt.figure(figsize=(6.33, 7.5))
 gs  = gridspec.GridSpec(10, 6, width_ratios=(1, 1, 1, 1, 1, 1), 
-                        height_ratios=(hr, 1, 1, hr, 1, 1, hr, 1, hr, 1))
+                        height_ratios=(0.08, 1, 1, hr, 1, 1, hr, 1, hr, 1))
 
 
 # gallery lists
@@ -79,6 +79,27 @@ for i in range(36):
     ax.set_xticklabels([])
     ax.set_ylim(ylims)
     ax.set_yticklabels([])
+
+
+ax = fig.add_subplot(gs[0, 0])
+ax.axis('off')
+ax.text(0.01, 0.80, 'Ring/Cavity', transform=ax.transAxes, fontsize=10,
+        verticalalignment='center')
+        
+
+ax = fig.add_subplot(gs[3, 0])
+ax.axis('off')
+ax.text(0.01, 0.13, 'Rings/Gaps', transform=ax.transAxes, fontsize=10)
+
+ax = fig.add_subplot(gs[6, 0])
+ax.axis('off')
+ax.text(0.01, 0.13, 'Arcs', transform=ax.transAxes, fontsize=10)
+
+ax = fig.add_subplot(gs[8, 0])
+ax.axis('off')
+ax.text(0.01, 0.13, 'Spirals', transform=ax.transAxes, fontsize=10)
+
+
 
 
 
