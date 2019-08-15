@@ -1,13 +1,11 @@
 import numpy as np
 import os
 import sys
+from post_summary import post_summary
 from astropy.io import ascii
 
 
-nsamples  = 500000
 CI_levs = [84.135, 15.865]
-esys = 0.1
-
 
 # for safety, copy over database file
 os.system('cp -r DISKS.csv temp.csv')
@@ -19,12 +17,13 @@ db = ascii.read('temp.csv', format='csv', fast_reader=True)
 nkey = ascii.read('ALLDISKS.Reffs.dat')
 
 
-R7, eR7_hi, eR7_lo = np.zeros(len(db)), np.zeros(len(db)), np.zeros_len(db))
-fl_R7, lim_R7 = -1*np.ones(len(db)), np.zeros(len(db))
-for i in range(len(nkey['file'])):
+R7, eR7_hi, eR7_lo = np.zeros(len(db)), np.zeros(len(db)), np.zeros(len(db))
+fl_R7, lim_R7 = -np.ones(len(db)), np.zeros(len(db))
+for i in range(len(nkey)):
     
     # locate source in database
     ind = np.where(db['NAME'] == nkey['name'][i])[0][0]
+    print(db['NAME'][ind])
 
     # load distance posterior
     dpc = np.load('outputs/'+nkey['name'][i]+'.dpc.posterior.npz')['dpc']
@@ -35,22 +34,16 @@ for i in range(len(nkey['file'])):
     n_rhoeff = len(rhoeff)
 
     # draw n_rhoeff random samples from dpc posterior
-    d = dpc[np.random.random_integers(0, n_dpc, n_rhoeff)]
+    d = np.random.choice(dpc, n_rhoeff)
 
     # log10(Reff) posteriors (au)
     Reff = np.log10(rhoeff * d)
 
     # save the posteriors
-    np.savez('outputs/'+db['name'][ind]+'.logReff.posterior.npz', logReff=Reff)
+    np.savez('outputs/'+db['NAME'][ind]+'.logReff.posterior.npz', logReff=Reff)
 
     # posterior summary
-    CI_Reff = np.percentile(Reff, CI_levs)
-    kde_Reff = stats.gaussian_kde(Reff)
-    ndisc = np.round((CI_Reff[0] - CI_Reff[1]) / 0.001)
-    x_Reff = np.linspace(CI_Reff[1], CI_Reff[0], ndisc)
-    pk_Reff = x_Reff[np.argmax(kde_Reff.evaluate(x_Reff))]
-    hi_Reff = CI_Reff[0] - pk_Reff
-    lo_Reff = pk_Reff - CI_Reff[1]
+    pk_Reff, hi_Reff, lo_Reff = post_summary(Reff, prec=0.001)
     lim_Reff = np.percentile(Reff, 95.45)
 
     # populate the database arrays appropriately

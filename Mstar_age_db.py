@@ -21,8 +21,10 @@ M, eMhi, eMlo = np.zeros(ndb), np.zeros(ndb), np.zeros(ndb)
 A, eAhi, eAlo = np.zeros(ndb), np.zeros(ndb), np.zeros(ndb)
 fL = np.zeros(ndb)
 
+ind_list = np.concatenate((np.array([390, 492, 727]), np.arange(820, 1140)))
+
 # loop through database
-for i in np.arange(589,725):    #range(ndb):
+for i in ind_list:    #range(ndb):
 
     # tracker
     print('start ',i, db['NAME'][i])

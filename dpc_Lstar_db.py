@@ -7,8 +7,8 @@ from post_summary import post_summary
 
 
 # load database
-os.system('cp -r DISKS.csv temp2.csv')
-db = ascii.read('temp2.csv', format='csv', fast_reader=True)
+os.system('cp -r DISKS.csv temp.csv')
+db = ascii.read('temp.csv', format='csv', fast_reader=True)
 ndb = len(db)
 
 # parallax systematics
@@ -21,9 +21,11 @@ d, edhi, edlo = np.zeros(ndb), np.zeros(ndb), np.zeros(ndb)
 L, eLhi, eLlo = np.zeros(ndb), np.zeros(ndb), np.zeros(ndb)
 fL = np.zeros(ndb)
 
+ind_list = np.concatenate((np.array([390, 492, 727]), np.arange(820, 1140)))
+ind_list = np.arange(820, 1140)
 
 # loop through database
-for i in np.arange(725,817):	#range(ndb):
+for i in ind_list:	#range(ndb):
 
     # tracker
     print(i, db['NAME'][i])
@@ -54,12 +56,14 @@ for i in np.arange(725,817):	#range(ndb):
         np.savez('outputs/'+db['NAME'][i]+'.logT.posterior.npz', logT=p_logT)
 
         # replace the new values in the relevant database columns
-        db['DPC'][i] = d[i]
-        db['EDPC_H'][i] = edhi[i]
-        db['EDPC_L'][i] = edlo[i]
         db['logLs'][i] = L[i]
         db['elogLs_H'][i] = eLhi[i]
         db['elogLs_L'][i] = eLlo[i]
 
+    db['DPC'][i] = d[i]
+    db['EDPC_H'][i] = edhi[i]
+    db['EDPC_L'][i] = edlo[i]
+
+
 # write out the modified database
-ascii.write(db, 'temp2.csv', format='csv', fast_writer=True, overwrite=True)
+ascii.write(db, 'temp.csv', format='csv', fast_writer=True, overwrite=True)
