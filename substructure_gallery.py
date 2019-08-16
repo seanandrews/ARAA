@@ -25,44 +25,63 @@ gs  = gridspec.GridSpec(10, 6, width_ratios=(1, 1, 1, 1, 1, 1),
 
 
 # gallery lists
-fdir = 'data/'
-im_files = 'HD169142.selfcal.concat.GPU-UVMEM.centered_mJyBeam'
-offx = 0.
-offy = 0.
-xlims = [1., -1.]
-ylims = [-1., 1.]
+fdir = ['data/',	# 0,0
+        'data/',	# 0,1
+        'data/',	# 0,2
+        'data/']
 
-vmins = 0.
-vmaxs = 15.
+im_files = ['CIDA_9_selfcal_cont_image',	# 0,0
+	    'sz91.cal.image',			# 0,1
+            'SR24S_Band6',			# 0,2
+            'HD34282_b7_continuum_selfcal_superuniform.image']
 
-cm = 'inferno'
+#'HD169142.selfcal.concat.GPU-UVMEM.centered_mJyBeam'
+
+offx = [-0.47, -0.43,  0.00, -0.05]
+offy = [-0.75, -0.80,  0.00,  0.05]
+xlims = np.array([ [1., -1.], [1., -1.], [1., -1.], [1., -1.] ])
+ylims = -xlims
+
+vmins = [ 0.0,  0.0,  0.0,  0.0]
+vmaxs = [ 8.0,  3.0, 15.0, 13.0]  
+
+cm = ['inferno', 'inferno', 'inferno', 'inferno']
+
+dinp = ['mm', 'mm', 'mm', 'mm']
 
 
 # set some constants
 cc, kk = 2.9979e10, 1.381e-16
 
 # loop through gallery images
-for i in range(36):
+for i in range(len(fdir)):
 
     # load image and header
-    hdulist = fits.open(fdir+im_files+'.fits')
+    hdulist = fits.open(fdir[i]+im_files[i]+'.fits')
     Inu = np.squeeze(hdulist[0].data)
     hdr = hdulist[0].header
 
-    # convert to brightness temperature
-    beam = (np.pi/180.)**2 * np.pi * hdr['BMAJ'] * hdr['BMIN'] / (4*np.log(2))
-    nu = 232e9	# change
-    Inu *= 1e-3	# change
-    Tb = (1e-23 * Inu / beam) * cc**2 / (2 * kk * nu**2)
+    # mm continuum setups
+    if (dinp[i] == 'mm'):
+        beam = (np.pi/180)**2 * np.pi*hdr['BMAJ']*hdr['BMIN'] / (4*np.log(2))
+        nu = hdr['CRVAL3']
+        Tb = (1e-23 * Inu / beam) * cc**2 / (2 * kk * nu**2)
 
-    # define coordinate grid
-    RA  = 3600 * hdr['CDELT1'] * (np.arange(hdr['NAXIS1']) - (hdr['CRPIX1']-1))
-    DEC = 3600 * hdr['CDELT2'] * (np.arange(hdr['NAXIS2']) - (hdr['CRPIX2']-1))
-    ext = (np.max(RA)-offx, np.min(RA)-offx, 
-           np.min(DEC)-offy, np.max(DEC)-offy)
+        # define coordinate grid
+        RA  = 3600*hdr['CDELT1']*(np.arange(hdr['NAXIS1'])-(hdr['CRPIX1']-1))
+        DEC = 3600*hdr['CDELT2']*(np.arange(hdr['NAXIS2'])-(hdr['CRPIX2']-1))
 
-    # plot the image
-    #ax = fig.add_subplot(gs[np.floor_divide(i, 6), i % 6])
+        # color stretch
+        norm = ImageNormalize(vmin=vmins[i], vmax=vmaxs[i], 
+                              stretch=AsinhStretch())
+
+        # reset image name
+        img = Tb
+
+    ext = (np.max(RA)-offx[i], np.min(RA)-offx[i], 
+           np.min(DEC)-offy[i], np.max(DEC)-offy[i])
+
+    # set up grid layout
     if (i < 6): rowmap = 1
     if ((i >= 6) & (i < 12)): rowmap = 2
     if ((i >= 12) & (i < 18)): rowmap = 4
@@ -70,23 +89,23 @@ for i in range(36):
     if ((i >= 24) & (i < 30)): rowmap = 7
     if (i >= 30): rowmap = 9
     ax = fig.add_subplot(gs[rowmap, i % 6])
-    norm = ImageNormalize(vmin=vmins, vmax=vmaxs, stretch=AsinhStretch())
-    im = ax.imshow(Tb, origin='lower', cmap=cm, extent=ext, aspect='equal', 
+
+    # plot image
+    im = ax.imshow(img, origin='lower', cmap=cm[i], extent=ext, aspect='equal', 
                    norm=norm)
 
     # panel properties
-    ax.set_xlim(xlims)
-    ax.set_xticklabels([])
-    ax.set_ylim(ylims)
-    ax.set_yticklabels([])
+    ax.set_xlim(xlims[i])
+    ax.set_ylim(ylims[i])
+    ax.axis('off')
 
 
+# category labels + annotations
 ax = fig.add_subplot(gs[0, 0])
 ax.axis('off')
 ax.text(0.01, 0.80, 'Ring/Cavity', transform=ax.transAxes, fontsize=10,
         verticalalignment='center')
         
-
 ax = fig.add_subplot(gs[3, 0])
 ax.axis('off')
 ax.text(0.01, 0.13, 'Rings/Gaps', transform=ax.transAxes, fontsize=10)
@@ -99,11 +118,6 @@ ax = fig.add_subplot(gs[8, 0])
 ax.axis('off')
 ax.text(0.01, 0.13, 'Spirals', transform=ax.transAxes, fontsize=10)
 
-
-
-
-
-    
 
 # adjustments for aesthetic purposes
 fig.subplots_adjust(wspace=0.04, hspace=0.04)

@@ -11,10 +11,10 @@ CI_levs = [84.135, 15.865]
 esys = 0.1
 
 # for safety, copy over database file
-os.system('cp -r DISKS.csv temp.csv')
+os.system('cp -r DISKS.csv temp2.csv')
 
 # now load database
-db = ascii.read('temp.csv', format='csv', fast_reader=True)
+db = ascii.read('temp2.csv', format='csv', fast_reader=True)
 
 a67, ea67_hi, ea67_lo = np.zeros(len(db)), np.zeros(len(db)), np.zeros(len(db))
 fl_a67, lim_a67 = np.zeros(len(db)), np.zeros(len(db))
@@ -113,4 +113,4 @@ db['eA36_lo'] = ea36_lo
 db['LIM_A36'] = lim_a36
 
 # write out the modified database
-ascii.write(db, 'temp.csv', format='csv', fast_writer=True, overwrite=True)
+ascii.write(db, 'temp2.csv', format='csv', fast_writer=True, overwrite=True)
