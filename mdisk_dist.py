@@ -43,8 +43,8 @@ os.system('cp -r DISKS.csv temp.csv')
 db = ascii.read('temp.csv', format='csv', fast_reader=True)
 
 # baseline selections
-base = ( (db['FL_MULT'] != 'J') & (db['SED'] != 'III') & 
-         (db['SED'] != 'DEBRIS') & (db['SFR'] != 'Oph') )
+base = ( (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'HJ') & 
+         (db['SED'] != 'I') & (db['SED'] != 'III') & (db['SED'] != 'DEBRIS') ) 
 
 
 ### Set some constants
@@ -111,6 +111,7 @@ d_lims = np.ones(len(M_lims), dtype=bool)
 # combine all sub-samples
 Ms = np.ma.concatenate( (M_detB7, M_detB6, M_lims) )
 flags = np.ma.concatenate( (d_detB7, d_detB6, d_lims) )
+print(len(Ms))
 
 # calculate the combined CDF
 Msolids, pMsolids, epMsolids, mukm = km_estimator(Ms, flags)

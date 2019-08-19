@@ -28,26 +28,37 @@ gs  = gridspec.GridSpec(10, 6, width_ratios=(1, 1, 1, 1, 1, 1),
 fdir = ['data/',	# 0,0
         'data/',	# 0,1
         'data/',	# 0,2
-        'data/']
+        'data/',	# 0,3
+        'data/',	# 0,4
+        'data/nienke/',	# 0,5
+        'data/paola_tds/',	#1,0
+        'data/']		#1,1
 
 im_files = ['CIDA_9_selfcal_cont_image',	# 0,0
 	    'sz91.cal.image',			# 0,1
             'SR24S_Band6',			# 0,2
-            'HD34282_b7_continuum_selfcal_superuniform.image']
+            'HD34282_b7_continuum_selfcal_superuniform.image', #0,3
+            'IP_Tau_selfcal_cont_image',	# 0,4
+            'SR21_B7_tim',			# 0,5
+            'J16042165',			# 1,0
+            'lkca15.900.2']			# 1,1
 
 #'HD169142.selfcal.concat.GPU-UVMEM.centered_mJyBeam'
 
-offx = [-0.47, -0.43,  0.00, -0.05]
-offy = [-0.75, -0.80,  0.00,  0.05]
-xlims = np.array([ [1., -1.], [1., -1.], [1., -1.], [1., -1.] ])
+offx = [-0.47, -0.43,  0.00, -0.05, 0.08,  0.10,  0.00, 0.245]
+offy = [-0.75, -0.80,  0.00,  0.05, 0.15,  0.05,  0.00, -0.321]
+xlims = np.array([ [1., -1.], [1., -1.], [1., -1.], [1., -1.], [1., -1.],
+                   [1., -1.], [1., -1.], [1.3, -1.3] ])
 ylims = -xlims
 
-vmins = [ 0.0,  0.0,  0.0,  0.0]
-vmaxs = [ 8.0,  3.0, 15.0, 13.0]  
+vmins = [ 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.2]
+vmaxs = [ 8.0,  3.0, 15.0, 13.0,  7.0, 10.0,  7.0,  8.0]  
 
-cm = ['inferno', 'inferno', 'inferno', 'inferno']
+cm = ['inferno', 'inferno', 'inferno', 'inferno', 'inferno', 'inferno',
+      'inferno', 'inferno']
 
-dinp = ['mm', 'mm', 'mm', 'mm']
+dinp = ['mm', 'mm', 'mm', 'mm', 'mm', 'mm',
+        'mm', 'mm']
 
 
 # set some constants
