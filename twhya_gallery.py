@@ -1,15 +1,20 @@
 import numpy as np
+import os
+import sys
 from astropy.io import fits
+
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
+plt.style.use('araa')
+from matplotlib import rc
+rc('text.latex', preamble=r'\usepackage{amsmath}')
+rc("font", **{"family": "serif", "serif": ["Palatino"]})
+rc("text", usetex = True)
 from matplotlib.colorbar import Colorbar
-from matplotlib.font_manager import FontProperties
 from matplotlib import mlab, cm
-from astropy.visualization import (AsinhStretch, LogStretch, LinearStretch, ImageNormalize)
-import sys
+from astropy.visualization import (AsinhStretch, LinearStretch, ImageNormalize)
 from matplotlib.patches import Ellipse
-
-plt.rc('font', size=9)
+from matplotlib.font_manager import FontProperties
 
 
 # set up plots
@@ -35,29 +40,34 @@ ax2.set_xticklabels([])
 ax2.set_yticklabels([])
 
 
-font0 = FontProperties()
-font1 = font0.copy()
-font1.set_family('sans-serif')
-font1.set_style('italic')
-font1.set_size('small')
-ax0.text(0.96, 0.03, 'scattered light', transform=ax0.transAxes, 
-         horizontalalignment='right', fontproperties=font1, color='w',
+# annotations
+#font0 = FontProperties()
+#font1 = font0.copy()
+#font1.set_family('sans-serif')
+#font1.set_style('italic')
+#font1.set_size('small')
+#ax0.text(0.96, 0.03, 'scattered light', transform=ax0.transAxes, 
+#         horizontalalignment='right', fontproperties=font1, color='w',
+#         bbox={'facecolor': 'black', 'alpha': 0.8, 'pad': 2})
+#ax1.text(0.96, 0.03, 'thermal continuum', transform=ax1.transAxes,
+#         horizontalalignment='right', fontproperties=font1, color='w')
+#ax2.text(0.96, 0.03, 'spectral line emission', transform=ax2.transAxes,
+#         horizontalalignment='right', fontproperties=font1, color='w')
+#font2 = font0.copy()
+#font2.set_family('sans-serif')
+#font2.set_size('large')
+#font2.set_weight('semibold')
+#ax0.text(0.08, 0.91, 'a', transform=ax0.transAxes, 
+#         horizontalalignment='right', fontproperties=font2, color='w',
+#         bbox={'facecolor': 'black', 'alpha': 0.8, 'pad': 2})
+#ax1.text(0.08, 0.91, 'b', transform=ax1.transAxes,
+#         horizontalalignment='right', fontproperties=font2, color='w')
+#ax2.text(0.08, 0.91, 'c', transform=ax2.transAxes,
+#         horizontalalignment='right', fontproperties=font2, color='w')
+
+ax0.text(0.96, 0.03, '\textit{scattered light}', transform=ax0.transAxes,
+         horizontalalignment='right', color='w', 
          bbox={'facecolor': 'black', 'alpha': 0.8, 'pad': 2})
-ax1.text(0.96, 0.03, 'thermal continuum', transform=ax1.transAxes,
-         horizontalalignment='right', fontproperties=font1, color='w')
-ax2.text(0.96, 0.03, 'spectral line emission', transform=ax2.transAxes,
-         horizontalalignment='right', fontproperties=font1, color='w')
-font2 = font0.copy()
-font2.set_family('sans-serif')
-font2.set_size('large')
-font2.set_weight('semibold')
-ax0.text(0.08, 0.91, 'a', transform=ax0.transAxes, 
-         horizontalalignment='right', fontproperties=font2, color='w',
-         bbox={'facecolor': 'black', 'alpha': 0.8, 'pad': 2})
-ax1.text(0.08, 0.91, 'b', transform=ax1.transAxes,
-         horizontalalignment='right', fontproperties=font2, color='w')
-ax2.text(0.08, 0.91, 'c', transform=ax2.transAxes,
-         horizontalalignment='right', fontproperties=font2, color='w')
 
 
 

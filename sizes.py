@@ -20,8 +20,8 @@ ax1 = fig.add_subplot(gs[0, 1])
 
 # set up axes, labels
 Llims  = [0.05, 5000.]
-Rlims  = [2.0, 500.]
-COlims = [5, 2000]
+Rlims  = [1.25, 800.]
+COlims = [1.25, 800]
 
 # Panel (a) setups  [size-luminosity relation]
 ax0.set_xlim(Llims)
@@ -39,8 +39,8 @@ ax0.set_ylabel('$R_{\\rm mm} \;$ (au)')
 # Panel (b) setups  [R_dust versus R_gas]
 ax1.set_xlim(COlims)
 ax1.set_xscale('log')
-ax1.set_xticks([10, 100, 1000])
-ax1.set_xticklabels(['10', '100', '1000'])
+ax1.set_xticks([10, 100])
+ax1.set_xticklabels(['10', '100'])
 ax1.set_xlabel('$R_{\\rm CO} \;$ (au)')
 
 ax1.set_ylim(Rlims)
@@ -67,37 +67,51 @@ d_ref = 150.
 
 
 ### luminosities and sizes
-det = ((db['FL_B7'] == 0) & (db['FL_R7'] == 0))
+# simple model
+ml = np.logspace(-2, 4, 1024)
+mr = 7.*(ml/1.)**0.5
+ax0.plot(ml, mr, '--k')
+
+# size upper limits
 lim = ((db['FL_B7'] == 0) & (db['FL_R7'] == 1))
-
-Ldet = db['F_B7'][det] * (db['DPC'][det] / d_ref)**2
-Rdet = db['R7'][det] * db['DPC'][det]
 Llim = db['F_B7'][lim] * (db['DPC'][lim] / d_ref)**2
-Rlim = db['LIM_R7'][lim] * db['DPC'][lim]
+Rlim = 10.**db['LIM_R7'][lim]
+ax0.errorbar(Llim, Rlim, yerr=0.25*Rlim, uplims=True, marker='None', capsize=2,
+             color='gray', alpha=0.65, linestyle='None')
 
-ax0.errorbar(Llim, Rlim, yerr=0.25*Rlim, uplims=True, marker='None', capsize=2, 
-             alpha=0.5, linestyle='None')
-ax0.plot(Ldet, Rdet, 'oC0', markersize=4)
+# detections
+det = ((db['FL_B7'] == 0) & (db['FL_R7'] == 0))
+Ldet = db['F_B7'][det] * (db['DPC'][det] / d_ref)**2
+Lerr = np.sqrt( (db['eF_B7'][det]**2 + (0.1*db['F_B7'][det])**2) * \
+                (db['DPC'][det]/d_ref)**4 + \
+                ( db['F_B7'][det]*(2.*db['DPC'][det]/d_ref**2) * \
+                  0.5 * (db['EDPC_H'][det]+db['EDPC_L'][det]) )**2 )
+Rdet = 10.**db['R7'][det] 
+Rerr_hi = 10.**(db['eR7_hi'][det]+db['R7'][det]) - Rdet
+Rerr_lo = Rdet - 10.**(db['R7'][det]-db['eR7_lo'][det])
+ax0.errorbar(Ldet, Rdet, xerr=Lerr, yerr=[Rerr_lo, Rerr_hi], marker='o', 
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0, 
+             alpha=0.75)
+
 
 
 ### continuum sizes and CO sizes
+# simple models
+mx = np.logspace(0, 4, 1024)
+ax1.plot(mx, mx, '--k')
+#ax1.plot(3.*mx, mx, ':k')
+
+# data
 det = ((db['FL_RCO'] == 0) & (db['FL_R7'] == 0))
-lim = ((db['FL_RCO'] == 0) & (db['FL_R7'] == 1))
-
-RCO_det = db['R_CO'][det] * db['DPC'][det]
-eRCO_det = db['eR_CO'][det] * db['DPC'][det]
-Rmm_det = db['R7'][det] * db['DPC'][det]
-#RCO_lim = db['R_CO'][det] * db['DPC'][det]
-#Rmm_lim = db['R7'][det] * db['DPC'][det]
-
-# simple scaling
-mdl_x = np.logspace(0, 4, 128)
-
-ax1.plot(mdl_x, mdl_x, '--', color='gray')
-ax1.plot(3.*mdl_x, mdl_x, ':', color='gray')
-#ax1.plot(Llim, Rlim, '11', color='C1', markersize=4.0)
-ax1.errorbar(RCO_det, Rmm_det, xerr=eRCO_det, marker='o', color='C0', 
-             markersize=4.0, linestyle='None')
+RCO  = db['R_CO'][det] * db['DPC'][det]
+eRCO = np.sqrt((db['eR_CO'][det]*db['DPC'][det])**2 + \
+               (db['R_CO'][det]*(0.5*(db['EDPC_H'][det]+db['EDPC_L'][det])))**2)
+Rmm = 10.**db['R7'][det] 
+Rmm_hi = 10.**(db['eR7_hi'][det]+db['R7'][det]) - Rmm
+Rmm_lo = Rmm - 10.**(db['R7'][det]-db['eR7_lo'][det])
+ax1.errorbar(RCO, Rmm, xerr=eRCO, yerr=[Rmm_lo, Rmm_hi], marker='o', 
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0, 
+             alpha=0.75)
 
 
 fig.subplots_adjust(wspace=0.37)

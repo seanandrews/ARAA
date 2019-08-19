@@ -46,6 +46,7 @@ ax2.set_ylim(albp_lims)
 ax2.set_xticklabels([])
 ax2.set_yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
 ax2.set_ylabel('$\omega_\\nu$')
+#ax2.plot([0.01, 100], [0.95, 0.95], ':')
 
 ax3 = fig.add_subplot(gs[1, 1])
 ax3.set_xlim(amax_lims)
