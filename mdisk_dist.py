@@ -20,12 +20,12 @@ ax = fig.add_subplot(gs[0, 0])
 
 # set up axes, labels
 plims = [0., 1.]
-Mlims = [0.05, 20000.]		# earth masses
+Mlims = [0.0125, 8000.]		# earth masses
 
 ax.set_xlim(Mlims)
 ax.set_xscale('log')
-ax.set_xticks([0.1, 1, 10, 100, 1000, 10000])
-ax.set_xticklabels(['0.1', '1', '10', '100', '1000', '10$^4$'])
+ax.set_xticks([0.1, 1, 10, 100, 1000])
+ax.set_xticklabels(['0.1', '1', '10', '100', '1000'])
 ax.set_xlabel('$M \;$ (M$_{\\boldsymbol{\oplus}}$)')
 
 ax.set_ylim(plims)
@@ -122,13 +122,25 @@ Msolids, pMsolids, epMsolids, mukm = km_estimator(Ms, flags)
 have_Mg = ( (db['FL_Mgas'] == 0) & base )
 flagg = (db['FL_Mgas'][have_Mg] == 1)
 Mg = db['Mgas'][have_Mg] * mjup / mearth 
+print(len(Mg))
 
 # cumulative distribution
 Mgas, pMgas, epMgas, mukm = km_estimator(Mg, flagg)
 
+det7 = (have_Mg & (db['FL_B7'] == 0))
+det6 = (have_Mg & (db['FL_B7'] != 0) & (db['FL_B6'] == 0)) 
+Msg7 = L7[det7] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+Msg6 = L6[det6] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+Msg = np.ma.concatenate( (Msg7, Msg6) )
+print(len(Msg))
+Mgs, pMgs, epMgs, mukm = km_estimator(Msg, flagg)
 
 
 ### Plot the distributions 
+ax.fill_between(Mgs, pMgs+epMgs, pMgs-epMgs,
+                facecolor='orange', alpha=0.3, step='post')
+ax.plot(Mgs, pMgs, 'orange', drawstyle='steps-post', alpha=0.6, linewidth=3)
+
 ax.fill_between(Mgas, pMgas+epMgas, pMgas-epMgas,
                 facecolor='gray', alpha=0.3, step='post')
 ax.plot(Mgas, pMgas, 'gray', drawstyle='steps-post', linewidth=3)
@@ -139,7 +151,13 @@ ax.plot(Msolids, pMsolids, 'm', drawstyle='steps-post', linewidth=3)
 
 
 ### Annotations
-
+ax.text(0.63, 0.62, '$\\boldsymbol{M_{\\rm s}}$', color='m', fontsize=13)
+ax.text(0.19, 0.66, '(all disks)', color='m', fontsize=10, 
+        horizontalalignment='right', alpha=0.8)
+ax.text(6, 0.85, '$\\boldsymbol{M_{\\rm s}}$', color='orange', fontsize=13)
+ax.text(0.63, 0.885, '($M_{\\rm g}$ sample)', color='orange', fontsize=10, 
+        horizontalalignment='right', alpha=0.8)
+ax.text(140, 0.78, '$\\boldsymbol{M_{\\rm g}}$', color='gray', fontsize=13)
 
 
 fig.subplots_adjust(left=0.2, right=0.8, bottom=0.165, top=0.98)

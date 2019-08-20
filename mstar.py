@@ -59,8 +59,7 @@ db = ascii.read('temp.csv', format='csv', fast_reader=True)
 # baseline selections
 base = ( (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'T') &
          (db['FL_MULT'] != 'T') & (db['SED'] != 'III') &
-         (db['SED'] != 'DEBRIS') & (db['SFR'] != 'Oph') &
-         (db['FL_logMs'] == 0) )
+         (db['SED'] != 'DEBRIS') & (db['FL_logMs'] == 0) )
 
 
 ### Set some constants
@@ -140,6 +139,10 @@ ax0.errorbar(Ms, Lmm, xerr=[eMs_lo, eMs_hi], yerr=eLmm, marker='o',
              color='C0', markersize=3, linestyle='None', elinewidth=1.0,
              alpha=0.65)
 
+mx = np.logspace(-3, 2, 1024)
+my = 100. * mx**1.9
+ax0.plot(mx, my, '--r')
+
 
 
 ### Rmm versus Mstar
@@ -171,6 +174,14 @@ ax1.errorbar(Mlim, Rlim, xerr=[eMlo_lim, eMhi_lim], yerr=0,
 ax1.errorbar(Mdet, Rdet, xerr=[eMdet_lo, eMdet_hi], yerr=[eRdet_lo, eRdet_hi], 
              marker='o', color='C0', markersize=3, linestyle='None', 
              elinewidth=1.0, alpha=0.65)
+my = 120. * mx**0.9
+ax1.plot(mx, my, '--r')
+
+ax0.text(0.08, 0.86, 'a', transform=ax0.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+ax1.text(0.08, 0.86, 'b', transform=ax1.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+
 
 
 fig.subplots_adjust(wspace=0.37)

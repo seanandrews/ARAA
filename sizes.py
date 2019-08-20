@@ -57,9 +57,9 @@ os.system('cp -r DISKS.csv temp.csv')
 db = ascii.read('temp.csv', format='csv', fast_reader=True)
 
 # baseline selections
-base = ( (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'T') & 
+base = ( (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'B') & 
          (db['FL_MULT'] != 'T') & (db['SED'] != 'III') &
-         (db['SED'] != 'DEBRIS') & (db['SFR'] != 'Oph') )
+         (db['SED'] != 'DEBRIS') )
 
 
 ### Set some constants
@@ -70,7 +70,7 @@ d_ref = 150.
 # simple model
 ml = np.logspace(-2, 4, 1024)
 mr = 7.*(ml/1.)**0.5
-ax0.plot(ml, mr, '--k')
+ax0.plot(ml, mr, '--r')
 
 # size upper limits
 lim = ((db['FL_B7'] == 0) & (db['FL_R7'] == 1))
@@ -98,8 +98,8 @@ ax0.errorbar(Ldet, Rdet, xerr=Lerr, yerr=[Rerr_lo, Rerr_hi], marker='o',
 ### continuum sizes and CO sizes
 # simple models
 mx = np.logspace(0, 4, 1024)
-ax1.plot(mx, mx, '--k')
-#ax1.plot(3.*mx, mx, ':k')
+ax1.plot(mx, mx, ':', color='gray')
+ax1.plot(2.5*mx, mx, '--r')
 
 # data
 det = ((db['FL_RCO'] == 0) & (db['FL_R7'] == 0))
@@ -112,6 +112,13 @@ Rmm_lo = Rmm - 10.**(db['R7'][det]-db['eR7_lo'][det])
 ax1.errorbar(RCO, Rmm, xerr=eRCO, yerr=[Rmm_lo, Rmm_hi], marker='o', 
              color='C0', markersize=3, linestyle='None', elinewidth=1.0, 
              alpha=0.75)
+
+
+ax0.text(0.08, 0.86, 'a', transform=ax0.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+ax1.text(0.08, 0.86, 'b', transform=ax1.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+
 
 
 fig.subplots_adjust(wspace=0.37)
