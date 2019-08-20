@@ -8,7 +8,7 @@ from do_regression import do_regression
 plt.rc('font', size=9)
 
 
-sfr  = 'Tau'
+sfr  = 'Oph'
 band = 7
 eFsys = 0.1
 do_reg = True
@@ -46,7 +46,8 @@ ax.set_ylabel('$L_{\\rm mm}$  (mJy at 140 pc)')
 base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'T') & \
          (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'CB') & \
          (db['SED'] != 'III') & (db['SED'] != 'DEBRIS') & 
-         (db['SFR'] == sfr) & (db['FL_logMs'] == 0) & (db['logMs'] >= -1.0) )
+         (db['SFR'] == sfr) & (db['FL_logMs'] == 0) & 
+         (db['logMs'] >= -1.0) & (db['logMs'] <= 0.3) )
 
 
 # measurements available

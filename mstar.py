@@ -140,7 +140,7 @@ ax0.errorbar(Ms, Lmm, xerr=[eMs_lo, eMs_hi], yerr=eLmm, marker='o',
              alpha=0.65)
 
 mx = np.logspace(-3, 2, 1024)
-my = 100. * mx**1.9
+my = 100. * mx**1.7
 ax0.plot(mx, my, '--r')
 
 
