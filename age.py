@@ -2,11 +2,47 @@ import numpy as np
 import os
 import sys
 from astropy.io import ascii
+from km_estimator import km_estimator
+
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import matplotlib as mpl
-from km_estimator import km_estimator
-plt.rc('font', size=9)
+plt.style.use('araa')
+from matplotlib import rc
+rc('text.latex', preamble=r'\usepackage{amsmath}')
+rc("font", **{"family": "serif", "serif": ["Palatino"]})
+rc("text", usetex = True)
+
+
+# set up plots
+fig = plt.figure(figsize=(6.33, 2.25))
+gs = gridspec.GridSpec(1, 2)
+ax0 = fig.add_subplot(gs[0, 0])
+ax1 = fig.add_subplot(gs[0, 1])
+
+# set up axes, labels
+Llims = [0.05, 5000.]
+Rlims = [1.25, 800]
+Tlims = [0.2, 50.]
+
+ax0.set_xlim(Llims)
+ax0.set_xscale('log')
+ax0.set_xticks([0.1, 1, 10, 100, 1000])
+ax0.set_xticklabels(['0.1', '1', '10', '100', '1000'])
+ax0.set_xlabel('$L_{\\rm mm} \;$  (mJy at 150 pc)')
+ax0.set_ylim([0., 1.01])
+ax0.set_ylabel('$p(> L_{\\rm mm})$')
+
+ax1.set_xlim(Tlims)
+ax1.set_xscale('log')
+ax1.set_xticks([1, 10])
+ax1.set_xticklabels(['1', '10'])
+ax1.set_xlabel('$t_\\ast \;$  (Myr)')
+ax1.set_ylim(Llims)
+ax1.set_yscale('log')
+ax1.set_yticks([0.1, 1, 10, 100, 1000])
+ax1.set_yticklabels(['0.1', '1', '10', '100', '1000'])
+ax1.set_ylabel('$L_{\\rm mm} \;$  (mJy at 150 pc)')
 
 
 # for safety, copy over database file
@@ -17,33 +53,6 @@ dref = 150.
 # now load database
 db = ascii.read('temp.csv', format='csv', fast_reader=True)
 
-# set up plots
-fig = plt.figure(figsize=(6.33, 2.3))
-gs = gridspec.GridSpec(1, 2)
-Llims = [0.05, 5000.]
-Rlims = [2.0, 500.]
-Tlims = [0.2, 50.]
-
-ax0 = fig.add_subplot(gs[0, 0])
-ax0.set_xlim(Llims)
-ax0.set_xscale('log')
-ax0.set_xticks([0.1, 1, 10, 100, 1000])
-ax0.set_xticklabels(['0.1', '1', '10', '100', '1000'])
-ax0.set_xlabel('$L_{\\rm mm}$  (mJy at 150 pc)')
-ax0.set_ylim([0., 1.])
-ax0.set_ylabel('$p(> L_{\\rm mm})$')
-
-ax1 = fig.add_subplot(gs[0, 1])
-ax1.set_xlim(Tlims)
-ax1.set_xscale('log')
-ax1.set_xticks([1, 10])
-ax1.set_xticklabels(['1', '10'])
-ax1.set_xlabel('$t_\\ast$  (Myr)')
-ax1.set_ylim(Llims)
-ax1.set_yscale('log')
-ax1.set_yticks([0.1, 1, 10, 100, 1000])
-ax1.set_yticklabels(['0.1', '1', '10', '100', '1000'])
-ax1.set_ylabel('$L_{\\rm mm}$  (mJy at 150 pc)')
 
 
 # base selections
@@ -56,8 +65,8 @@ base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'T') & \
 
 ### cluster CDF comparisons
 
-sfr = ['Tau', 'Lup', 'Cha', 'Usco']
-
+sfr = ['Oph', 'Tau', 'Lup', 'Cha', 'Usco']
+sfr_name = ['Oph', 'Tau', 'Lup', 'Cha I', 'Upper Sco']
 nsamp = 100
 
 
@@ -80,7 +89,7 @@ for i in range(len(binM_lo)):
 nb = np.round(fperbin * nsamp)
 nperbin = nb.astype(np.int64)
 
-col = ['C0', 'C1', 'C2', 'C3']
+col = ['C3', 'C1', 'C2', 'C0', 'C4']
 for i in range(len(sfr)):
 
     # detections
@@ -118,13 +127,10 @@ for i in range(len(sfr)):
         # and plot the CDF
         ax0.plot(xx, yy, col[i], alpha=0.05, drawstyle='steps-post')
 
-
-
-
-
-
-
-
+    # annotations
+    ax0.text(0.05, 0.33-0.065*i, sfr_name[i], transform=ax0.transAxes, 
+             horizontalalignment='left', fontsize=8, fontweight='bold', 
+             color=col[i])
 
 
 
@@ -162,12 +168,24 @@ rgba = cmap(norm(s_M))
 for i in range(len(s_M)):
     lcol = rgba[i]
     lcol[3] = 0.9
-    mrkr = 'o' if (s_flags[i] == 0) else 'x'
-    ax1.plot(s_t[i], s_L[i], mrkr, markerfacecolor=lcol, 
-             markeredgecolor='None', markersize=5)
+    if (s_flags[i] == 0):
+        ax1.plot(s_t[i], s_L[i], 'o', markerfacecolor=lcol, 
+                 markeredgecolor='None', markersize=4.5)
+    else:
+        ax1.errorbar(s_t[i], s_L[i], yerr=0.32*s_L[i], uplims=True,
+                     marker='None', capsize=2, color=lcol, alpha=0.45, 
+                     linestyle='None')
 
 
-fig.subplots_adjust(wspace=0.35)
-fig.subplots_adjust(left=0.09, right=0.91, bottom=0.17, top=0.98)
+# annotations
+ax0.text(0.88, 0.86, 'a', transform=ax0.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+ax1.text(0.88, 0.86, 'b', transform=ax1.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+
+
+
+fig.subplots_adjust(wspace=0.37)
+fig.subplots_adjust(left=0.10, right=0.90, bottom=0.19, top=0.98)
 fig.savefig('age.pdf')
 fig.clf()
