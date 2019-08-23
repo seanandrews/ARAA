@@ -82,9 +82,8 @@ ax0.errorbar(Dlim, Llim, yerr=0.25*Llim, uplims=True, marker='None', capsize=2,
 lim = ((db['FL_B6'] == 1) & baseCB)
 Llim = db['LIM_B6'][lim] * (db['DPC'][lim] / d_ref)**2
 Dlim = db['SEP'][lim] * db['DPC'][lim]
-print(len(Llim))
 ax0.errorbar(Dlim, Llim, yerr=0.25*Llim, uplims=True, marker='None', capsize=2,
-             color='orange', alpha=0.65, linestyle='None')
+             color='C2', alpha=0.65, linestyle='None')
 
 
 # detections (do this in B6?)
@@ -114,29 +113,51 @@ DerrC = np.sqrt((db['DPC'][detC]*0.1*db['SEP'][detC])**2 +
                 (db['SEP'][detC] * \
                  0.5*(db['EDPC_H'][detC]+db['EDPC_L'][detC]))**2)
 ax0.errorbar(DdetC, LdetC, xerr=DerrC, yerr=LerrC, marker='o', 
-             color='r', markersize=3, linestyle='None', elinewidth=1.0, 
+             color='C2', markersize=3, linestyle='None', elinewidth=1.0, 
              alpha=0.75)
 
 
 
 
-### continuum sizes and CO sizes
+### luminosities and sizes
 # simple models
-mx = np.logspace(0, 4, 1024)
-ax1.plot(mx, mx, ':', color='gray')
-ax1.plot(2.5*mx, mx, '--r')
+mx = np.logspace(-3, 4, 1024)
+my = 10.**(2.10)*(mx/1e3)**0.49
+nrat = (225./340.)
+ax1.plot(mx*nrat**2.3, my*nrat**0.3, '--r', alpha=0.6)
 
 # data
-det = ((db['FL_RCO'] == 0) & (db['FL_R7'] == 0))
-RCO  = db['R_CO'][det] * db['DPC'][det]
-eRCO = np.sqrt((db['eR_CO'][det]*db['DPC'][det])**2 + \
-               (db['R_CO'][det]*(0.5*(db['EDPC_H'][det]+db['EDPC_L'][det])))**2)
-Rmm = 10.**db['R7'][det] 
-Rmm_hi = 10.**(db['eR7_hi'][det]+db['R7'][det]) - Rmm
-Rmm_lo = Rmm - 10.**(db['R7'][det]-db['eR7_lo'][det])
-ax1.errorbar(RCO, Rmm, xerr=eRCO, yerr=[Rmm_lo, Rmm_hi], marker='o', 
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0, 
+det = ((db['FL_B6'] == 0) & (db['FL_R6'] == 0))
+Ldet = db['F_B6'][det] * (db['DPC'][det] / d_ref)**2
+Lerr = np.sqrt( (db['eF_B6'][det]**2 + (0.1*db['F_B6'][det])**2) * \
+                (db['DPC'][det]/d_ref)**4 + \
+                ( db['F_B6'][det]*(2.*db['DPC'][det]/d_ref**2) * \
+                  0.5 * (db['EDPC_H'][det]+db['EDPC_L'][det]) )**2 )
+Rdet = 10.**db['R6'][det]
+Rerr_hi = 10.**(db['eR6_hi'][det]+db['R6'][det]) - Rdet
+Rerr_lo = Rdet - 10.**(db['R6'][det]-db['eR6_lo'][det])
+
+# binaries
+mult = (db['FL_MULT'][det] == 'B')
+ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult], 
+             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
              alpha=0.75)
+
+mult = (db['FL_MULT'][det] == 'WB') 
+ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult], 
+             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             alpha=0.75)
+
+
+# singles
+mult = ((db['FL_MULT'][det] != 'B') & (db['FL_MULT'][det] != 'WB'))
+ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult], 
+             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
+             color='C1', markersize=3, linestyle='None', elinewidth=1.0,
+             alpha=0.75)
+
 
 
 ax0.text(0.08, 0.86, 'a', transform=ax0.transAxes, horizontalalignment='left',
