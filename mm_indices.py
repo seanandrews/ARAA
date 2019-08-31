@@ -23,13 +23,13 @@ ax1 = fig.add_subplot(gs[0, 1])
 
 # set up axes, labels
 elims = [1.5, 4.7]
-Rlims = [0., 200.]
+Rlims = [0., 150.]
 Llims = [0.05, 5000.]
+Llims = [np.log10(0.05), np.log10(5000)]
 
 # panel (a) setups  [alphamm versus Lmm]
 ax0.set_xlim(Llims)
-ax0.set_xscale('log')
-ax0.set_xticks([0.1, 1, 10, 100, 1000])
+ax0.set_xticks([-1, 0, 1, 2, 3])
 ax0.set_xticklabels(['0.1', '1', '10', '100', '1000'])
 ax0.set_xlabel('$L_{\\rm mm} \;$ (mJy at 150 pc)')
 
@@ -60,8 +60,7 @@ db = ascii.read('temp.csv', format='csv', fast_reader=True)
 
 # downselect targets with both a robust index and B6 flux density
 base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'T') & 
-         (db['FL_MULT'] != 'J') & 
-         (db['SED'] != 'III') & 
+         (db['FL_MULT'] != 'J') & (db['SED'] != 'III') & 
          (db['SED'] != 'DEBRIS') )
 
 d_ref, nu_ref, alp = 150., 225., 2.3
@@ -79,11 +78,77 @@ eL6 = np.sqrt( (nu_ref/db['nu_B6'][sub])**(2.*alp) * \
 amm = db['A'+ind][sub]
 eamm_hi = db['eA'+ind+'_hi'][sub]
 eamm_lo = db['eA'+ind+'_lo'][sub]
+names = db['NAME'][sub]
+
+eL6 = [np.log10(L6)-np.log10(L6-eL6), np.log10(L6+eL6)-np.log10(L6)]
+L6 = np.log10(L6)
 
 ax0.errorbar(L6, amm, xerr=eL6, yerr=[eamm_lo, eamm_hi], marker='o', 
              color='C0', markersize=3, linestyle='None', elinewidth=1.0,
              alpha=0.65)
 
+uztau = (names == 'UZ_Tau_E')
+ax0.errorbar(L6[uztau], amm[uztau], yerr=[eamm_lo[uztau], eamm_hi[uztau]],
+             marker='o', color='C4', markersize=5, linestyle='None',
+             elinewidth=2.)
+
+drtau = (names == 'DR_Tau')
+ax0.errorbar(L6[drtau], amm[drtau], yerr=[eamm_lo[drtau], eamm_hi[drtau]], 
+             marker='o', color='C3', markersize=5, linestyle='None', 
+             elinewidth=2.)
+
+fttau = (names == 'FT_Tau')
+ax0.errorbar(L6[fttau], amm[fttau], yerr=[eamm_lo[fttau], eamm_hi[fttau]],
+             marker='o', color='C1', markersize=5, linestyle='None',
+             elinewidth=2.)
+
+as209 = (names == 'AS_209')
+ax0.errorbar(L6[as209], amm[as209], yerr=[eamm_lo[as209], eamm_hi[as209]],
+             marker='o', color='C2', markersize=5, linestyle='None',
+             elinewidth=2.)
+
+
+
+
+# B6/B7 indices
+ok67 = ((db['FL_B7'] == 0) & (db['FL_B6'] == 0) & (db['FL_A67'] == 0) & base)
+names = db['NAME'][ok67]
+num67 = len(names)
+a67_samples = []
+for i in range(num67):
+    a67_ = np.load('outputs/'+names[i]+'.alpha67.posterior.npz')['amm']
+    a67_samples = np.append(a67_samples, a67_)
+
+N, bins = np.histogram(a67_samples, range=[0, 5], bins=100, density=True)
+ax0.plot(1.5*N+Llims[0]-0.10, bins[1:], 'gray')
+
+
+
+ok36 = ((db['FL_B6'] == 0) & (db['FL_B3'] == 0) & (db['FL_A36'] == 0) & base)
+names = db['NAME'][ok36]
+num36 = len(names)
+a36_samples = []
+for i in range(num36):
+    a36_ = np.load('outputs/'+names[i]+'.alpha36.posterior.npz')['amm']
+    a36_samples = np.append(a36_samples, a36_)
+
+N, bins = np.histogram(a36_samples, range=[0, 5], bins=100, density=True)
+ax0.plot(1.5*N+Llims[0], bins[1:], 'C0')
+
+
+
+
+ax0.fill_between(Llims, [3.7, 3.7], [4.0, 4.0], facecolor='y', alpha=0.2)
+ax0.text(np.log10(0.3), 3.83, 'ISM', fontsize=10, color='goldenrod', 
+         va='center')
+
+
+
+
+### UZ Tau from Anjali
+rau, alpl, alph = np.loadtxt('data/uztau_epsilon.dat').T
+ax1.fill_between(rau, alpl, alph, facecolor='C4', alpha=0.35)
+ax1.plot(rau, 0.5*(alpl+alph), '-C4')
 
 ### Load the data from Tazzari+ 2016
 with open("data/tazzari_profiles.dat", 'rb') as f:
@@ -107,6 +172,23 @@ for i in range(len(name)):
                     (1./(Ib*np.log(wl[b]/wl[a])))**2 * eIb**2 )
     ax1.fill_between(rau, eps+eeps, eps-eeps, facecolor=col[i], alpha=0.5)
     ax1.plot(rau, eps, '-'+col[i])
+
+ax1.text(0.93, 0.07, 'UZ Tau E', transform=ax1.transAxes, ha='right', 
+         fontsize=8, color='C4')
+ax1.text(0.93, 0.13, 'AS 209', transform=ax1.transAxes, ha='right', 
+         fontsize=8, color='C2')
+ax1.text(0.93, 0.19, 'FT Tau', transform=ax1.transAxes, ha='right',  
+         fontsize=8, color='C1')
+ax1.text(0.93, 0.25, 'DR Tau', transform=ax1.transAxes, ha='right',  
+         fontsize=8, color='C3')
+
+
+
+
+ax0.text(0.08, 0.86, 'a', transform=ax0.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+ax1.text(0.08, 0.86, 'b', transform=ax1.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
 
 
 fig.subplots_adjust(wspace=0.37)

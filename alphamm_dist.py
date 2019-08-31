@@ -4,7 +4,6 @@ import sys
 from astropy.io import ascii
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
-from do_regression import do_regression
 plt.rc('font', size=9)
 
 
@@ -34,7 +33,7 @@ base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'T') & \
 
 
 # B6/B7 indices
-ok67 = ((db['FL_A67'] == 0) & base)
+ok67 = ((db['FL_B7'] == 0) & (db['FL_B6'] == 0) & (db['FL_A67'] == 0) & base)
 names = db['NAME'][ok67]
 num67 = len(names)
 a67_samples = []
@@ -43,7 +42,7 @@ for i in range(num67):
     a67_samples = np.append(a67_samples, a67_)
 
 
-ok36 = ((db['FL_A36'] == 0) & base)
+ok36 = ((db['FL_B6'] == 0) & (db['FL_B3'] == 0) & (db['FL_A36'] == 0) & base)
 names = db['NAME'][ok36]
 num36 = len(names)
 a36_samples = []

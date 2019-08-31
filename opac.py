@@ -86,6 +86,17 @@ for i in range(len(dfiles)):
     ax3.plot(acm, np.abs(pol[:, 1]), lstys[i], linewidth=2)
 
 
+ax0.text(0.09, 0.78, 'a', transform=ax0.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+ax1.text(0.09, 0.78, 'b', transform=ax1.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+ax2.text(0.09, 0.78, 'c', transform=ax2.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+ax3.text(0.09, 0.78, 'd', transform=ax3.transAxes, horizontalalignment='left',
+         fontsize=15, color='gray')
+
+
+
 
 fig.subplots_adjust(wspace=0.37, hspace=0.00)
 fig.subplots_adjust(left=0.1, right=0.9, bottom=0.13, top=0.98)
