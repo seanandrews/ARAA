@@ -3,9 +3,10 @@ import os
 import sys
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
+from scipy.interpolate import interp1d
 from astropy.io import ascii
 
-reg = 'sOri'
+reg = 'IC348'
 
 
 # plot layout
@@ -76,14 +77,29 @@ ax.plot(t02, l02, 'r', alpha=0.5)
 # datapoints
 os.system('cp -r DISKS.csv temp2.csv')
 db = ascii.read('temp2.csv', format='csv', fast_reader=True)
-base = ((db['SFR'] == reg))
+base = ((db['SFR'] == reg) & (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'CB') & 
+        (db['FL_Teff'] == 0))
 print(len(db), len(db[base]))
 
 ax.errorbar(db['logTeff'][base], db['logLs'][base], xerr=db['elogTeff'][base], 
             yerr=[db['elogLs_L'][base], db['elogLs_H'][base]], fmt='.k',
             ecolor='gray', alpha=0.3)
 ax.plot(db['logTeff'][base], db['logLs'][base], '.k')
-            
+
+
+# find cases that lie well below 15 Myr isochrones
+# MIST case
+mlogT, mlogL = iso_T[iso_AGE == 7.15], iso_L[iso_AGE == 7.15]
+mlogT = mlogT[mlogL <= 2]
+mlogL = mlogL[mlogL <= 2]
+dlogT, dlogL, name = db['logTeff'][base], db['logLs'][base], db['NAME'][base]
+fint = interp1d(mlogT, mlogL, fill_value='extrapolate')
+bound_L = np.zeros_like(dlogL)
+for i in range(len(dlogT)): bound_L[i] = fint(dlogT[i])
+print(name[dlogL < bound_L])
+lows = (dlogL < bound_L)
+ax.plot(dlogT[lows], dlogL[lows], 'mo')
+
 
 
 # plot appearances

@@ -21,7 +21,7 @@ ax1 = fig.add_subplot(gs[0, 1])
 # set up axes, labels
 Llims  = [0.05, 5000.]
 Rlims  = [1.25, 800.]
-Dlims  = [0.2, 5000]
+Dlims  = [0.125, 8000]
 
 # Panel (a) setups  [luminosity versus projected separation]
 ax0.set_ylim(Llims)
@@ -53,12 +53,20 @@ ax1.set_xlabel('$L_{\\rm mm} \;$ (mJy at 150 pc)')
 ### Load the database 
 
 # safe copy + load
-os.system('cp -r DISKS.csv temp.csv')
-db = ascii.read('temp.csv', format='csv', fast_reader=True)
+os.system('cp -r DISKS.csv temp2.csv')
+db = ascii.read('temp2.csv', format='csv', fast_reader=True)
 
 # baseline selections
-baseJ  = (db['FL_MULT'] == 'J')
-baseCB = (db['FL_MULT'] == 'CB')
+baseJ   = ((db['FL_MULT'] != 'CB') & (db['FL_MULT'] != 'HCB') & 
+           (db['FL_MULT'] != 'HC') & (db['FL_MULT'] != 'B') & 
+           (db['FL_MULT'] != 'W')  & (db['FL_MULT'] != 'S') & 
+           (db['FL_MULT'] != 'U') & (db['SED'] != 'III')) 
+
+baseCB  = ((db['FL_MULT'] != 'J')  & (db['FL_MULT'] != 'WJ') & 
+           (db['FL_MULT'] != 'HJ') & (db['FL_MULT'] != 'HJB') & 
+           (db['FL_MULT'] != 'HC') & (db['FL_MULT'] != 'B') &
+           (db['FL_MULT'] != 'W')  & (db['FL_MULT'] != 'S') &
+           (db['FL_MULT'] != 'U') & (db['SED'] != 'III'))
 
 
 
@@ -77,13 +85,13 @@ lim = ((db['FL_B6'] == 0) & baseJ)
 Llim = db['LIM_B6'][lim] * (db['DPC'][lim] / d_ref)**2
 Dlim = db['SEP'][lim] * db['DPC'][lim]
 ax0.errorbar(Dlim, Llim, yerr=0.25*Llim, uplims=True, marker='None', capsize=2,
-             color='gray', alpha=0.65, linestyle='None')
+             color='gray', alpha=0.35, linestyle='None')
 
 lim = ((db['FL_B6'] == 1) & baseCB)
 Llim = db['LIM_B6'][lim] * (db['DPC'][lim] / d_ref)**2
 Dlim = db['SEP'][lim] * db['DPC'][lim]
 ax0.errorbar(Dlim, Llim, yerr=0.25*Llim, uplims=True, marker='None', capsize=2,
-             color='C2', alpha=0.65, linestyle='None')
+             color='C2', alpha=0.35, linestyle='None')
 
 
 # detections (do this in B6?)
@@ -99,7 +107,7 @@ DerrJ = np.sqrt((db['DPC'][detJ]*0.1*db['SEP'][detJ])**2 +
                  0.5*(db['EDPC_H'][detJ]+db['EDPC_L'][detJ]))**2)
 ax0.errorbar(DdetJ, LdetJ, xerr=DerrJ, yerr=LerrJ, marker='o', 
              color='C0', markersize=3, linestyle='None', elinewidth=1.0, 
-             alpha=0.75)
+             alpha=0.65)
 
 detC = ((db['FL_B6'] == 0) & baseCB)
 LdetC = db['F_B6'][detC] * (db['DPC'][detC] / d_ref)**2
@@ -114,7 +122,7 @@ DerrC = np.sqrt((db['DPC'][detC]*0.1*db['SEP'][detC])**2 +
                  0.5*(db['EDPC_H'][detC]+db['EDPC_L'][detC]))**2)
 ax0.errorbar(DdetC, LdetC, xerr=DerrC, yerr=LerrC, marker='o', 
              color='C2', markersize=3, linestyle='None', elinewidth=1.0, 
-             alpha=0.75)
+             alpha=0.65)
 
 
 
@@ -137,26 +145,47 @@ Rdet = 10.**db['R6'][det]
 Rerr_hi = 10.**(db['eR6_hi'][det]+db['R6'][det]) - Rdet
 Rerr_lo = Rdet - 10.**(db['R6'][det]-db['eR6_lo'][det])
 
-# binaries
-mult = (db['FL_MULT'][det] == 'B')
-ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult], 
-             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
-             alpha=0.75)
-
-mult = (db['FL_MULT'][det] == 'WB') 
-ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult], 
-             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
-             alpha=0.75)
-
 
 # singles
-mult = ((db['FL_MULT'][det] != 'B') & (db['FL_MULT'][det] != 'WB'))
+mult = ((db['FL_MULT'][det] != 'B') & (db['FL_MULT'][det] != 'W'))
 ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult], 
              yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
              color='C1', markersize=3, linestyle='None', elinewidth=1.0,
-             alpha=0.75)
+             alpha=0.65)
+
+# binaries
+mult = (db['FL_MULT'][det] == 'B')
+ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
+             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             alpha=0.65)
+
+mult = (db['FL_MULT'][det] == 'W')
+ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
+             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             alpha=0.65)
+
+mult = (db['FL_MULT'][det] == 'HJB')
+ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
+             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             alpha=0.65)
+
+mult = (db['FL_MULT'][det] == 'HC')
+ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
+             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             alpha=0.65)
+
+mult = (db['FL_MULT'][det] == 'HCB')
+ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
+             yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             alpha=0.65)
+
+
+
 
 
 

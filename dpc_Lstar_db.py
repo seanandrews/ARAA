@@ -23,6 +23,7 @@ fL = np.zeros(ndb)
 
 ind_list = np.concatenate((np.array([390, 492, 727]), np.arange(820, 1140)))
 ind_list = np.arange(820, 1140)
+ind_list = [631, 659]
 
 # loop through database
 for i in ind_list:	#range(ndb):
@@ -34,6 +35,7 @@ for i in ind_list:	#range(ndb):
     eplx = np.sqrt(db['EPI'][i]**2 + sys_plx**2)
 
     # calculate and store the distance posterior samples
+    print(db['PI'][i], eplx)
     p_dpc = plx_dist(db['PI'][i]+plx_shift, eplx, nsamples=ns)
     np.savez('outputs/'+db['NAME'][i]+'.dpc.posterior.npz', dpc=p_dpc)
 
