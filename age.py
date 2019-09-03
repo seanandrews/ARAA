@@ -2,6 +2,7 @@ import numpy as np
 import os
 import sys
 from astropy.io import ascii
+from scipy.interpolate import interp1d
 from km_estimator import km_estimator
 
 import matplotlib.pyplot as plt
@@ -21,7 +22,7 @@ ax0 = fig.add_subplot(gs[0, 0])
 ax1 = fig.add_subplot(gs[0, 1])
 
 # set up axes, labels
-Llims = [0.05, 5000.]
+Llims = [0.02, 5000.]
 Rlims = [1.25, 800]
 Tlims = [0.2, 50.]
 
@@ -46,18 +47,19 @@ ax1.set_ylabel('$L_{\\rm mm} \;$  (mJy at 150 pc)')
 
 
 # for safety, copy over database file
-os.system('cp -r DISKS.csv temp.csv')
+os.system('cp -r DISKS.csv temp2.csv')
 
 dref = 150.
 
 # now load database
-db = ascii.read('temp.csv', format='csv', fast_reader=True)
+db = ascii.read('temp2.csv', format='csv', fast_reader=True)
 
 
 
 # base selections
-base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'T') & \
-         (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'CB') & \
+base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'HJB') & 
+         (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'CB') & 
+         (db['FL_MULT'] != 'WJ') & (db['FL_MULT'] != 'HJ') & 
          (db['SED'] != 'III') & (db['SED'] != 'DEBRIS') &
          (db['FL_logMs'] == 0) )
 
@@ -66,7 +68,7 @@ base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'T') & \
 ### cluster CDF comparisons
 
 sfr = ['Oph', 'Tau', 'Lup', 'Cha', 'Usco']
-sfr_name = ['Oph', 'Tau', 'Lup', 'Cha I', 'Upper Sco']
+sfr_name = ['Oph', 'Tau', 'Lup', 'Cha', 'USco']
 nsamp = 100
 
 
@@ -74,7 +76,7 @@ nsamp = 100
 binM_lo = [-1.0, -0.7, -0.4, -0.1, 0.2] 
 binM_hi = [-0.7, -0.4, -0.1,  0.2, 0.5]
 
-# model of the IMF (Chabrier 2005)
+# model of the IMF (Chabrier)
 mm = np.logspace(binM_lo[0], binM_hi[-1], 1024)
 imf = 0.093 * np.exp(-0.5*(np.log10(mm) - np.log10(0.2))**2/(0.55**2))
 imf[mm >= 1.] = 0.041*mm[mm >= 1.]**(-1.35)
@@ -111,6 +113,11 @@ for i in range(len(sfr)):
     flags = np.ma.concatenate((flags_det, flags_lim))
 
     # construct a bunch of CDFs for each SFR
+    if (sfr[i] == 'Usco'): 
+        xmin = 0.58
+    else: xmin = 0.8
+    dxx = np.logspace(np.log10(xmin), 3, 512)
+    dyy = np.zeros((512, 500))
     for ix in range(500):
         # randomly draw a distribution following the IMF sampling rules
         indices = np.array([], dtype=np.int64)
@@ -124,8 +131,23 @@ for i in range(len(sfr)):
         # construct the CDF
         xx, yy, eyy, mukm = km_estimator(Ldist, delta)
 
+        # interpolate the CDFs onto a common grid
+        cint = interp1d(xx, yy, fill_value='extrapolate')
+        tempy = cint(dxx)
+        tempy[tempy < 0.] = 0.
+        tempy[tempy > 1.] = 1.
+        dyy[:,ix] = tempy
+
         # and plot the CDF
-        ax0.plot(xx, yy, col[i], alpha=0.05, drawstyle='steps-post')
+    #    ax0.plot(xx, yy, col[i], alpha=0.05, drawstyle='steps-post')
+
+    ax0.fill_between(dxx, np.percentile(dyy, 2.5, axis=1), 
+                     np.percentile(dyy, 97.5, axis=1), facecolor=col[i], 
+                     alpha=0.5)
+
+    #ax0.plot(dxx, np.percentile(dyy, 16., axis=1), 'k', drawstyle='steps-post')
+    #ax0.plot(dxx, np.percentile(dyy, 50., axis=1), 'k', drawstyle='steps-post')
+    #ax0.plot(dxx, np.percentile(dyy, 84., axis=1), 'k', drawstyle='steps-post')
 
     # annotations
     ax0.text(0.05, 0.33-0.065*i, sfr_name[i], transform=ax0.transAxes, 
@@ -175,6 +197,15 @@ for i in range(len(s_M)):
         ax1.errorbar(s_t[i], s_L[i], yerr=0.32*s_L[i], uplims=True,
                      marker='None', capsize=2, color=lcol, alpha=0.45, 
                      linestyle='None')
+
+
+# colorbar
+cax = fig.add_axes([0.905, 0.19, 0.02, 0.79])
+cb1 = mpl.colorbar.ColorbarBase(cax, cmap=cmap, norm=norm, 
+                                orientation='vertical') 
+cax.yaxis.tick_right()
+cax.tick_params(axis='both', which='major', labelsize=7)
+
 
 
 # annotations
