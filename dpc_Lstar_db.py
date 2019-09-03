@@ -25,6 +25,8 @@ ind_list = np.concatenate((np.array([390, 492, 727]), np.arange(820, 1140)))
 ind_list = np.arange(820, 1140)
 ind_list = [631, 659]
 
+ind_list = (np.where(db['FL_logLs'] == 9))[0]
+
 # loop through database
 for i in ind_list:	#range(ndb):
 
@@ -35,7 +37,6 @@ for i in ind_list:	#range(ndb):
     eplx = np.sqrt(db['EPI'][i]**2 + sys_plx**2)
 
     # calculate and store the distance posterior samples
-    print(db['PI'][i], eplx)
     p_dpc = plx_dist(db['PI'][i]+plx_shift, eplx, nsamples=ns)
     np.savez('outputs/'+db['NAME'][i]+'.dpc.posterior.npz', dpc=p_dpc)
 
@@ -46,8 +47,10 @@ for i in ind_list:	#range(ndb):
     if (np.ma.is_masked(db['logLs_in'][i])):
         fL[i] = 1
     else:
-        p_logL = np.random.normal(db['logLs_in'][i], db['elogLs_in'][i], ns) + \
-                  2.*np.log10(p_dpc / db['d_in'][i])
+#        p_logL = np.random.normal(db['logLs_in'][i], db['elogLs_in'][i], ns) + \
+#                 2.*np.log10(p_dpc / db['d_in'][i])
+        p_logL = np.random.normal(db['logLs'][i], 
+                                  0.5*(db['elogLs_H'][i]+db['elogLs_L'][i]), ns)
         np.savez('outputs/'+db['NAME'][i]+'.logL.posterior.npz', logL=p_logL)
 
         # luminosity posterior summaries

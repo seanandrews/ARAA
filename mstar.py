@@ -57,9 +57,11 @@ os.system('cp -r DISKS.csv temp.csv')
 db = ascii.read('temp.csv', format='csv', fast_reader=True)
 
 # baseline selections
-base = ( (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'T') &
-         (db['FL_MULT'] != 'T') & (db['SED'] != 'III') &
-         (db['SED'] != 'DEBRIS') & (db['FL_logMs'] == 0) )
+base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'HJB') &
+         (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'CB') &
+         (db['FL_MULT'] != 'WJ') & (db['FL_MULT'] != 'HJ') &
+         (db['SED'] != 'III') & (db['SED'] != 'DEBRIS') &
+         (db['FL_logMs'] == 0) )
 
 
 ### Set some constants
