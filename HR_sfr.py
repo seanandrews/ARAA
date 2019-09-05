@@ -6,7 +6,7 @@ import matplotlib.gridspec as gridspec
 from scipy.interpolate import interp1d
 from astropy.io import ascii
 
-reg = 'IC348'
+reg = 'Oph'
 
 
 # plot layout
@@ -17,8 +17,8 @@ fig = plt.figure(figsize=(xinch, yinch))
 gs = gridspec.GridSpec(1, 1)
 
 # plotting stuff for each parameter
-Llims = [-2.9, 2.9]     # log Lstar / Lsun
-Tlims = [4.0, 3.4]      # log Teff / K
+Llims = [-3.5, 2.9]     # log Lstar / Lsun
+Tlims = [4.2, 3.2]      # log Teff / K
 
 
 ax = fig.add_subplot(gs[0,0])
@@ -93,12 +93,12 @@ mlogT, mlogL = iso_T[iso_AGE == 7.15], iso_L[iso_AGE == 7.15]
 mlogT = mlogT[mlogL <= 2]
 mlogL = mlogL[mlogL <= 2]
 dlogT, dlogL, name = db['logTeff'][base], db['logLs'][base], db['NAME'][base]
-fint = interp1d(mlogT, mlogL, fill_value='extrapolate')
-bound_L = np.zeros_like(dlogL)
-for i in range(len(dlogT)): bound_L[i] = fint(dlogT[i])
-print(name[dlogL < bound_L])
-lows = (dlogL < bound_L)
-ax.plot(dlogT[lows], dlogL[lows], 'mo')
+#fint = interp1d(mlogT, mlogL, fill_value='extrapolate')
+#bound_L = np.zeros_like(dlogL)
+#for i in range(len(dlogT)): bound_L[i] = fint(dlogT[i])
+#print(name[dlogL < bound_L])
+#lows = (dlogL < bound_L)
+#ax.plot(dlogT[lows], dlogL[lows], 'mo')
 
 
 

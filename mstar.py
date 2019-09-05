@@ -34,7 +34,7 @@ ax0.set_ylim(Llims)
 ax0.set_yscale('log')
 ax0.set_yticks([0.1, 1, 10, 100, 1000])
 ax0.set_yticklabels(['0.1', '1', '10', '100', '1000'])
-ax0.set_ylabel('$L_{\\rm mm} \;$ (mJy at 150 pc)')
+ax0.set_ylabel('$L_{\\rm 0.9 \, mm} \;$ (mJy at 150 pc)')
 
 # Panel (b) setups  [mass-size relation]
 ax1.set_xlim(Mlims)
@@ -47,7 +47,10 @@ ax1.set_ylim(Rlims)
 ax1.set_yscale('log')
 ax1.set_yticks([10, 100])
 ax1.set_yticklabels(['10', '100'])
-ax1.set_ylabel('$R_{\\rm mm} \;$ (au)')
+ax1.set_ylabel('$R_{\\rm 0.9 \, mm} \;$ (au, to $0.9 L$)')
+#ax1.text(-0.24, 0.93, '[90\%]', transform=ax1.transAxes, fontsize=10,
+#         color='gray', rotation=90)
+
 
 
 ### Load the database
@@ -60,7 +63,7 @@ db = ascii.read('temp.csv', format='csv', fast_reader=True)
 base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'HJB') &
          (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'CB') &
          (db['FL_MULT'] != 'WJ') & (db['FL_MULT'] != 'HJ') &
-         (db['SED'] != 'III') & (db['SED'] != 'DEBRIS') &
+         (db['SED'] != 'I') & (db['SED'] != 'III') & (db['SED'] != 'DEBRIS') &
          (db['FL_logMs'] == 0) )
 
 

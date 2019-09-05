@@ -26,6 +26,7 @@ ind_list = np.arange(820, 1140)
 ind_list = [631, 659]
 
 ind_list = (np.where(db['FL_logLs'] == 9))[0]
+ind_list = [44, 241, 508, 690, 698, 929, 1066]
 
 # loop through database
 for i in ind_list:	#range(ndb):
