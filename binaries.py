@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 plt.style.use('araa')
 from matplotlib import rc
+import matplotlib as mpl
 rc('text.latex', preamble=r'\usepackage{amsmath}')
 rc("font", **{"family": "serif", "serif": ["Palatino"]})
 rc("text", usetex = True)
@@ -28,7 +29,7 @@ ax0.set_ylim(Llims)
 ax0.set_yscale('log')
 ax0.set_yticks([0.1, 1, 10, 100, 1000])
 ax0.set_yticklabels(['0.1', '1', '10', '100', '1000'])
-ax0.set_ylabel('$\sum_i L_{{\\rm mm}, i} \;$ (mJy at 150 pc)', labelpad=3)
+ax0.set_ylabel('$\sum L_{{\\rm 1.3 \, mm}} \;$ (mJy at 150 pc)', labelpad=3)
 
 ax0.set_xlim(Dlims)
 ax0.set_xscale('log')
@@ -41,13 +42,19 @@ ax1.set_ylim(Rlims)
 ax1.set_yscale('log')
 ax1.set_yticks([10, 100])
 ax1.set_yticklabels(['10', '100'])
-ax1.set_ylabel('$R_{\\rm mm} \;$ (au)')
+ax1.set_ylabel('$R_{\\rm 1.3 \, mm} \;$ (au, at 0.9$L$)')
 
 ax1.set_xlim(Llims)
 ax1.set_xscale('log')
 ax1.set_xticks([0.1, 1, 10, 100, 1000])
 ax1.set_xticklabels(['0.1', '1', '10', '100', '1000'])
-ax1.set_xlabel('$L_{\\rm mm} \;$ (mJy at 150 pc)')
+ax1.set_xlabel('$L_{\\rm 1.3 \, mm} \;$ (mJy at 150 pc)')
+locmin = mpl.ticker.LogLocator(base=10.,
+                               subs=(0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9),
+                               numticks=5)
+ax1.xaxis.set_minor_locator(locmin)
+ax1.xaxis.set_minor_formatter(mpl.ticker.NullFormatter())
+
 
 
 ### Load the database 
@@ -60,13 +67,15 @@ db = ascii.read('temp2.csv', format='csv', fast_reader=True)
 baseJ   = ((db['FL_MULT'] != 'CB') & (db['FL_MULT'] != 'HCB') & 
            (db['FL_MULT'] != 'HC') & (db['FL_MULT'] != 'B') & 
            (db['FL_MULT'] != 'W')  & (db['FL_MULT'] != 'S') & 
-           (db['FL_MULT'] != 'U') & (db['SED'] != 'III')) 
+           (db['FL_MULT'] != 'U') & (db['SED'] != 'III') & 
+           (db['SED'] != 'I') & (db['SED'] != 'DEBRIS') ) 
 
 baseCB  = ((db['FL_MULT'] != 'J')  & (db['FL_MULT'] != 'WJ') & 
            (db['FL_MULT'] != 'HJ') & (db['FL_MULT'] != 'HJB') & 
            (db['FL_MULT'] != 'HC') & (db['FL_MULT'] != 'B') &
            (db['FL_MULT'] != 'W')  & (db['FL_MULT'] != 'S') &
-           (db['FL_MULT'] != 'U') & (db['SED'] != 'III'))
+           (db['FL_MULT'] != 'U') & (db['SED'] != 'III') & 
+           (db['SED'] != 'I') & (db['SED'] != 'DEBRIS') )
 
 
 
@@ -106,7 +115,7 @@ DerrJ = np.sqrt((db['DPC'][detJ]*0.1*db['SEP'][detJ])**2 +
                 (db['SEP'][detJ] * \
                  0.5*(db['EDPC_H'][detJ]+db['EDPC_L'][detJ]))**2)
 ax0.errorbar(DdetJ, LdetJ, xerr=DerrJ, yerr=LerrJ, marker='o', 
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0, 
+             color='m', markersize=3, linestyle='None', elinewidth=1.0, 
              alpha=0.65)
 
 detC = ((db['FL_B6'] == 0) & baseCB)
@@ -124,6 +133,9 @@ ax0.errorbar(DdetC, LdetC, xerr=DerrC, yerr=LerrC, marker='o',
              color='C2', markersize=3, linestyle='None', elinewidth=1.0, 
              alpha=0.65)
 
+
+ax0.text(0.5, 0.11, 'circumbinary', ha='left', fontsize=8, color='C2')
+ax0.text(100, 0.20, 'binary pairs', ha='left', fontsize=8, color='m')
 
 
 
@@ -150,40 +162,42 @@ Rerr_lo = Rdet - 10.**(db['R6'][det]-db['eR6_lo'][det])
 mult = ((db['FL_MULT'][det] != 'B') & (db['FL_MULT'][det] != 'W'))
 ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult], 
              yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
-             color='C1', markersize=3, linestyle='None', elinewidth=1.0,
+             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
              alpha=0.65)
 
 # binaries
 mult = (db['FL_MULT'][det] == 'B')
 ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
              yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             color='m', markersize=3, linestyle='None', elinewidth=1.0,
              alpha=0.65)
 
 mult = (db['FL_MULT'][det] == 'W')
 ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
              yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             color='m', markersize=3, linestyle='None', elinewidth=1.0,
              alpha=0.65)
 
 mult = (db['FL_MULT'][det] == 'HJB')
 ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
              yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             color='m', markersize=3, linestyle='None', elinewidth=1.0,
              alpha=0.65)
 
 mult = (db['FL_MULT'][det] == 'HC')
 ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
              yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             color='m', markersize=3, linestyle='None', elinewidth=1.0,
              alpha=0.65)
 
 mult = (db['FL_MULT'][det] == 'HCB')
 ax1.errorbar(Ldet[mult], Rdet[mult], xerr=Lerr[mult],
              yerr=[Rerr_lo[mult], Rerr_hi[mult]], marker='o',
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
+             color='m', markersize=3, linestyle='None', elinewidth=1.0,
              alpha=0.65)
 
+ax1.text(1.5, 2.5, 'binaries', ha='left', fontsize=8, color='m')
+ax1.text(100, 280, 'singles', ha='left', fontsize=8, color='C0')
 
 
 

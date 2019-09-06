@@ -95,6 +95,15 @@ ax2.text(0.09, 0.78, 'c', transform=ax2.transAxes, horizontalalignment='left',
 ax3.text(0.09, 0.78, 'd', transform=ax3.transAxes, horizontalalignment='left',
          fontsize=15, color='gray')
 
+ax2.plot([2, 7], [0.34, 0.34], '-k', lw=1.5)
+ax2.text(8., 0.315, 'compact', fontsize=8)
+ax2.plot([2, 7], [0.23, 0.23], '--k', lw=1.5)
+ax2.text(8., 0.205, 'porous', fontsize=8)
+ax2.text(2, 0.07, '$q = $', fontsize=8)
+ax2.text(5, 0.07, '2.5', fontsize=8, color='C0')
+ax2.text(9, 0.07, ',', fontsize=8)
+ax2.text(12, 0.07, '3.5', fontsize=8, color='C1')
+
 
 
 

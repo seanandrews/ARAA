@@ -22,8 +22,7 @@ a36, ea36_hi, ea36_lo = np.zeros(len(db)), np.zeros(len(db)), np.zeros(len(db))
 fl_a36, lim_a36 = np.zeros(len(db)), np.zeros(len(db))
 
 t0 = time.time()
-ind_list = [978]
-for i in ind_list:	#range(len(db)):
+for i in range(len(db)):
 
     # no index information available (no measurement in 1 band, or upper limits
     # in both bands)
@@ -35,6 +34,7 @@ for i in ind_list:	#range(len(db)):
         fl_a67[i], a67[i], ea67_hi[i], ea67_lo[i], lim_a67[i] = -1, 0, 0, 0, 0
     if (db['FL_B6'][i] == 1 and db['FL_B3'][i] == 1):
         fl_a36[i], a36[i], ea36_hi[i], ea36_lo[i], lim_a36[i] = -1, 0, 0, 0, 0
+
 
     # dual-band detections 
     if (db['FL_B7'][i] == 0 and db['FL_B6'][i] == 0):

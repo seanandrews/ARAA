@@ -48,8 +48,6 @@ ax1.set_yscale('log')
 ax1.set_yticks([10, 100])
 ax1.set_yticklabels(['10', '100'])
 ax1.set_ylabel('$R_{\\rm 0.9 \, mm} \;$ (au, to $0.9 L$)')
-#ax1.text(-0.24, 0.93, '[90\%]', transform=ax1.transAxes, fontsize=10,
-#         color='gray', rotation=90)
 
 
 
@@ -63,6 +61,7 @@ db = ascii.read('temp.csv', format='csv', fast_reader=True)
 base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'HJB') &
          (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'CB') &
          (db['FL_MULT'] != 'WJ') & (db['FL_MULT'] != 'HJ') &
+   #      (db['FL_MULT'] != 'HCB') & (db['FL_MULT'] != 'HC') &
          (db['SED'] != 'I') & (db['SED'] != 'III') & (db['SED'] != 'DEBRIS') &
          (db['FL_logMs'] == 0) )
 

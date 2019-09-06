@@ -5,6 +5,7 @@ from astropy.io import ascii
 
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
+import matplotlib as mpl
 plt.style.use('araa')
 from matplotlib import rc
 rc('text.latex', preamble=r'\usepackage{amsmath}')
@@ -21,33 +22,38 @@ ax1 = fig.add_subplot(gs[0, 1])
 # set up axes, labels
 Llims  = [0.05, 5000.]
 Rlims  = [1.25, 800.]
-COlims = [1.25, 800]
+COlims = [4.25, 1500]
 
 # Panel (a) setups  [size-luminosity relation]
 ax0.set_xlim(Llims)
 ax0.set_xscale('log')
 ax0.set_xticks([0.1, 1, 10, 100, 1000])
 ax0.set_xticklabels(['0.1', '1', '10', '100', '1000'])
-ax0.set_xlabel('$L_{\\rm mm} \;$ (mJy at 150 pc)')
+ax0.set_xlabel('$L_{\\rm 0.9 \, mm} \;$ (mJy at 150 pc)')
+locmin = mpl.ticker.LogLocator(base=10.,
+                               subs=(0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9),
+                               numticks=5)
+ax0.xaxis.set_minor_locator(locmin)
+ax0.xaxis.set_minor_formatter(mpl.ticker.NullFormatter())
 
 ax0.set_ylim(Rlims)
 ax0.set_yscale('log')
 ax0.set_yticks([10, 100])
 ax0.set_yticklabels(['10', '100'])
-ax0.set_ylabel('$R_{\\rm mm} \;$ (au)')
+ax0.set_ylabel('$R_{\\rm 0.9 \, mm} \;$ (au, to 0.9$L$)')
 
 # Panel (b) setups  [R_dust versus R_gas]
 ax1.set_xlim(COlims)
 ax1.set_xscale('log')
-ax1.set_xticks([10, 100])
-ax1.set_xticklabels(['10', '100'])
-ax1.set_xlabel('$R_{\\rm CO} \;$ (au)')
+ax1.set_xticks([10, 100, 1000])
+ax1.set_xticklabels(['10', '100', '1000'])
+ax1.set_xlabel('$R_{\\rm CO} \;$ (au, to 0.9$L$)')
 
 ax1.set_ylim(Rlims)
 ax1.set_yscale('log')
 ax1.set_yticks([10, 100])
 ax1.set_yticklabels(['10', '100'])
-ax1.set_ylabel('$R_{\\rm mm} \;$ (au)')
+ax1.set_ylabel('$R_{\\rm 0.9 \, mm} \;$ (au, to 0.9$L$)')
 
 
 ### Load the database 
@@ -91,7 +97,7 @@ Rerr_hi = 10.**(db['eR7_hi'][det]+db['R7'][det]) - Rdet
 Rerr_lo = Rdet - 10.**(db['R7'][det]-db['eR7_lo'][det])
 ax0.errorbar(Ldet, Rdet, xerr=Lerr, yerr=[Rerr_lo, Rerr_hi], marker='o', 
              color='C0', markersize=3, linestyle='None', elinewidth=1.0, 
-             alpha=0.75)
+             alpha=0.65)
 
 
 
@@ -111,7 +117,7 @@ Rmm_hi = 10.**(db['eR7_hi'][det]+db['R7'][det]) - Rmm
 Rmm_lo = Rmm - 10.**(db['R7'][det]-db['eR7_lo'][det])
 ax1.errorbar(RCO, Rmm, xerr=eRCO, yerr=[Rmm_lo, Rmm_hi], marker='o', 
              color='C0', markersize=3, linestyle='None', elinewidth=1.0, 
-             alpha=0.75)
+             alpha=0.65)
 
 
 ax0.text(0.08, 0.86, 'a', transform=ax0.transAxes, horizontalalignment='left',

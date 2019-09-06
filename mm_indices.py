@@ -8,6 +8,7 @@ import scipy.integrate as sci
 
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
+import matplotlib as mpl
 plt.style.use('araa')
 from matplotlib import rc
 rc('text.latex', preamble=r'\usepackage{amsmath}')
@@ -31,10 +32,11 @@ Llims = [np.log10(0.05), np.log10(5000)]
 ax0.set_xlim(Llims)
 ax0.set_xticks([-1, 0, 1, 2, 3])
 ax0.set_xticklabels(['0.1', '1', '10', '100', '1000'])
-ax0.set_xlabel('$L_{\\rm mm} \;$ (mJy at 150 pc)')
+ax0.set_xlabel('$L_{\\rm 1.3 \, mm} \;$ (mJy at 150 pc)')
+
 
 ax0.set_ylim(elims)
-ax0.set_ylabel('$\\alpha_{\\rm mm} \;$ (1--3 mm)')
+ax0.set_ylabel('$\\alpha_{\\rm mm}$')
 
 
 # panel (b) setups  [epsilon(r) profiles]
@@ -49,7 +51,7 @@ ax1.set_ylabel('$\\varepsilon \;$ (1--9 mm)')
 cc = 2.9979e10
 
 
-ind = '36'
+ind = '67'
 
 if (ind == '67'): alp_lbl = '(B6 / B7)'
 if (ind == '36'): alp_lbl = '(B3 / B6)'
@@ -59,8 +61,7 @@ os.system('cp -r DISKS.csv temp.csv')
 db = ascii.read('temp.csv', format='csv', fast_reader=True)
 
 # downselect targets with both a robust index and B6 flux density
-base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'T') & 
-         (db['FL_MULT'] != 'J') & (db['SED'] != 'III') & 
+base = ( (db['SED'] != 'I') & (db['SED'] != 'III') & 
          (db['SED'] != 'DEBRIS') )
 
 d_ref, nu_ref, alp = 150., 225., 2.3
@@ -82,31 +83,79 @@ names = db['NAME'][sub]
 
 eL6 = [np.log10(L6)-np.log10(L6-eL6), np.log10(L6+eL6)-np.log10(L6)]
 L6 = np.log10(L6)
+#ax0.errorbar(L6, amm, xerr=eL6, yerr=[eamm_lo, eamm_hi], 
+#             marker='o', color='gray', markersize=3, 
+#             linestyle='None', elinewidth=0.5, alpha=0.35, zorder=1)
+ax0.plot(L6, amm, marker='o', color='gray', markersize=3, alpha=0.45, 
+         linestyle='None', zorder=1)
 
-ax0.errorbar(L6, amm, xerr=eL6, yerr=[eamm_lo, eamm_hi], marker='o', 
-             color='C0', markersize=3, linestyle='None', elinewidth=1.0,
-             alpha=0.65)
+ax0.text(0.68, 0.90, '0.9--1.3 mm', transform=ax0.transAxes, 
+         fontsize=9, color='gray')
+ax0.text(0.68, 0.83, '1.3--3 mm', transform=ax0.transAxes, 
+         fontsize=9, color='C1')
 
+
+
+
+ind = '36'
+
+if (ind == '67'): alp_lbl = '(B6 / B7)'
+if (ind == '36'): alp_lbl = '(B3 / B6)'
+
+# load database
+os.system('cp -r DISKS.csv temp.csv')
+db = ascii.read('temp.csv', format='csv', fast_reader=True)
+
+# downselect targets with both a robust index and B6 flux density
+base = ( (db['SED'] != 'I') & (db['SED'] != 'III') &
+         (db['SED'] != 'DEBRIS') )
+
+d_ref, nu_ref, alp = 150., 225., 2.3
+
+# extract sub-sample
+sub = ( (db['FL_A'+ind] == 0) & (db['FL_B6'] == 0) & base )
+L6  = db['F_B6'][sub] * (db['DPC'][sub] / d_ref)**2 * \
+      (nu_ref / db['nu_B6'][sub])**alp
+eL6 = np.sqrt( (nu_ref/db['nu_B6'][sub])**(2.*alp) * \
+               (db['eF_B6'][sub]**2 + (0.1*db['F_B6'][sub])**2) * \
+               (db['DPC'][sub]/d_ref)**4 + \
+               ( ((nu_ref / db['nu_B6'][sub])**alp * \
+                  db['F_B6'][sub]*(2.*db['DPC'][sub]/d_ref**2) * \
+                 0.5*(db['EDPC_H'][sub]+db['EDPC_L'][sub]) )**2 ) )
+amm = db['A'+ind][sub]
+eamm_hi = db['eA'+ind+'_hi'][sub]
+eamm_lo = db['eA'+ind+'_lo'][sub]
+names = db['NAME'][sub]
+
+eL6 = [np.log10(L6)-np.log10(L6-eL6), np.log10(L6+eL6)-np.log10(L6)]
+L6 = np.log10(L6)
+ax0.errorbar(L6, amm, xerr=eL6, yerr=[eamm_lo, eamm_hi],                
+             marker='o', color='C1', markersize=3, 
+             linestyle='None', elinewidth=1.0, alpha=0.65, zorder=2)
+
+
+
+
+# highlight individuals
 uztau = (names == 'UZ_Tau_E')
 ax0.errorbar(L6[uztau], amm[uztau], yerr=[eamm_lo[uztau], eamm_hi[uztau]],
              marker='o', color='C4', markersize=5, linestyle='None',
-             elinewidth=2.)
+             elinewidth=2., zorder=3)
 
 drtau = (names == 'DR_Tau')
 ax0.errorbar(L6[drtau], amm[drtau], yerr=[eamm_lo[drtau], eamm_hi[drtau]], 
              marker='o', color='C3', markersize=5, linestyle='None', 
-             elinewidth=2.)
+             elinewidth=2., zorder=4)
 
 fttau = (names == 'FT_Tau')
 ax0.errorbar(L6[fttau], amm[fttau], yerr=[eamm_lo[fttau], eamm_hi[fttau]],
-             marker='o', color='C1', markersize=5, linestyle='None',
-             elinewidth=2.)
+             marker='o', color='C2', markersize=5, linestyle='None',
+             elinewidth=2., zorder=5)
 
 as209 = (names == 'AS_209')
 ax0.errorbar(L6[as209], amm[as209], yerr=[eamm_lo[as209], eamm_hi[as209]],
-             marker='o', color='C2', markersize=5, linestyle='None',
-             elinewidth=2.)
-
+             marker='o', color='C0', markersize=5, linestyle='None',
+             elinewidth=2., zorder=6)
 
 
 
@@ -133,7 +182,7 @@ for i in range(num36):
     a36_samples = np.append(a36_samples, a36_)
 
 N, bins = np.histogram(a36_samples, range=[0, 5], bins=100, density=True)
-ax0.plot(1.5*N+Llims[0], bins[1:], 'C0')
+ax0.plot(1.5*N+Llims[0], bins[1:], 'C1')
 
 
 
@@ -156,7 +205,7 @@ with open("data/tazzari_profiles.dat", 'rb') as f:
 
 ### index profiles
 name = ['DRTau', 'FTTau', 'AS209']
-col = ['C3', 'C1', 'C2']
+col = ['C3', 'C2', 'C0']
 for i in range(len(name)):
     rau, wl = data[name[i]]['gridrad'], data[name[i]]['wle']
     a, b = 0, len(wl)-1
@@ -176,9 +225,9 @@ for i in range(len(name)):
 ax1.text(0.93, 0.07, 'UZ Tau E', transform=ax1.transAxes, ha='right', 
          fontsize=8, color='C4')
 ax1.text(0.93, 0.13, 'AS 209', transform=ax1.transAxes, ha='right', 
-         fontsize=8, color='C2')
+         fontsize=8, color='C0')
 ax1.text(0.93, 0.19, 'FT Tau', transform=ax1.transAxes, ha='right',  
-         fontsize=8, color='C1')
+         fontsize=8, color='C2')
 ax1.text(0.93, 0.25, 'DR Tau', transform=ax1.transAxes, ha='right',  
          fontsize=8, color='C3')
 

@@ -44,6 +44,7 @@ db = ascii.read('temp.csv', format='csv', fast_reader=True)
 
 # baseline selections
 base = ( (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'HJ') & 
+         (db['FL_MULT'] != 'HJB') & 
          (db['SED'] != 'I') & (db['SED'] != 'III') & (db['SED'] != 'DEBRIS') ) 
 
 
@@ -160,6 +161,6 @@ ax.text(0.63, 0.885, '($M_{\\rm g}$ sample)', color='orange', fontsize=10,
 ax.text(140, 0.78, '$\\boldsymbol{M_{\\rm g}}$', color='gray', fontsize=13)
 
 
-fig.subplots_adjust(left=0.2, right=0.8, bottom=0.165, top=0.98)
+fig.subplots_adjust(left=0.2, right=0.8, bottom=0.165, top=0.975)
 fig.savefig('mdisk_dist.pdf')
 fig.clf()
