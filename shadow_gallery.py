@@ -79,7 +79,7 @@ hdulist = fits.open('data/Fits_for_Sean/IndividualSPHEREpapers/HD143006_Qphi_Jba
 Iscat = hdulist[0].data
 hdr = hdulist[0].header
 nx, ny = hdr['NAXIS1'], hdr['NAXIS2']
-cellsize = 12.25 * 1e-3    # in arcseconds (based on IRDIS plate scale)
+cellsize = 12.26 * 1e-3    # in arcseconds (based on IRDIS plate scale)
 RA, DEC = np.meshgrid(cellsize*(np.arange(nx)-0.5*nx+0.5), \
                       cellsize*(np.arange(ny)-0.5*ny+0.5))
 ext = (np.max(RA), np.min(RA), np.min(DEC), np.max(DEC))
@@ -87,9 +87,16 @@ norm = ImageNormalize(vmin=0, vmax=85, stretch=LinearStretch())
 im = ax0.imshow(Iscat, origin='lower', cmap='afmhot', extent=ext, 
                 aspect='equal', norm=norm)
 beam = Ellipse((xlims[0] + 0.08*np.diff(xlims), xlims[1] - 0.06*np.diff(xlims)),
-               0.049, 0.049, 0.)
+               0.037, 0.037, 0.)
 beam.set_facecolor('w')
 ax0.add_artist(beam)
+
+# scale bar
+barAU = 10.
+xbarr = xlims[1] - 0.09*np.diff(xlims)
+xbarl = xbarr + barAU/165.3
+ybar  = xlims[1] - 0.09*np.diff(xlims)
+ax0.plot([xbarr, xbarl], [ybar, ybar], '-w', lw=1)
 
 
 xlims = [0.7, -0.7]
@@ -114,8 +121,14 @@ im = ax1.imshow(Iscat, origin='lower', cmap='afmhot', extent=ext,
 beam = Ellipse((xlims[0] + 0.08*np.diff(xlims), xlims[1] - 0.06*np.diff(xlims)),
                0.049, 0.049, 0.)
 beam.set_facecolor('w')
-ax0.add_artist(beam)
+ax1.add_artist(beam)
 
+# scale bar 
+barAU = 10. 
+xbarr = xlims[1] - 0.09*np.diff(xlims)
+xbarl = xbarr + barAU/139.7
+ybar  = xlims[1] - 0.09*np.diff(xlims)
+ax1.plot([xbarr, xbarl], [ybar, ybar], '-w', lw=1)
 
 
 xlims = [0.7, -0.7]
@@ -130,7 +143,7 @@ hdulist = fits.open('data/Fits_for_Sean/IndividualSPHEREpapers/J1604_Epoch2017_0
 Iscat = hdulist[0].data
 hdr = hdulist[0].header
 nx, ny = hdr['NAXIS1'], hdr['NAXIS2']
-cellsize = 12.25 * 1e-3    # in arcseconds (based on IRDIS plate scale)
+cellsize = 12.26 * 1e-3    # in arcseconds (based on IRDIS plate scale)
 RA, DEC = np.meshgrid(cellsize*(np.arange(nx)-0.5*nx+0.5), \
                       cellsize*(np.arange(ny)-0.5*ny+0.5))
 ext = (np.max(RA), np.min(RA), np.min(DEC), np.max(DEC))
@@ -138,9 +151,16 @@ norm = ImageNormalize(vmin=0, vmax=250, stretch=LinearStretch())
 im = ax2.imshow(Iscat, origin='lower', cmap='afmhot', extent=ext,
                 aspect='equal', norm=norm)
 beam = Ellipse((xlims[0] + 0.08*np.diff(xlims), xlims[1] - 0.06*np.diff(xlims)),
-               0.049, 0.049, 0.)
+               0.037, 0.037, 0.)
 beam.set_facecolor('w')
-ax0.add_artist(beam)
+ax2.add_artist(beam)
+
+# scale bar 
+barAU = 10. 
+xbarr = xlims[1] - 0.09*np.diff(xlims)
+xbarl = xbarr + barAU/149.4
+ybar  = xlims[1] - 0.09*np.diff(xlims)
+ax2.plot([xbarr, xbarl], [ybar, ybar], '-w', lw=1)
 
 
 

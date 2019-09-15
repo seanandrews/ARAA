@@ -41,10 +41,11 @@ show_test = False
 # safe copy + load
 os.system('cp -r DISKS.csv temp.csv')
 db = ascii.read('temp.csv', format='csv', fast_reader=True)
+print(np.unique(db['SFR']))
 
 # baseline selections
 base = ( (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'HJ') & 
-         (db['FL_MULT'] != 'HJB') & 
+         (db['FL_MULT'] != 'HJB') & (db['SFR'] != 'sOri') &  
          (db['SED'] != 'I') & (db['SED'] != 'III') & (db['SED'] != 'DEBRIS') ) 
 
 
@@ -52,7 +53,7 @@ base = ( (db['FL_MULT'] != 'J') & (db['FL_MULT'] != 'HJ') &
 d_ref, nu_ref = 150., 340.
 h, c, k = 6.626e-27, 2.9979e10, 1.381e-16
 pc, mearth, mjup = 3.0857e18, 5.974e27, 1.898e30
-kappa, Tdust, alp = 3.5, 20., 2.3
+kappa, Tdust, alp = 3.5, 20., 2.2
 
 
 ### Calculate CDFs for a test of the B6-->B7 conversion

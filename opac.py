@@ -88,9 +88,9 @@ for i in range(len(dfiles)):
 
 ax0.text(0.09, 0.78, 'a', transform=ax0.transAxes, horizontalalignment='left',
          fontsize=15, color='gray')
-ax1.text(0.09, 0.78, 'b', transform=ax1.transAxes, horizontalalignment='left',
+ax1.text(0.09, 0.78, 'c', transform=ax1.transAxes, horizontalalignment='left',
          fontsize=15, color='gray')
-ax2.text(0.09, 0.78, 'c', transform=ax2.transAxes, horizontalalignment='left',
+ax2.text(0.09, 0.78, 'b', transform=ax2.transAxes, horizontalalignment='left',
          fontsize=15, color='gray')
 ax3.text(0.09, 0.78, 'd', transform=ax3.transAxes, horizontalalignment='left',
          fontsize=15, color='gray')

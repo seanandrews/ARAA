@@ -67,7 +67,7 @@ base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'HJB') &
 
 
 ### Set some constants
-d_ref, nu_ref, alp = 150., 340., 2.3
+d_ref, nu_ref, alp = 150., 340., 2.2
 
 
 # calculate luminosities, upper limits, masses, and sizes + uncertainties

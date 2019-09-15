@@ -76,7 +76,7 @@ base = ( (db['FL_MULT'] != 'B') & (db['FL_MULT'] != 'HJB') &
 
 
 ### Set some constants
-d_ref, nu_ref, alp = 150., 340., 2.3
+d_ref, nu_ref, alp = 150., 340., 2.2
 
 
 # calculate luminosities, upper limits, masses, and ages + uncertainties
@@ -279,6 +279,13 @@ for i in range(len(s_M)):
     else:
         ax1.plot(s_t[i], s_L[i], 'o', markerfacecolor=lcol,
                  markeredgecolor='None', markersize=4.5)
+
+mx = np.logspace(-1, 3, 512)
+my = 180.*mx**(-1.5)
+ax1.plot(mx, 120*mx**(-1.5), '--m', alpha=0.65)
+ax1.plot(mx, 20*mx**(-1.5), '--c', alpha=0.65)
+ax1.plot([8./2.5, 8.*2.5], [1500, 1500], '-', color='gray')
+ax1.plot([8, 8], [1.2*1500, 0.8*1500], '-', color='gray')
 
 
 # colorbar

@@ -172,7 +172,6 @@ N, bins = np.histogram(a67_samples, range=[0, 5], bins=100, density=True)
 ax0.plot(1.5*N+Llims[0]-0.10, bins[1:], 'gray')
 
 
-
 ok36 = ((db['FL_B6'] == 0) & (db['FL_B3'] == 0) & (db['FL_A36'] == 0) & base)
 names = db['NAME'][ok36]
 num36 = len(names)

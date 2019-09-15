@@ -33,33 +33,34 @@ fdir = ['data/',	# 0,0
         'data/nienke/',	# 0,5
         'data/paola_tds/',	#1,0
         'data/',		#1,1
-        'data/for_sean/',
-        'data/Fits_for_Sean/DARTTS_Sean/',
-        'data/Fits_for_Sean/',
-        'data/Fits_for_Sean/GPIData/',
-        '/data/sandrews/ALMA_disks/DR/images/',
-        '/pool/asha0/TALKS/2017/Texas/data/',
-        'data/',
-        'data/',
-        'data/',
-        '/data/sandrews/ALMA_disks/DR/images/',
-        'data/',
-        '/data/sandrews/ALMA_disks/DR/images/',
-        'data/Fits_for_Sean/IndividualSPHEREpapers/',
-        'data/Fits_for_Sean/DARTTS_Sean/',
-        'data/Fits_for_Sean/DARTTS_Sean/',
-        'data/Fits_for_Sean/DARTTS_Sean/',
-        'data/',
-        'data/',
-        '/data/sandrews/ALMA_disks/DR/images/',
-        '/data/sandrews/ALMA_disks/DR/images/',
-        'data/',
-        '/pool/asha0/TALKS/2015/Leiden_Lorentz/',
-        '/data/sandrews/ALMA_disks/DR/images/',
-        '/data/sandrews/ALMA_disks/DR/images/',
-        '/data/sandrews/ALMA_disks/DR/images/',
-        'data/Fits_for_Sean/IndividualSPHEREpapers/',
-        'data/Fits_for_Sean/IndividualSPHEREpapers/']
+        'data/paola_tds/',	#1,2
+        'data/for_sean/',	#1,3
+        'data/Fits_for_Sean/',	#1,4
+        'data/Fits_for_Sean/GPIData/',	#1,5
+        'data/',	# 2,0
+        'data/',	# 2,1
+        'data/',	# 2,2
+        'data/',	# 2,3
+        'data/',	# 2,4
+        'data/',	# 2,5
+        'data/',	# 3,0
+        'data/',	# 3,1
+        'data/',	# 3,2
+        'data/Fits_for_Sean/DARTTS_Sean/',		# 3,3
+        'data/Fits_for_Sean/DARTTS_Sean/',		# 3,4
+        'data/Fits_for_Sean/DARTTS_Sean/',		# 3,5
+        'data/',	# 4,0
+        'data/',	# 4,1
+        'data/',	# 4,2
+        'data/',	# 4,3
+        'data/',	# 4,4
+        'data/',	# 4,5
+        'data/',	# 5,0
+        'data/',	# 5,1
+        'data/',	# 5,2
+        'data/Fits_for_Sean/IndividualSPHEREpapers/', # 5,3
+        'data/Fits_for_Sean/IndividualSPHEREpapers/',	# 5,4
+	'data/Fits_for_Sean/']
 
 im_files = ['CIDA_9_selfcal_cont_image',	# 0,0
 	    'sz91.cal.image',			# 0,1
@@ -69,8 +70,8 @@ im_files = ['CIDA_9_selfcal_cont_image',	# 0,0
             'SR21_B7_tim',			# 0,5
             'J16042165',			# 1,0
             'dmtau.clean_p0.pbcor',		# 1,1
-            'IRS48_Hband_PI_halosub',		# 1,2
-            'DoAr44_Qphi_Hband',		# 1,3
+            'DoAr44',		# 1,2
+            'IRS48_Hband_PI_halosub',		# 1,3
             'LkCa_15_2015-12-19_Q_phi_star_pol_subtr',		# 1,4
             'Monnier2017_FIG2_GPI_HD_163296_J_band_Stokes_Q_r', # 1,5
             'AS209_continuum',					# 2,0
@@ -81,61 +82,85 @@ im_files = ['CIDA_9_selfcal_cont_image',	# 0,0
             'RULup_continuum',
             'GO_Tau_selfcal_cont_image',
             'Elias24_continuum',
-            'J1852_Qphi_Hband',
+            'HD163296_continuum',
             'J1615_Qphi_Hband',
             'V4046Sgr_Qphi_Hband',
             'PDS66_Qphi_Hband',
             'mwc758_20180301_SL.img',
             'hd135344b.band4.data.selfcal.center',
             'HD143006_continuum',
-            'HD163296_continuum',
             'V1247Ori',
+            'IRS48_B9_667',
             'uid___A002_X41c27b_X2fc__hd142527_cont_spw0',
             'IMLup_continuum',
             'WaOph6_continuum',
             'Elias27_continuum',
             'SAO206462_Qphi_r2scaled_Jband',
-            'MWC758_Qphi_Yband_March2015']
+            'MWC758_Qphi_Yband_March2015',
+            'HD100456']
+
+dpc = [171.2, 157.8, 138.1, 311.6, 130.1, 137.8,
+       149.4, 144.5, 145.3, 134.5, 158.3, 101.3,
+       120.6, 135.8, 153.2, 158.2, 114.0, 158.9,
+       143.6, 136.0, 101.3, 157.0,  73.7,  98.9,
+       159.5, 135.4, 165.3, 398.4, 134.5, 157.3,
+       157.8, 123.2, 116.4, 135.4, 159.5, 104.2]
 
 offx = [-0.51, -0.45,  0.00, -0.07,  0.05,  0.07,  
-         0.00, -0.01,  0.00,  0.00,  0.00,  0.00,
+         0.00, -0.01, -0.02,  0.00,  0.00,  0.00,
          0.01, -0.01, -0.15,  0.22,  0.00, -0.04,
         -0.18,  0.10,  0.00,  0.00,  0.00,  0.00,
-         0.00,  0.20,  0.00, -0.02,  0.02, -0.20,
+         0.00,  0.20,  0.00,  0.02,  0.00, -0.20,
          0.00, -0.25,  0.00,  0.00,  0.00,  0.00]
+
 offy = [-0.71, -0.80,  0.00,  0.05,  0.17,  0.05,  
-         0.03, -0.03,  0.20,  0.00,  0.00,  0.00,
+         0.03, -0.03,  0.00,  0.20,  0.00,  0.00,
          0.00,  0.19,  0.08, -0.06,  0.00,  0.09,
         -0.42, -0.38,  0.00,  0.00,  0.00,  0.00,
-         0.00, -0.05,  0.02,  0.00, -0.05, -0.20,
+         0.00, -0.05,  0.02, -0.05,  0.00, -0.20,
          0.00, -0.36,  0.00,  0.00,  0.00,  0.00]
 
 xhw = [0.65, 1.10, 0.90, 1.00, 0.55, 0.95,
-       1.20, 0.50, 1.80, 0.50, 0.70, 0.90,
+       1.20, 0.50, 1.00, 1.50, 0.70, 0.90,
        1.30, 1.05, 2.00, 1.20, 1.00, 0.50,
-       1.15, 1.25, 0.80, 1.80, 0.65, 1.40,
-       0.85, 1.00, 0.75, 1.40, 0.75, 2.70,
-       1.30, 1.10, 1.90, 1.40, 0.70, 1.00]
+       1.15, 1.25, 1.20, 1.80, 0.65, 1.40,
+       0.85, 1.00, 0.75, 0.75, 1.00, 2.70,
+       1.30, 1.10, 1.90, 1.40, 0.70, 0.40]
 
 vmins = [ 0.0,  0.0,  0.0,   0.0,  0.0,  0.0,  
-          0.0,  1.0,  0.0, -5e-8,  0.0,  0.0,
+          0.0,  1.0,  0.0,   0.0,  0.0,  0.0,
           0.0,  0.0,  0.0,   0.0,  0.0,  0.0,
           0.0,  0.0,  0.0,   0.0,  0.0,  0.0,
-          0.0,  0.0,  0.0,   0.0,  0.5,  0.5,
+          0.0,  0.0,  0.0,   0.5,  0.0,  0.5,
           0.3,  0.25,  0.1,   0.0,  5.0,  0.0]
+
 vmaxs = [ 8.0,  3.0, 15.0,  13.0,  7.0, 12.0,  
-          4.0, 20.0,  2.0,  6e-6,   60,  1.5,
+          4.0, 20.0, 11.0,   2.0,   60,  1.5,
          25.0, 75.0,  5.0,  13.0, 10.0, 75.0,
-          7.0, 30.0, 250.,  1.5e-7, 2.0e-6, 2e-7,
-         17.0,  9.0, 13.0,  60.0, 19.0, 20.0,
-         10.0, 12.0, 10.0,  1e6,  90,  10]  
+          7.0, 30.0,  60.,  1.5e-7, 2.0e-6, 2e-7,
+         17.0,  9.0, 13.0,  19.0, 22.0, 20.0,
+         10.0, 12.0, 10.0,  1e6,  90, 350]  
 
 dinp = ['mm', 'mm', 'mm', 'mm', 'mm', 'mm',
-        'mm', 'mm', 'scat', 'scat', 'scat', 'scat',
+        'mm', 'mm', 'mm', 'scat', 'scat', 'scat',
         'mm', 'mm', 'mm', 'mm', 'mm', 'mm',
-        'mm', 'mm', 'scat', 'scat', 'scat', 'scat',
+        'mm', 'mm', 'mm', 'scat', 'scat', 'scat',
         'mm', 'mm', 'mm', 'mm', 'mm', 'mm',
         'mm', 'mm', 'mm', 'scat', 'scat', 'scat']
+
+csize = [0, 0, 0, 0, 0, 0,
+         0, 0, 9.5, 9.5, 12.25, 14.00,
+         0, 0, 0, 0, 0, 0,
+         0, 0, 0, 12.25, 12.25, 12.25,
+         0, 0, 0, 0, 0, 0,
+         0, 0, 0, 12.25, 12.25, 7.0]
+
+bfwhm = [0, 0, 0, 0, 0, 0,
+         0, 0, 0.05, 0.05, 0.049, 0.042,
+         0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0.049, 0.049, 0.049,
+         0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0.041, 0.027, 0.020]
 
 
 # set some constants
@@ -179,8 +204,8 @@ for i in range(len(fdir)):
         img = Tb
 
         # beam
-        beam = Ellipse((xlims[0] + 0.08*np.diff(xlims), 
-                        xlims[1] - 0.06*np.diff(xlims)),
+        beam = Ellipse((xlims[0] + 0.09*np.diff(xlims), 
+                        xlims[1] - 0.09*np.diff(xlims)),
                         hdr['BMAJ']*3600., hdr['BMIN']*3600., 90.-hdr['BPA'])
 
 
@@ -191,7 +216,7 @@ for i in range(len(fdir)):
  
         # define coordinate grid
         nx, ny = hdr['NAXIS1'], hdr['NAXIS2']
-        cellsize = 12.25 * 1e-3
+        cellsize = csize[i] * 1e-3
         RA, DEC = np.meshgrid(cellsize*(np.arange(nx)-0.5*nx+0.5), \
                               cellsize*(np.arange(ny)-0.5*ny+0.5))
 
@@ -204,9 +229,9 @@ for i in range(len(fdir)):
         img = Inu
 
         # beam
-        beam = Ellipse((xlims[0] + 0.08*np.diff(xlims),
-                        xlims[1] - 0.06*np.diff(xlims)),
-                        0.049, 0.049, 0)
+        beam = Ellipse((xlims[0] + 0.09*np.diff(xlims),
+                        xlims[1] - 0.09*np.diff(xlims)),
+                        bfwhm[i], bfwhm[i], 0)
         
 
     ext = (np.max(RA)-offx[i], np.min(RA)-offx[i], 
@@ -228,8 +253,16 @@ for i in range(len(fdir)):
     beam.set_facecolor('w')
     ax.add_artist(beam)
 
-#    ax.plot([0, 0], [-10, 10], 'g', lw=1)
-#    ax.plot([-10, 10], [0, 0], 'g', lw=1)
+    #ax.plot([0, 0], [-10, 10], 'g', lw=1)
+    #ax.plot([-10, 10], [0, 0], 'g', lw=1)
+
+    # scale bar
+    barAU = 10.
+    xbarr = xlims[1] - 0.09*np.diff(xlims)
+    xbarl = xbarr + barAU/dpc[i]
+    ybar  = xlims[1] - 0.09*np.diff(xlims)
+    print(xbarr, xbarl, ybar, xlims)
+    ax.plot([xbarr, xbarl], [ybar, ybar], '-w', lw=1)
 
     # panel properties
     ax.set_xlim(xlims)
