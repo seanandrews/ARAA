@@ -2,6 +2,7 @@ import numpy as np
 import os
 import sys
 from astropy.io import ascii
+from do_regression import do_regression
 
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
@@ -11,6 +12,9 @@ import matplotlib as mpl
 rc('text.latex', preamble=r'\usepackage{amsmath}')
 rc("font", **{"family": "serif", "serif": ["Palatino"]})
 rc("text", usetex = True)
+
+
+do_reg = True
 
 
 # set up plot
@@ -118,6 +122,15 @@ ax0.errorbar(DdetJ, LdetJ, xerr=DerrJ, yerr=LerrJ, marker='o',
              color='m', markersize=3, linestyle='None', elinewidth=1.0, 
              alpha=0.65)
 
+if (do_reg == True):
+    flags = np.zeros_like(DdetJ)
+    xx = np.log10(DdetJ)
+    yy = np.log10(LdetJ)
+    ex = 0.4343*DerrJ/xx
+    ey = 0.4343*LerrJ/yy
+    delta = (flags == 0)
+    rposts = do_regression(xx, yy, ex, ey, delta, 'binaries')
+
 detC = ((db['FL_B6'] == 0) & baseCB)
 LdetC = db['F_B6'][detC] * (db['DPC'][detC] / d_ref)**2
 LerrC = np.sqrt( (db['eF_B6'][detC]**2 + (0.1*db['F_B6'][detC])**2) * \
@@ -136,6 +149,9 @@ ax0.errorbar(DdetC, LdetC, xerr=DerrC, yerr=LerrC, marker='o',
 
 ax0.text(0.5, 0.11, 'circumbinary', ha='left', fontsize=8, color='C2')
 ax0.text(100, 0.20, 'binary pairs', ha='left', fontsize=8, color='m')
+
+
+
 
 
 

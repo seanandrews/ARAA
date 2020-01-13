@@ -121,20 +121,56 @@ Msolids, pMsolids, epMsolids, mukm = km_estimator(Ms, flags)
 
 
 ### Gas mass distribution
-have_Mg = ( (db['FL_Mgas'] == 0) & base )
-flagg = (db['FL_Mgas'][have_Mg] == 1)
-Mg = db['Mgas'][have_Mg] * mjup / mearth 
-print(len(Mg))
+dets_Mg = ( (db['FL_Mgas'] == 0) & base )
+lims_Mg = ( (db['FL_Mgas'] == 1) & base )
+Mg_dets = db['Mgas'][dets_Mg] * mjup / mearth
+Mg_lims = db['Mgas'][lims_Mg] * mjup / mearth
+Mg = np.ma.concatenate((Mg_dets, Mg_lims))
+flag_dets = np.zeros_like(Mg_dets)
+flag_lims = np.ones_like(Mg_lims)
+flaggs = np.ma.concatenate((flag_dets, flag_lims))
+flagg = (flaggs == 1)
 
 # cumulative distribution
 Mgas, pMgas, epMgas, mukm = km_estimator(Mg, flagg)
 
-det7 = (have_Mg & (db['FL_B7'] == 0))
-det6 = (have_Mg & (db['FL_B7'] != 0) & (db['FL_B6'] == 0)) 
-Msg7 = L7[det7] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
-Msg6 = L6[det6] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
-Msg = np.ma.concatenate( (Msg7, Msg6) )
-print(len(Msg))
+
+### Solids for these gas measurements
+# targets with B7 detections
+DdetB7 = ( (db['FL_B7'] == 0) & dets_Mg )
+DM_detB7 = L7[DdetB7] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+Dd_detB7 = (db['FL_B7'][DdetB7] == 1)
+
+LdetB7 = ( (db['FL_B7'] == 0) & lims_Mg )
+LM_detB7 = L7[LdetB7] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+Ld_detB7 = (db['FL_B7'][LdetB7] == 1)
+
+# targets with **only** B6 detections (i.e., no B7 or B7 limit)
+DdetB6 = ( (db['FL_B7'] != 0) & (db['FL_B6'] == 0) & dets_Mg )
+DM_detB6 = L6[DdetB6] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+Dd_detB6 = (db['FL_B7'][DdetB6] == 0)
+
+LdetB6 = ( (db['FL_B7'] != 0) & (db['FL_B6'] == 0) & lims_Mg )
+LM_detB6 = L6[LdetB6] * (d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+Ld_detB6 = (db['FL_B7'][LdetB6] == 0)
+
+# targets with **only** limits or missing data
+# (there should be **no entry** without a limit in at least B6 or B7)
+Dlims = ( (db['FL_B7'] != 0) & (db['FL_B6'] != 0) & dets_Mg )
+Ddlims = np.ma.column_stack( (limL7[Dlims], limL6[Dlims]) )
+DM_lims = np.ma.min(Ddlims, 1)*(d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+Dd_lims = np.ones(len(DM_lims), dtype=bool)
+
+Llims = ( (db['FL_B7'] != 0) & (db['FL_B6'] != 0) & lims_Mg )
+Ldlims = np.ma.column_stack( (limL7[Llims], limL6[Llims]) )
+LM_lims = np.ma.min(Ldlims, 1)*(d_ref * pc)**2 * 1e-23 / (kappa * Bnu) / mearth
+Ld_lims = np.ones(len(LM_lims), dtype=bool)
+
+### Solid mass distribution
+# combine all sub-samples
+Msg = np.ma.concatenate( (DM_detB7, LM_detB7, DM_detB6, LM_detB6, DM_lims, LM_lims) )
+flags = np.ma.concatenate( (Dd_detB7, Ld_detB7, Dd_detB6, Ld_detB6, Dd_lims, Ld_lims) )
+
 Mgs, pMgs, epMgs, mukm = km_estimator(Msg, flagg)
 
 
@@ -153,13 +189,18 @@ ax.plot(Msolids, pMsolids, 'm', drawstyle='steps-post', linewidth=3)
 
 
 ### Annotations
-ax.text(0.63, 0.62, '$\\boldsymbol{M_{\\rm s}}$', color='m', fontsize=13)
-ax.text(0.19, 0.66, '(all disks)', color='m', fontsize=10, 
+ax.text(0.07, 0.78, '$\\boldsymbol{M_{\\rm s}}$', color='m', fontsize=13,
+        ha='right')
+ax.text(0.13, 0.695, '(all disks)', color='m', fontsize=10, 
         horizontalalignment='right', alpha=0.8)
-ax.text(6, 0.85, '$\\boldsymbol{M_{\\rm s}}$', color='orange', fontsize=13)
-ax.text(0.63, 0.885, '($M_{\\rm g}$ sample)', color='orange', fontsize=10, 
+ax.text(0.6, 0.37, '$\\boldsymbol{M_{\\rm s}}$', color='orange', fontsize=13, 
+        ha='right')
+ax.text(0.63, 0.285, '($M_{\\rm g}$ sample)', color='orange', fontsize=10, 
         horizontalalignment='right', alpha=0.8)
-ax.text(140, 0.78, '$\\boldsymbol{M_{\\rm g}}$', color='gray', fontsize=13)
+ax.text(10, 0.78, '$\\boldsymbol{M_{\\rm g}}$', color='gray', fontsize=13)
+
+ax.plot([35.,35.],[0., 0.45], ':', color='m', linewidth=2, zorder=0)
+ax.plot([3000,3000],[0., 0.45], ':', color='gray', linewidth=2, zorder=0)
 
 
 fig.subplots_adjust(left=0.2, right=0.8, bottom=0.165, top=0.975)

@@ -195,7 +195,7 @@ ax0.text(np.log10(0.3), 3.83, 'ISM', fontsize=10, color='goldenrod',
 
 ### UZ Tau from Anjali
 rau, alpl, alph = np.loadtxt('data/uztau_epsilon.dat').T
-ax1.fill_between(rau, alpl, alph, facecolor='C4', alpha=0.35)
+ax1.fill_between(rau, alpl, alph, facecolor='C4', alpha=0.25)
 ax1.plot(rau, 0.5*(alpl+alph), '-C4')
 
 ### Load the data from Tazzari+ 2016

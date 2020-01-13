@@ -22,7 +22,8 @@ a36, ea36_hi, ea36_lo = np.zeros(len(db)), np.zeros(len(db)), np.zeros(len(db))
 fl_a36, lim_a36 = np.zeros(len(db)), np.zeros(len(db))
 
 t0 = time.time()
-for i in range(len(db)):
+indices = [249]
+for i in indices:	#range(len(db)):
 
     # no index information available (no measurement in 1 band, or upper limits
     # in both bands)
