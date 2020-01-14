@@ -46,7 +46,7 @@ ax1.set_ylim(Rlims)
 ax1.set_yscale('log')
 ax1.set_yticks([10, 100])
 ax1.set_yticklabels(['10', '100'])
-ax1.set_ylabel('$R_{\\rm 1.3 \, mm} \;$ (au, at 0.9$L$)')
+ax1.set_ylabel('$R_{\\rm 1.3 \, mm} \;$ (au, at 0.68$L$)')
 
 ax1.set_xlim(Llims)
 ax1.set_xscale('log')
