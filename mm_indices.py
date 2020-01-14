@@ -9,6 +9,7 @@ import scipy.integrate as sci
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import matplotlib as mpl
+from matplotlib.ticker import FixedLocator
 plt.style.use('araa')
 from matplotlib import rc
 rc('text.latex', preamble=r'\usepackage{amsmath}')
@@ -33,8 +34,8 @@ ax0.set_xlim(Llims)
 ax0.set_xticks([-1, 0, 1, 2, 3])
 ax0.set_xticklabels(['0.1', '1', '10', '100', '1000'])
 ax0.set_xlabel('$L_{\\rm 1.3 \, mm} \;$ (mJy at 150 pc)')
-
-
+ax0.yaxis.get_ticklocs(minor=True)
+ax0.minorticks_on()
 ax0.set_ylim(elims)
 ax0.set_ylabel('$\\alpha_{\\rm mm}$')
 
@@ -42,7 +43,9 @@ ax0.set_ylabel('$\\alpha_{\\rm mm}$')
 # panel (b) setups  [epsilon(r) profiles]
 ax1.set_xlim(Rlims)
 ax1.set_xlabel('$r \;$ (au)')
-
+ax1.xaxis.get_ticklocs(minor=True)
+ax1.yaxis.get_ticklocs(minor=True)
+ax1.minorticks_on()
 ax1.set_ylim(elims)
 ax1.set_ylabel('$\\varepsilon \;$ (1--9 mm)')
 

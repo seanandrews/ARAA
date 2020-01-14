@@ -37,6 +37,8 @@ ax1.set_xticks([0.1, 1, 10])
 ax1.set_xticklabels(['0.1', '1', '10'])
 ax1.set_xlabel('$a_{\\rm max} \;$ (mm)')
 ax1.set_yticks([0, 1, 2, 3])
+ax1.yaxis.get_ticklocs(minor=True)
+ax1.minorticks_on()
 ax1.set_ylabel('$\\beta$', labelpad=12)
 
 ax2 = fig.add_subplot(gs[0, 1])
@@ -46,6 +48,8 @@ ax2.set_ylim(albp_lims)
 ax2.set_xticklabels([])
 ax2.set_yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
 ax2.set_ylabel('$\omega_\\nu$')
+ax2.yaxis.get_ticklocs(minor=True)
+ax2.minorticks_on()
 #ax2.plot([0.01, 100], [0.95, 0.95], ':')
 
 ax3 = fig.add_subplot(gs[1, 1])
@@ -57,6 +61,8 @@ ax3.set_ylim(albp_lims)
 ax3.set_yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
 ax3.set_xlabel('$a_{\\rm max} \;$ (mm)')
 ax3.set_ylabel('$\mathcal{P}_\\nu$')
+ax3.yaxis.get_ticklocs(minor=True)
+ax3.minorticks_on()
 
 
 

@@ -29,6 +29,8 @@ ax.set_xticklabels(['0.1', '1', '10', '100', '1000'])
 ax.set_xlabel('$M \;$ (M$_{\\boldsymbol{\oplus}}$)')
 
 ax.set_ylim(plims)
+ax.yaxis.get_ticklocs(minor=True)
+ax.minorticks_on()
 ax.set_ylabel('$p$ ($\ge M$)')
 
 # show the spectral index test?
